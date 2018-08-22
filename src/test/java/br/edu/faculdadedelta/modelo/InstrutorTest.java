@@ -1,6 +1,7 @@
 package br.edu.faculdadedelta.modelo;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -8,117 +9,110 @@ import static org.junit.Assert.fail;
 
 import java.util.List;
 
-import javax.persistence.NoResultException;
-import javax.persistence.NonUniqueResultException;
 import javax.persistence.Query;
 
-import org.hibernate.LazyInitializationException;
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import org.junit.AfterClass;
 import org.junit.Test;
 
-import br.edu.faculdadedelta.base.BaseJPATest;
+import br.edu.faculdadedelta.base.BaseCrudTest;
+import br.edu.faculdadedelta.tipo.StatusInstrutor;
 
-public class InstrutorTest extends BaseJPATest {
+public class InstrutorTest extends BaseCrudTest<String, Instrutor> {
 
-	private static final String CPF_PADRAO = "111.111.111-11";
+	private static final String CPF_PADRAO = "222.222.222-22";
+
+	@Override
+	public Instrutor getInstanciaDaEntidade() {
+
+		return new Instrutor("José De Almeida Prado").setCpf(CPF_PADRAO).setStatus(StatusInstrutor.ATIVO);
+	}
 
 	@Test
-	public void deveSalvarCliente() {
+	public void deveAlterarEntidade() {
 
-		Aluno cliente = new Aluno("Flávio de Souza", CPF_PADRAO);
-		assertTrue("Não deve ter id definido", cliente.isTransient());
-		
-		Aluno clienteSalvo = salvaCliente(cliente);
-		
-		assertFalse("Deve ter definido", clienteSalvo.isTransient());
-		assertNotNull("Deve ter id definido", clienteSalvo.getId());
-	}
-	
-	private Aluno salvaCliente() {
-		
-		return salvaCliente(null); 
-	}
-	
-	private Aluno salvaCliente(Aluno cliente) {
-		
-		if(cliente == null)
-			cliente = new Aluno("Fulano", "222.222.222-22");
-	
+		Instrutor instrutor = salvaEntidade();
+		assertFalse("Deve possuir id", instrutor.isTransient());
+
+		Criteria criteria = createCriteria(Instrutor.class);
+		criteria.add(Restrictions.eq(Instrutor.Atributos.ID, instrutor.getId()));
+
+		instrutor = (Instrutor) criteria.uniqueResult();
+
+		assertNotNull("Deve ter encontrado instrutor", instrutor);
+
+		Integer versao = instrutor.getVersion();
+		assertNotNull("Deve possuir versão", versao);
+
 		getEntityManager().getTransaction().begin();
-		getEntityManager().persist(cliente);
+
+		instrutor.setNome("José Passos Vieira");
+		instrutor = getEntityManager().merge(instrutor);
 		getEntityManager().getTransaction().commit();
-	
-		return cliente;
+
+		assertNotEquals("Versão deve ser diferente", versao.intValue(), instrutor.getVersion().intValue());
 	}
-	
-	@Test(expected = LazyInitializationException.class)
+
+	// @Test(expected = LazyInitializationException.class)
 	public void naoDeveAcessarAtributoLazyForaEscopoEntityManager() {
 
-		Aluno clienteInserido = salvaCliente();
+		Instrutor instrutorInserido = salvaEntidade();
 		fecharEntityManager();
 		instanciarEntityManager();
-		
-		Aluno cliente = getEntityManager().find(Aluno.class, clienteInserido.getId());
 
-		assertNotNull("Verifica se encontrou um registro", cliente);
-		
-		getEntityManager().detach(cliente);
-		cliente.getCompras().size();
+		Instrutor instrutor = getEntityManager().find(Instrutor.class, instrutorInserido.getId());
+
+		assertNotNull("Verifica se encontrou um registro", instrutor);
+
+		getEntityManager().detach(instrutor);
+		// cliente.getCompras().size();
 
 		fail("deve disparar LazyInitializationException ao Acessar Atributo Lazy Fora do Escopo EntityManager");
 	}
 
-	@Test
+	// @Test
 	public void deveAcessarAtributoLazy() {
 
-		Aluno clienteInserido = salvaCliente();
-		Aluno cliente = getEntityManager().find(Aluno.class, clienteInserido.getId());
+		Instrutor InstrutorInserido = salvaEntidade();
+		Instrutor instrutor = getEntityManager().find(Instrutor.class, InstrutorInserido.getId());
 
-		assertNotNull("Verifica se encontrou um registro", cliente);
-		assertNotNull("Lista lazy não deve ser nula", cliente.getCompras());
-	}
-
-	@Test(expected = NoResultException.class)
-	public void naoDeveFuncionarSingleResultComNenhumRegistro() {
-
-		deveSalvarCliente();
-		deveSalvarCliente();
-
-		Query query = getEntityManager().createQuery("SELECT c.id FROM Cliente c WHERE c.cpf = :cpf");
-		query.setParameter("cpf", "000.000.000-00");
-		query.getSingleResult();
-
-		fail("metodo getSingleResult deve desparar exception NoResultException");
-	}
-
-	@Test(expected = NonUniqueResultException.class)
-	public void naoDeveFuncionarSingleResultComMuitosRegistros() {
-
-		deveSalvarCliente();
-		deveSalvarCliente();
-		Query query = getEntityManager().createQuery("SELECT c.id FROM Cliente c WHERE c.cpf = :cpf");
-		query.setParameter("cpf", CPF_PADRAO);
-		query.getSingleResult();
-
-		fail("metodo getSingleResult deve desparar exception NonUniqueResultException");
+		assertNotNull("Verifica se encontrou um registro", instrutor);
+		// assertNotNull("Lista lazy não deve ser nula", cliente.getCompras());
 	}
 
 	@Test
-	public void deveVerificarExistenciaCliente() {
+	public void deveVerificarExistenciaInstrutor() {
 
-		deveSalvarCliente();
-		Query query = getEntityManager().createQuery("SELECT COUNT(c.id) FROM Cliente c WHERE c.cpf = :cpf");
-		query.setParameter("cpf", CPF_PADRAO);
-		Long qtdResultado = (Long) query.getSingleResult();
+		deveSalvarEntidade();
 
-		assertTrue("Verifica se há registros na lista", qtdResultado > 0L);
+		Criteria critera = createCriteria(Instrutor.class);
+		critera.add(Restrictions.eq(Instrutor.Atributos.CPF, CPF_PADRAO));
+
+		assertTrue("Verifica se há registros na lista", critera.list().size() > 0L);
+	}
+
+	private String montaHqlParaObterIdENomePeloCpf() {
+
+		StringBuilder hql = new StringBuilder("SELECT ");
+		hql.append(Instrutor.Atributos.ID);
+		hql.append(',');
+		hql.append(Instrutor.Atributos.NOME);
+		hql.append(" FROM ");
+		hql.append(Instrutor.class.getSimpleName());
+		hql.append(" WHERE ");
+		hql.append(Instrutor.Atributos.CPF);
+		hql.append(" = :cpf ");
+
+		return hql.toString();
 	}
 
 	@Test
 	@SuppressWarnings("unchecked")
 	public void deveConsultarIdNomeForeach() {
-		deveSalvarCliente();
-		Query query = getEntityManager().createQuery("SELECT c.id, c.nome FROM Cliente c WHERE c.cpf = :cpf");
+		deveSalvarEntidade();
+
+		Query query = getEntityManager().createQuery(montaHqlParaObterIdENomePeloCpf());
 		query.setParameter("cpf", CPF_PADRAO);
 
 		List<Object[]> resultado = query.getResultList();
@@ -126,12 +120,12 @@ public class InstrutorTest extends BaseJPATest {
 		assertFalse("Verifica se há registros na lista", resultado.isEmpty());
 
 		resultado.forEach(linha -> {
-			assertTrue("Verifica que o cpf deve estar nulo", linha[0] instanceof Long);
+			assertTrue("Verifica que o id deve estar nulo", linha[0] instanceof String);
 			assertTrue("Verifica que o cpf deve estar nulo", linha[1] instanceof String);
 
-			Aluno cliente = new Aluno((Long) linha[0], (String) linha[1]);
+			Instrutor instrutor = new Instrutor((String) linha[0], (String) linha[1]);
 
-			assertNotNull("Verifica que o cliente não deve estar nulo", cliente);
+			assertNotNull("Verifica que o instrutor não deve estar nulo", instrutor);
 		});
 
 	}
@@ -139,9 +133,9 @@ public class InstrutorTest extends BaseJPATest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void deveConsultarIdNome() {
-		deveSalvarCliente();
+		deveSalvarEntidade();
 
-		Query query = getEntityManager().createQuery("SELECT c.id, c.nome FROM Cliente c WHERE c.cpf = :cpf");
+		Query query = getEntityManager().createQuery(montaHqlParaObterIdENomePeloCpf());
 		query.setParameter("cpf", CPF_PADRAO);
 
 		List<Object[]> resultado = query.getResultList();
@@ -149,63 +143,84 @@ public class InstrutorTest extends BaseJPATest {
 		assertFalse("Verifica se há registros na lista", resultado.isEmpty());
 
 		for (Object[] linha : resultado) {
-			assertTrue("Verifica que o cpf deve estar nulo", linha[0] instanceof Long);
+			assertTrue("Verifica que o id deve estar nulo", linha[0] instanceof String);
 			assertTrue("Verifica que o cpf deve estar nulo", linha[1] instanceof String);
 
-			Aluno cliente = new Aluno((Long) linha[0], (String) linha[1]);
+			Instrutor instrutor = new Instrutor((String) linha[0], (String) linha[1]);
 
-			assertNotNull("Verifica que o cliente não deve estar nulo", cliente);
+			assertNotNull("Verifica que o instrutor não deve estar nulo", instrutor);
 		}
+	}
+
+	private String montaHqlParaObterEntidadeComIdENomePeloCpf() {
+
+		StringBuilder hql = new StringBuilder("SELECT new ");
+		hql.append(Instrutor.class.getSimpleName());
+		hql.append('(');
+		hql.append(Instrutor.Atributos.ID);
+		hql.append(',');
+		hql.append(Instrutor.Atributos.NOME);
+		hql.append(')');
+		hql.append(" FROM ");
+		hql.append(Instrutor.class.getSimpleName());
+		hql.append(" WHERE ");
+		hql.append(Instrutor.Atributos.CPF);
+		hql.append(" = :cpf ");
+
+		return hql.toString();
 	}
 
 	@Test
 	public void deveConsultarApenasIdNome() {
 
-		deveSalvarCliente();
+		deveSalvarEntidade();
 
-		Query query = getEntityManager()
-				.createQuery("SELECT new Cliente(c.id, c.nome) FROM Cliente c WHERE c.cpf = :cpf");
+		Query query = getEntityManager().createQuery(montaHqlParaObterEntidadeComIdENomePeloCpf());
 		query.setParameter("cpf", CPF_PADRAO);
 
 		@SuppressWarnings("unchecked")
-		List<Aluno> clientes = query.getResultList();
+		List<Instrutor> instrutores = query.getResultList();
 
-		assertFalse("Verifica se há registros na lista", clientes.isEmpty());
+		assertFalse("Verifica se há registros na lista", instrutores.isEmpty());
 
-		clientes.forEach(cliente -> {
-			assertNull("Verifica que o cpf deve estar nulo", cliente.getCpf());
-		});
+		instrutores.forEach(instrutor -> assertNull("Verifica que o cpf deve estar nulo", instrutor.getCpf()));
 	}
 
 	@Test
-	public void deveConsultarClienteComIdNome() {
-		deveSalvarCliente();
+	public void deveConsultarInstrutorComIdNome() {
+		deveSalvarEntidade();
 
-		Query query = getEntityManager()
-				.createQuery("SELECT new Cliente(c.id, c.nome) FROM Cliente c WHERE c.cpf = :cpf");
+		Query query = getEntityManager().createQuery(montaHqlParaObterEntidadeComIdENomePeloCpf());
 		query.setParameter("cpf", CPF_PADRAO);
 
 		@SuppressWarnings("unchecked")
-		List<Aluno> clientes = query.getResultList();
+		List<Instrutor> instrutores = query.getResultList();
 
-		assertFalse("Verifica se há registros na lista", clientes.isEmpty());
+		assertFalse("Verifica se há registros na lista", instrutores.isEmpty());
 
-		for (Aluno cliente : clientes) {
-			assertNull("Verifica que o cpf deve estar nulo", cliente.getCpf());
-
-			cliente.setCpf(CPF_PADRAO);
-		}
+		instrutores.forEach(instrutor -> {
+			assertNull("Verifica que o cpf deve estar nulo", instrutor.getCpf());
+			instrutor.setCpf(CPF_PADRAO);
+		});
 	}
 
 	@Test
 	@SuppressWarnings("unchecked")
 	public void deveConsultarCpf() {
-		deveSalvarCliente();
+		deveSalvarEntidade();
 
-		String filtro = "Flávio";
+		String filtro = "%José%";
 
-		Query query = getEntityManager().createQuery("SELECT c.cpf FROM Cliente c WHERE c.nome LIKE :nome");
-		query.setParameter("nome", "%" + filtro + "%");
+		StringBuilder hql = new StringBuilder("SELECT ");
+		hql.append(Instrutor.Atributos.CPF);
+		hql.append(" FROM ");
+		hql.append(Instrutor.class.getSimpleName());
+		hql.append(" WHERE ");
+		hql.append(Instrutor.Atributos.NOME);
+		hql.append(" LIKE :nome ");
+
+		Query query = getEntityManager().createQuery(hql.toString());
+		query.setParameter("nome", filtro);
 
 		List<String> listaCpf = query.getResultList();
 
@@ -214,7 +229,7 @@ public class InstrutorTest extends BaseJPATest {
 
 	@AfterClass
 	public static void deveLimparBase() {
-		
-		deveLimparBase(Aluno.class);
+
+		deveLimparBase(Instrutor.class);
 	}
 }

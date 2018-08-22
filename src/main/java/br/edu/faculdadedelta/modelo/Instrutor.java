@@ -1,80 +1,79 @@
 package br.edu.faculdadedelta.modelo;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+
+import br.edu.faculdadedelta.tipo.StatusInstrutor;
 
 @Entity
-public class Instrutor extends BaseEntity<Long> {
+public class Instrutor extends Pessoa {
 
-	private static final long serialVersionUID = 4586447920782856584L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id_cliente")
-	private Long id;
-	
-	@Column(length = 60, nullable = false)
-	private String nome;
-	
-	@Column(length = 20)
-	private String cpf;
-	
-	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
-	private List<Agendamento> compras;
-	
-	public Instrutor() { }
+	private static final long serialVersionUID = 1476447923572856584L;
 
-	public Instrutor(String nome, String cpf) {
+	public static class Atributos {
+		private Atributos() {}
 
-		this.nome = nome;
-		this.cpf = cpf;
+		public static final String ID = "id";
+		public static final String NOME = "nome";
+		public static final String CPF = "cpf";
+		public static final String STATUS = "status";
+	}
+	
+	@Enumerated(EnumType.STRING)
+	@Basic(fetch = FetchType.LAZY, optional = false)
+	@Column(length = 7)
+	private StatusInstrutor status;
+
+	public Instrutor() {
+
 	}
 
-	public Instrutor(Long id, String nome) {
-		
-		this.id = id;
-		this.nome = nome;
+	public Instrutor(String id, String nome) {
+
+		super(id, nome);
+	}
+
+	public Instrutor(String nome) {
+
+		super(nome);
+	}
+
+	public StatusInstrutor getStatus() {
+
+		return status;
+	}
+
+	public Instrutor setStatus(StatusInstrutor status) {
+
+		this.status = status;
+		return this;
 	}
 
 	@Override
-	public Long getId() {
+	public Instrutor setNome(String nome) {
 		
-		return id;
+		return (Instrutor) super.setNome(nome);
 	}
+	
+	@Override
+	public Instrutor setCpf(String cpf) {
 
-	public String getNome() {
-		
-		return nome;
+		return (Instrutor) super.setCpf(cpf);
 	}
-
-	public void setNome(String nome) {
+	
+	@Override
+	public boolean equals(Object obj) {
 		
-		this.nome = nome;
+		return super.equals(obj);
 	}
-
-	public String getCpf() {
+	
+	@Override
+	public int hashCode() {
 		
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		
-		this.cpf = cpf;
-	}
-
-	public List<Agendamento> getCompras() {
-		
-		if(this.compras == null)
-			this.compras = new ArrayList<>();
-		
-		return this.compras;
+		return super.hashCode();
 	}
 }

@@ -3,95 +3,51 @@ package br.edu.faculdadedelta.modelo;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 
-import java.util.List;
-import java.util.stream.IntStream;
-
-import javax.persistence.TypedQuery;
-
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import org.junit.AfterClass;
 import org.junit.Test;
 
-import br.edu.faculdadedelta.base.BaseJPATest;
+import br.edu.faculdadedelta.base.BaseCrudTest;
 
-public class VeiculoTest extends BaseJPATest {
+public class VeiculoTest extends BaseCrudTest<String, Veiculo> {
 
-	@Test
-	public void deveSalvarProduto() {
+	@Override
+	public Veiculo getInstanciaDaEntidade() {
 
-		Veiculo produto = new Veiculo("Notebook", "Dell");
-
-		assertTrue("Não deve ter ID definido", produto.isTransient());
-
-		getEntityManager().getTransaction().begin();
-		getEntityManager().persist(produto);
-		getEntityManager().getTransaction().commit();
-
-		assertFalse("Deve ter definido", produto.isTransient());
-		assertNotNull("Deve ter ID definido", produto.getId());
+		return new Veiculo("GM").setModelo("Spin LTZ").setAno(2015).setCor("Preta").setPlaca("AAA-1111");
 	}
 
 	@Test
-	public void devePesquisarProdutos() {
+	public void deveAlterarEntidade() {
 
-		IntStream.range(0, 10).forEach(i -> deveSalvarProduto());
+		Veiculo veiculo = salvaEntidade();
+		assertFalse("Deve possuir id", veiculo.isTransient());
 
-		TypedQuery<Veiculo> query = getEntityManager().createQuery(" SELECT p FROM Produto p", Veiculo.class);
-		List<Veiculo> produtos = query.getResultList();
+		Criteria criteria = createCriteria(Veiculo.class);
+		criteria.add(Restrictions.eq(Veiculo.Atributos.ID, veiculo.getId()));
 
-		assertFalse("Deve ter produtos na lista", produtos.isEmpty());
-		assertTrue("Deve ter produtos na lista", produtos.size() > 0);
-	}
+		veiculo = (Veiculo) criteria.uniqueResult();
 
-	@Test
-	public void deveAlterarProduto() {
+		assertNotNull("Dever ter encontrado veículo", veiculo);
 
-		deveSalvarProduto();
+		Integer versao = veiculo.getVersion();
 
-		TypedQuery<Veiculo> query = getEntityManager().createQuery(" SELECT p FROM Produto p", Veiculo.class)
-				.setMaxResults(1);
-
-		Veiculo produto = query.getSingleResult();
-
-		assertNotNull("Dever ter encontrado produto", produto);
-
-		Integer versao = produto.getVersion();
+		assertNotNull("Deve possuir versão", versao);
 
 		getEntityManager().getTransaction().begin();
 
-		produto.setFabricante("HP");
-		produto = getEntityManager().merge(produto);
+		veiculo.setCor("Branca");
+		veiculo = getEntityManager().merge(veiculo);
 		getEntityManager().getTransaction().commit();
 
-		assertNotEquals("Versão deve ser diferente", versao.intValue(), produto.getVersion().intValue());
+		assertNotEquals("Versão deve ser diferente", versao.intValue(), veiculo.getVersion().intValue());
 	}
 
-	@Test
-	public void deveExcluirProduto() {
-
-		deveSalvarProduto();
-
-		TypedQuery<Long> query = getEntityManager().createQuery("SELECT MAX(p.id) FROM Produto p", Long.class);
-		Long id = query.getSingleResult();
-
-		getEntityManager().getTransaction().begin();
-
-		Veiculo produto = getEntityManager().find(Veiculo.class, id);
-		getEntityManager().remove(produto);
-
-		getEntityManager().getTransaction().commit();
-
-		Veiculo produtoExcluido = getEntityManager().find(Veiculo.class, id);
-
-		assertNull("Não deve achar o produto", produtoExcluido);
-	}
-
-	
 	@AfterClass
 	public static void deveLimparBase() {
-		
+
 		deveLimparBase(Veiculo.class);
 	}
 }

@@ -6,29 +6,19 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
 
 @MappedSuperclass
-public abstract class BaseEntity<T extends Serializable> implements Serializable {
+public abstract class BaseEntity<I extends Serializable> implements Serializable {
 
 	private static final long serialVersionUID = 7373447920782854276L;
 
 	@Version
 	private Integer version;
 
-	public abstract T getId();
+	public abstract I getId();
 
-	/**
-	 * Obtém a versão da entidade
-	 * 
-	 * @return
-	 */
 	public Integer getVersion() {
 		return version;
 	}
 	
-	/**
-	 * Metodo acessório para vericar se já tem identificador na entidade
-	 * 
-	 * @return
-	 */
 	public boolean isTransient(){
 		return getId() == null;
 	}
@@ -62,8 +52,10 @@ public abstract class BaseEntity<T extends Serializable> implements Serializable
 			if (other.getId() != null)
 				return false;
 
-		} else if (!getId().equals(other.getId()))
+		} else if (!getId().equals(other.getId())) {
+			
 			return false;
+		}
 
 		return true;
 	}

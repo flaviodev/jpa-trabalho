@@ -1,88 +1,110 @@
 package br.edu.faculdadedelta.modelo;
 
-import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
-import java.util.List;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import br.edu.faculdadedelta.tipo.Sexo;
+
 @Entity
-public class Aluno extends BaseEntity<Long> {
+public class Aluno extends Pessoa {
 
-	private static final long serialVersionUID = 4586447920782856584L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id_cliente")
-	private Long id;
-	
-	@Column(length = 60, nullable = false)
-	private String nome;
-	
-	@Column(length = 20)
-	private String cpf;
-	
-	@Temporal(TemporalType.DATE)
-	@Column(name = "dt_nascimento", nullable = false)
-	private Date dataNascimento;
-	
-	
-	@OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
-	private List<Agendamento> compras;
-	
-	public Aluno() { }
+	private static final long serialVersionUID = 5896447923572856584L;
 
-	public Aluno(String nome, String cpf) {
+	public static class Atributos {
+		private Atributos() {}
 
-		this.nome = nome;
-		this.cpf = cpf;
+		public static final String ID = "id";
+		public static final String NOME = "nome";
+		public static final String CPF = "cpf";
+		public static final String DATA_NASCIMENTO = "dataNascimento";
+		public static final String SEXO = "sexo";
 	}
 
-	public Aluno(Long id, String nome) {
-		
-		this.id = id;
-		this.nome = nome;
+	@Temporal(TemporalType.DATE)
+	@Basic(fetch = FetchType.LAZY, optional = false)
+	@Column(name = "dt_nascimento")
+	private Date dataNascimento;
+
+	@Enumerated(EnumType.STRING)
+	@Basic(fetch = FetchType.LAZY, optional = false)
+	@Column(length = 9)
+	private Sexo sexo;
+
+	public Aluno() {
+
+	}
+
+	public Aluno(String id, String nome) {
+
+		super(id, nome);
+	}
+
+	public Aluno(String nome) {
+
+		super(nome);
+	}
+
+	public Date getDataNascimento() {
+
+		return dataNascimento;
+	}
+
+	public Aluno setDataNascimento(Date dataNascimento) {
+
+		this.dataNascimento = dataNascimento;
+		return this;
+	}
+
+	public Aluno setDataNascimento(LocalDate dataNascimento) {
+
+		if (dataNascimento == null)
+			throw new IllegalArgumentException("Data de nascimento não pode ser nula");
+
+		return setDataNascimento(Date.from(dataNascimento.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+	}
+
+	public Sexo getSexo() {
+
+		return sexo;
+	}
+
+	public Aluno setSexo(Sexo sexo) {
+
+		this.sexo = sexo;
+		return this;
 	}
 
 	@Override
-	public Long getId() {
-		
-		return id;
+	public Aluno setNome(String nome) {
+
+		return (Aluno) super.setNome(nome);
 	}
 
-	public String getNome() {
-		
-		return nome;
+	@Override
+	public Aluno setCpf(String cpf) {
+
+		return (Aluno) super.setCpf(cpf);
 	}
 
-	public void setNome(String nome) {
-		
-		this.nome = nome;
+	@Override
+	public boolean equals(Object obj) {
+
+		return super.equals(obj);
 	}
 
-	public String getCpf() {
-		
-		return cpf;
-	}
+	@Override
+	public int hashCode() {
 
-	public void setCpf(String cpf) {
-		
-		this.cpf = cpf;
-	}
-
-	public List<Agendamento> getCompras() {
-		
-		if(this.compras == null)
-			this.compras = new ArrayList<>();
-		
-		return this.compras;
+		return super.hashCode();
 	}
 }

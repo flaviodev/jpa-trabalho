@@ -1,87 +1,141 @@
 package br.edu.faculdadedelta.modelo;
 
-import java.util.Date;
-
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name = "tb_produto")
-public class Veiculo extends BaseEntity<Long> {
+@Table(name = "tb_veiculo")
+public class Veiculo extends BaseEntity<String> {
 
-	private static final long serialVersionUID = 985447920782851256L;
+	private static final long serialVersionUID = 775447920782851623L;
 
+	public static class Atributos {
+		private Atributos() {}
+
+		public static final String ID = "id";
+		public static final String MARCA = "marca";
+		public static final String MODELO = "modelo";
+		public static final String ANO = "ano";
+		public static final String COR = "cor";
+		public static final String PLACA = "placa";
+	}
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id_produto", unique = true)
-	private Long id;
+	@GeneratedValue(generator = "UUIDGenerator")
+	@GenericGenerator(name = "UUIDGenerator", strategy = "br.edu.faculdadedelta.util.UUIDGenerator")
+	@Column(name = "id_veiculo", length = 32)
+	private String id;
 
-	@Column(name = "nm_produto", nullable = false, length = 100)
-	private String nome;
+	@Column(name = "nm_marca", nullable = false, length = 100)
+	private String marca;
+
+	@Column(name = "nm_modelo", nullable = false, length = 150)
+	private String modelo;
 
 	@Basic(fetch = FetchType.LAZY, optional = false)
-	@Column(name = "nm_fabricante", length = 50)
-	private String fabricante;
+	@Column(name = "nu_ano")
+	private Integer ano;
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "dt_validade", nullable = true)
-	@Basic(fetch = FetchType.LAZY)
-	private Date validade;
+	@Basic(fetch = FetchType.LAZY, optional = false)
+	@Column(name = "nm_cor", length = 50)
+	private String cor;
 
-	public Veiculo() { }
+	@Basic(fetch = FetchType.LAZY, optional = false)
+	@Column(name = "nm_placa", length = 8)
+	private String placa;
+
+	public Veiculo() {
+
+	}
 	
-	public Veiculo(String nome, String fabricante) {
+	public Veiculo(String marca) {
 
-		this.nome = nome;
-		this.fabricante = fabricante;
+		this.marca = marca;
 	}
-
-	@Override
-	public Long getId() {
-		
-		return id;
-	}
-
-	public String getNome() {
-		
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		
-		this.nome = nome;
-	}
-
-	public void setId(Long id) {
+	
+	public Veiculo(String id, String marca) {
 		
 		this.id = id;
+		this.marca = marca;
+	}
+	
+	@Override
+	public String getId() {
+
+		return id;
+	}
+	
+	public String getMarca() {
+
+		return marca;
 	}
 
-	public String getFabricante() {
-		
-		return fabricante;
+	public Veiculo setMarca(String marca) {
+
+		this.marca = marca;
+		return this;
 	}
 
-	public void setFabricante(String fabricante) {
-		
-		this.fabricante = fabricante;
+	public String getModelo() {
+
+		return modelo;
 	}
 
-	public Date getValidade() {
-		
-		return validade;
+	public Veiculo setModelo(String modelo) {
+
+		this.modelo = modelo;
+		return this;
 	}
 
-	public void setValidade(Date validade) {
+	public Integer getAno() {
+
+		return ano;
+	}
+
+	public Veiculo setAno(Integer ano) {
+
+		this.ano = ano;
+		return this;
+	}
+
+	public String getCor() {
+
+		return cor;
+	}
+
+	public Veiculo setCor(String cor) {
+
+		this.cor = cor;
+		return this;
+	}
+
+	public String getPlaca() {
+
+		return placa;
+	}
+
+	public Veiculo setPlaca(String placa) {
+
+		this.placa = placa;
+		return this;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
 		
-		this.validade = validade;
+		return super.equals(obj);
+	}
+	
+	@Override
+	public int hashCode() {
+		
+		return super.hashCode();
 	}
 }
