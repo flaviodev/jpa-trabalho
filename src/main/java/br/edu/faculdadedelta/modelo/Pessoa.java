@@ -2,17 +2,14 @@ package br.edu.faculdadedelta.modelo;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.MappedSuperclass;
 
 import org.hibernate.annotations.GenericGenerator;
 
-@Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@MappedSuperclass
 public abstract class Pessoa extends BaseEntity<String> {
 
 	private static final long serialVersionUID = 6548447923572856584L;
@@ -32,16 +29,16 @@ public abstract class Pessoa extends BaseEntity<String> {
 	private String cpf;
 
 	public Pessoa() {
-		
+
 	}
-	
+
 	public Pessoa(String nome) {
 
 		this.nome = nome;
 	}
-	
+
 	public Pessoa(String id, String nome) {
-		
+
 		this.id = id;
 		this.nome = nome;
 	}
@@ -51,7 +48,7 @@ public abstract class Pessoa extends BaseEntity<String> {
 
 		return id;
 	}
-	
+
 	public String getNome() {
 
 		return nome;
@@ -76,7 +73,7 @@ public abstract class Pessoa extends BaseEntity<String> {
 
 	@Override
 	public int hashCode() {
-		
+
 		final int prime = 31;
 		int result = super.hashCode();
 		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
@@ -86,16 +83,16 @@ public abstract class Pessoa extends BaseEntity<String> {
 
 	@Override
 	public boolean equals(Object obj) {
-		
+
 		if (this == obj)
 			return true;
-		
+
 		if (!super.equals(obj))
 			return false;
-		
+
 		if (getClass() != obj.getClass())
 			return false;
-		
+
 		Pessoa other = (Pessoa) obj;
 		if (cpf == null) {
 			if (other.cpf != null) {
@@ -104,7 +101,7 @@ public abstract class Pessoa extends BaseEntity<String> {
 		} else if (!cpf.equals(other.cpf)) {
 			return false;
 		}
-		
+
 		if (id == null) {
 			if (other.id != null) {
 				return false;
@@ -112,9 +109,8 @@ public abstract class Pessoa extends BaseEntity<String> {
 		} else if (!id.equals(other.id)) {
 			return false;
 		}
-		
+
 		return true;
 	}
-	
 
 }

@@ -1,7 +1,6 @@
 package br.edu.faculdadedelta.modelo;
 
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -12,12 +11,13 @@ import java.util.List;
 
 import javax.persistence.Query;
 
-import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.junit.AfterClass;
 import org.junit.Test;
 
 import br.edu.faculdadedelta.base.BaseCrudTest;
+import br.edu.faculdadedelta.base.FuncaoAlteraEntidade;
+import br.edu.faculdadedelta.base.FuncaoCriterioParaBuscaDeEntidade;
 import br.edu.faculdadedelta.tipo.Sexo;
 
 public class AlunoTest extends BaseCrudTest<String, Aluno> {
@@ -31,31 +31,16 @@ public class AlunoTest extends BaseCrudTest<String, Aluno> {
 				.setDataNascimento(LocalDate.of(1980, 8, 12));
 	}
 
-	@Test
-	public void deveAlterarEntidade() {
-
-		Aluno aluno = salvaEntidade();
-		assertFalse("Deve possuir id", aluno.isTransient());
-
-		Criteria criteria = createCriteria(Aluno.class);
-		criteria.add(Restrictions.eq(Aluno.Atributos.ID, aluno.getId()));
-		
-		aluno = (Aluno) criteria.uniqueResult();
-		
-		assertNotNull("Deve ter encontrado aluno", aluno);
-
-		Integer versao = aluno.getVersion();
-		assertNotNull("Deve possuir versão", versao);
-
-		getEntityManager().getTransaction().begin();
-
-		aluno.setNome("Joaquim Bragança");
-		aluno = getEntityManager().merge(aluno);
-		getEntityManager().getTransaction().commit();
-
-		assertNotEquals("Versão deve ser diferente", versao.intValue(), aluno.getVersion().intValue());
+	@Override
+	public FuncaoAlteraEntidade<String, Aluno> alteracaoEntidade() {
+		return (aluno) -> aluno.setNome("Joaquim Bragança");
 	}
-	
+
+	@Override
+	public FuncaoCriterioParaBuscaDeEntidade<String, Aluno> getCriterioBuscaEntidades() {
+		return () -> Restrictions.eq(Aluno.Atributos.CPF, CPF_PADRAO);
+	}
+
 	// @Test(expected = LazyInitializationException.class)
 	public void naoDeveAcessarAtributoLazyForaEscopoEntityManager() {
 
@@ -83,19 +68,8 @@ public class AlunoTest extends BaseCrudTest<String, Aluno> {
 		// assertNotNull("Lista lazy não deve ser nula", cliente.getCompras());
 	}
 
-	@Test
-	public void deveVerificarExistenciaAluno() {
-
-		deveSalvarEntidade();
-		
-		Criteria critera = createCriteria(Aluno.class);
-		critera.add(Restrictions.eq(Aluno.Atributos.CPF, CPF_PADRAO));
-
-		assertTrue("Verifica se há registros na lista", critera.list().size() > 0L);
-	}
-
 	private String montaHqlParaObterIdENomePeloCpf() {
-		
+
 		StringBuilder hql = new StringBuilder("SELECT ");
 		hql.append(Aluno.Atributos.ID);
 		hql.append(',');
@@ -105,15 +79,15 @@ public class AlunoTest extends BaseCrudTest<String, Aluno> {
 		hql.append(" WHERE ");
 		hql.append(Aluno.Atributos.CPF);
 		hql.append(" = :cpf ");
-		
+
 		return hql.toString();
 	}
-	
+
 	@Test
 	@SuppressWarnings("unchecked")
 	public void deveConsultarIdNomeForeach() {
 		deveSalvarEntidade();
-		
+
 		Query query = getEntityManager().createQuery(montaHqlParaObterIdENomePeloCpf());
 		query.setParameter("cpf", CPF_PADRAO);
 
@@ -154,7 +128,7 @@ public class AlunoTest extends BaseCrudTest<String, Aluno> {
 	}
 
 	private String montaHqlParaObterEntidadeComIdENomePeloCpf() {
-		
+
 		StringBuilder hql = new StringBuilder("SELECT new ");
 		hql.append(Aluno.class.getSimpleName());
 		hql.append('(');
@@ -167,10 +141,10 @@ public class AlunoTest extends BaseCrudTest<String, Aluno> {
 		hql.append(" WHERE ");
 		hql.append(Aluno.Atributos.CPF);
 		hql.append(" = :cpf ");
-		
+
 		return hql.toString();
 	}
-	
+
 	@Test
 	public void deveConsultarApenasIdNome() {
 
@@ -219,7 +193,7 @@ public class AlunoTest extends BaseCrudTest<String, Aluno> {
 		hql.append(" WHERE ");
 		hql.append(Aluno.Atributos.NOME);
 		hql.append(" LIKE :nome ");
-		
+
 		Query query = getEntityManager().createQuery(hql.toString());
 		query.setParameter("nome", filtro);
 

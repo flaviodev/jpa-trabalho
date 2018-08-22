@@ -5,8 +5,12 @@
 		http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 
 	<persistence-unit name="DeltaPU" transaction-type="RESOURCE_LOCAL">
-
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+		<class>br.edu.faculdadedelta.modelo.Aluno</class>
+		<class>br.edu.faculdadedelta.modelo.Instrutor</class>
+		<class>br.edu.faculdadedelta.modelo.Veiculo</class>
+		<class>br.edu.faculdadedelta.modelo.ProcessoHabilitacao</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:jpadelta" />
@@ -20,5 +24,6 @@
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
 		</properties>
+		
 	</persistence-unit>
 </persistence>

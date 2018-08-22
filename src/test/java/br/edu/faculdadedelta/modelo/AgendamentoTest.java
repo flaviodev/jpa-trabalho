@@ -2,9 +2,11 @@ package br.edu.faculdadedelta.modelo;
 
 import java.time.LocalDate;
 
-import org.junit.Test;
+import org.hibernate.criterion.Restrictions;
 
 import br.edu.faculdadedelta.base.BaseCrudTest;
+import br.edu.faculdadedelta.base.FuncaoAlteraEntidade;
+import br.edu.faculdadedelta.base.FuncaoCriterioParaBuscaDeEntidade;
 import br.edu.faculdadedelta.tipo.Sexo;
 
 public class AgendamentoTest extends BaseCrudTest<String, Aluno> {
@@ -18,9 +20,14 @@ public class AgendamentoTest extends BaseCrudTest<String, Aluno> {
 				.setDataNascimento(LocalDate.of(1980, 8, 12));
 	}
 
-	@Test
-	public void deveAlterarEntidade() {
-		
+	@Override
+	public FuncaoAlteraEntidade<String, Aluno> alteracaoEntidade() {
+		return (aluno) -> aluno.setNome("Joaquim Bragança");
+	}
+	
+	@Override
+	public FuncaoCriterioParaBuscaDeEntidade<String, Aluno> getCriterioBuscaEntidades() {
+		return () -> Restrictions.eq(Aluno.Atributos.CPF, CPF_PADRAO);
 	}
 	
 //	@Test

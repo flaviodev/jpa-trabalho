@@ -1,7 +1,6 @@
 package br.edu.faculdadedelta.modelo;
 
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -17,6 +16,8 @@ import org.junit.AfterClass;
 import org.junit.Test;
 
 import br.edu.faculdadedelta.base.BaseCrudTest;
+import br.edu.faculdadedelta.base.FuncaoAlteraEntidade;
+import br.edu.faculdadedelta.base.FuncaoCriterioParaBuscaDeEntidade;
 import br.edu.faculdadedelta.tipo.StatusInstrutor;
 
 public class InstrutorTest extends BaseCrudTest<String, Instrutor> {
@@ -29,29 +30,14 @@ public class InstrutorTest extends BaseCrudTest<String, Instrutor> {
 		return new Instrutor("José De Almeida Prado").setCpf(CPF_PADRAO).setStatus(StatusInstrutor.ATIVO);
 	}
 
-	@Test
-	public void deveAlterarEntidade() {
-
-		Instrutor instrutor = salvaEntidade();
-		assertFalse("Deve possuir id", instrutor.isTransient());
-
-		Criteria criteria = createCriteria(Instrutor.class);
-		criteria.add(Restrictions.eq(Instrutor.Atributos.ID, instrutor.getId()));
-
-		instrutor = (Instrutor) criteria.uniqueResult();
-
-		assertNotNull("Deve ter encontrado instrutor", instrutor);
-
-		Integer versao = instrutor.getVersion();
-		assertNotNull("Deve possuir versão", versao);
-
-		getEntityManager().getTransaction().begin();
-
-		instrutor.setNome("José Passos Vieira");
-		instrutor = getEntityManager().merge(instrutor);
-		getEntityManager().getTransaction().commit();
-
-		assertNotEquals("Versão deve ser diferente", versao.intValue(), instrutor.getVersion().intValue());
+	@Override
+	public FuncaoAlteraEntidade<String, Instrutor> alteracaoEntidade() {
+		return (instrutor) -> instrutor.setNome("José de Arimatéia");
+	}
+	
+	@Override
+	public FuncaoCriterioParaBuscaDeEntidade<String, Instrutor> getCriterioBuscaEntidades() {
+		return () -> Restrictions.eq(Instrutor.Atributos.CPF, CPF_PADRAO);
 	}
 
 	// @Test(expected = LazyInitializationException.class)

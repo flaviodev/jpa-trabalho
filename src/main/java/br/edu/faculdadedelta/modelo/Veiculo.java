@@ -3,12 +3,16 @@ package br.edu.faculdadedelta.modelo;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import br.edu.faculdadedelta.tipo.TipoVeiculo;
 
 @Entity
 @Table(name = "tb_veiculo")
@@ -25,6 +29,7 @@ public class Veiculo extends BaseEntity<String> {
 		public static final String ANO = "ano";
 		public static final String COR = "cor";
 		public static final String PLACA = "placa";
+		public static final String TIPO = "tipo";
 	}
 	
 	@Id
@@ -51,6 +56,11 @@ public class Veiculo extends BaseEntity<String> {
 	@Column(name = "nm_placa", length = 8)
 	private String placa;
 
+	@Enumerated(EnumType.STRING)
+	@Basic(fetch = FetchType.LAZY, optional = false)
+	@Column(length = 5)
+	private TipoVeiculo tipo;
+	
 	public Veiculo() {
 
 	}
@@ -124,6 +134,17 @@ public class Veiculo extends BaseEntity<String> {
 	public Veiculo setPlaca(String placa) {
 
 		this.placa = placa;
+		return this;
+	}
+	
+	public TipoVeiculo getTipo() {
+
+		return tipo;
+	}
+
+	public Veiculo setTipo(TipoVeiculo tipo) {
+
+		this.tipo = tipo;
 		return this;
 	}
 	

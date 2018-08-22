@@ -1,6 +1,7 @@
 package br.edu.faculdadedelta.base;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -18,12 +19,14 @@ import javax.persistence.Query;
 
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
 import org.junit.Test;
 
 import br.edu.faculdadedelta.modelo.BaseEntity;
 import br.edu.faculdadedelta.util.JPAUtil;
 
-public abstract class BaseCrudTest<I extends Serializable, E extends BaseEntity<I>> extends BaseJPATest {
+public abstract class BaseCrudTest<I extends Serializable, E extends BaseEntity<I>> extends BaseTest {
 
 	private Class<E> tipoEntidade;
 
@@ -191,7 +194,67 @@ public abstract class BaseCrudTest<I extends Serializable, E extends BaseEntity<
 				.toString(), entidades.isEmpty());
 	}
 
+	@SuppressWarnings("unchecked")
+	@Test
+	public void deveAlterarEntidade() {
+
+		FuncaoAlteraEntidade<I, E> funcaoAltera = alteracaoEntidade();
+
+		if (funcaoAltera == null)
+			throw new IllegalStateException("Não foi possível carregar a função de alteração da entidade");
+
+		E entidade = salvaEntidade();
+		assertFalse("Deve possuir id", entidade.isTransient());
+
+		Criteria criteria = createCriteria(tipoEntidade);
+		criteria.add(Restrictions.eq("id", entidade.getId()));
+
+		entidade = (E) criteria.uniqueResult();
+
+		assertNotNull(new StringBuilder("Deve ter encontrado ").append(tipoEntidade.getSimpleName()).toString(),
+				entidade);
+
+		Integer versao = entidade.getVersion();
+		assertNotNull(new StringBuilder(tipoEntidade.getSimpleName()).append(" deve possuir versão").toString(),
+				versao);
+
+		getEntityManager().getTransaction().begin();
+
+		funcaoAltera.altera(entidade);
+
+		entidade = getEntityManager().merge(entidade);
+		getEntityManager().getTransaction().commit();
+
+		assertNotEquals(new StringBuilder("Versão ").append(tipoEntidade.getSimpleName()).append(" deve ser diferente")
+				.toString(), versao.intValue(), entidade.getVersion().intValue());
+	}
+
+	@Test
+	public void devePesquisarEntidadesPorCriterio() {
+
+		FuncaoCriterioParaBuscaDeEntidade<I, E> funcaoCriterio = getCriterioBuscaEntidades();
+
+		if (funcaoCriterio == null)
+			throw new IllegalStateException(
+					"Não foi possível carregar a função contendo o critério de busca da entidade");
+
+		Criterion criterio = funcaoCriterio.getCriterio();
+
+		if (criterio == null)
+			throw new IllegalStateException("A função contendo o critério de busca da entidade não pode ser nula");
+
+		IntStream.range(0, 2).forEach(i -> deveSalvarEntidade());
+
+		Criteria critera = createCriteria(tipoEntidade);
+		critera.add(criterio);
+
+		assertTrue(new StringBuilder("Quantidade de itens retornada da busca de ").append(tipoEntidade.getSimpleName())
+				.append(" deve ser maior que zero").toString(), critera.list().size() > 0L);
+	}
+
 	public abstract E getInstanciaDaEntidade();
-	
-	public abstract void deveAlterarEntidade();
+
+	public abstract FuncaoAlteraEntidade<I, E> alteracaoEntidade();
+
+	public abstract FuncaoCriterioParaBuscaDeEntidade<I, E> getCriterioBuscaEntidades();
 }

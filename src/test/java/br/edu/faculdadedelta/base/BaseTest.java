@@ -12,7 +12,7 @@ import org.junit.Before;
 import br.edu.faculdadedelta.modelo.BaseEntity;
 import br.edu.faculdadedelta.util.JPAUtil;
 
-public abstract class BaseJPATest {
+public abstract class BaseTest {
 
 	EntityManager em;
 

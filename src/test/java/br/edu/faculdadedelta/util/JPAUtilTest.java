@@ -6,9 +6,9 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import br.edu.faculdadedelta.base.BaseJPATest;
+import br.edu.faculdadedelta.base.BaseTest;
 
-public class JPAUtilTest extends BaseJPATest {
+public class JPAUtilTest extends BaseTest {
 
 	@Test
 	public void deveTerInstanciaDoEntityManagerDefinida() {

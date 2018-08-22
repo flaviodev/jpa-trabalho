@@ -1,8 +1,8 @@
 package br.edu.faculdadedelta.modelo;
 
-import br.edu.faculdadedelta.base.BaseJPATest;
+import br.edu.faculdadedelta.base.BaseTest;
 
-public class RelatorioTest extends BaseJPATest {
+public class RelatorioTest extends BaseTest {
 	
 //	private static final String CPF_PADRAO = "111.111.111-11";
 //

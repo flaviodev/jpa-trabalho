@@ -19,4 +19,27 @@ public enum JPAUtil {
 		
 		return this.factory.createEntityManager();
 	}
+	
+	public String getAlias(String... aliases) {
+		
+	    if (aliases == null || aliases.length == 0)
+	      return null;
+
+	    StringBuilder aliasesContatenados = new StringBuilder(aliases[0]);
+	    boolean primeiro = true;
+
+	    for (String alias : aliases) {
+	    	
+	      if (primeiro) {
+	    	  
+	        primeiro = false;
+	      } else {
+	    	  
+	        aliasesContatenados.append('.');
+	        aliasesContatenados.append(alias);
+	      }
+	    }
+
+	    return aliasesContatenados.toString();
+	  }
 }

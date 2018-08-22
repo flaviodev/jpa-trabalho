@@ -1,0 +1,286 @@
+2018-08-22 13:28:52 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-22 13:28:53 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-22 13:28:53 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-22 13:28:53 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-22 13:28:53 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-22 13:28:53 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-22 13:28:53 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-22 13:28:55 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-22 13:28:55 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-22 13:28:55 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-22 13:28:55 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-22 13:28:55 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-22 13:28:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 13:28:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 13:28:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 13:28:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 13:28:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 13:28:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 13:28:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 13:28:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 13:28:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Pessoa
+2018-08-22 13:28:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 13:28:55 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-22 13:53:04 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-22 13:53:04 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-22 13:53:04 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-22 13:53:04 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-22 13:53:04 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-22 13:53:04 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-22 13:53:04 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-22 13:53:05 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-22 13:53:05 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-22 13:53:05 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-22 13:53:05 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-22 13:53:05 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-22 13:53:06 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 13:53:06 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 13:53:06 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 13:53:06 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 13:53:06 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 13:53:06 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 13:53:06 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 13:53:06 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 13:53:06 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Pessoa
+2018-08-22 13:53:06 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 13:53:06 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-22 13:54:09 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-22 13:54:09 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-22 13:54:09 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-22 13:54:09 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-22 13:54:09 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-22 13:54:10 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-22 13:54:10 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-22 13:54:10 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-22 13:54:10 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-22 13:54:10 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-22 13:54:10 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-22 13:54:10 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-22 13:54:11 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 13:54:11 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 13:54:11 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 13:54:11 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 13:54:11 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 13:54:11 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 13:54:11 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 13:54:11 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 13:54:11 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Pessoa
+2018-08-22 13:54:11 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 13:54:11 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-22 14:11:47 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-22 14:11:47 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-22 14:11:47 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-22 14:11:47 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-22 14:11:47 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-22 14:11:47 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-22 14:11:47 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-22 14:11:48 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-22 14:11:48 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-22 14:11:48 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-22 14:11:48 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-22 14:11:48 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-22 14:11:49 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 14:11:49 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 14:11:49 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 14:11:49 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 14:11:49 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 14:11:49 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 14:11:49 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 14:11:49 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 14:11:49 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Pessoa
+2018-08-22 14:11:49 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 14:11:49 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-22 14:15:06 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-22 14:15:07 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-22 14:15:07 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-22 14:15:07 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-22 14:15:07 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-22 14:15:07 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-22 14:15:07 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-22 14:15:08 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-22 14:15:08 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-22 14:15:08 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-22 14:15:08 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-22 14:15:08 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-22 14:15:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 14:15:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 14:15:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 14:15:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 14:15:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 14:15:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 14:15:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 14:15:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 14:15:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 14:15:08 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-22 14:15:47 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-22 14:15:47 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-22 14:15:47 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-22 14:15:47 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-22 14:15:47 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-22 14:15:47 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-22 14:15:47 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-22 14:15:48 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-22 14:15:48 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-22 14:15:48 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-22 14:15:48 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-22 14:15:48 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-22 14:15:48 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 14:15:48 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 14:15:48 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 14:15:48 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 14:15:48 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 14:15:48 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 14:15:48 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 14:15:48 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 14:15:48 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 14:15:48 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-22 14:39:44 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-22 14:39:45 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-22 14:39:45 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-22 14:39:45 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-22 14:39:45 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-22 14:39:45 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-22 14:39:45 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-22 14:39:46 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-22 14:39:46 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-22 14:39:46 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-22 14:39:46 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-22 14:39:46 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-22 14:39:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 14:39:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 14:39:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 14:39:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 14:39:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 14:39:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 14:39:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 14:39:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 14:39:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 14:39:46 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-22 15:10:36 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-22 15:10:36 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-22 15:10:36 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-22 15:10:36 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-22 15:10:36 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-22 15:10:36 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-22 15:10:36 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-22 15:10:37 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-22 15:10:37 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-22 15:10:37 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-22 15:10:37 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-22 15:10:37 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-22 15:10:37 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 15:10:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-22 15:10:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 15:10:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 15:10:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 15:10:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-22 15:10:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 15:10:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 15:10:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 15:10:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-22 15:10:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 15:10:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 15:10:38 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-22 15:10:38 WARN  SqlExceptionHelper:129 - SQL Error: 23503, SQLState: 23503
+2018-08-22 15:10:38 ERROR SqlExceptionHelper:131 - Referential integrity constraint violation: "FK936U0EUIK3NVRWALFLEXYO4YU: PUBLIC.ENT_PROCESSO_HABILITACAO FOREIGN KEY(ALUNO_ID_PESSOA) REFERENCES PUBLIC.ALUNO(ID_PESSOA) ('eca8e7ab3a114abbb1e2c98f97401ef0')"; SQL statement:
+delete from Aluno [23503-193]
+2018-08-22 15:11:32 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-22 15:11:33 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-22 15:11:33 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-22 15:11:33 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-22 15:11:33 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-22 15:11:33 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-22 15:11:33 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-22 15:11:34 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-22 15:11:34 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-22 15:11:34 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-22 15:11:34 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-22 15:11:34 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-22 15:11:34 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 15:11:34 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-22 15:11:34 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 15:11:34 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 15:11:34 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 15:11:34 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-22 15:11:34 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 15:11:34 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 15:11:34 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 15:11:34 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-22 15:11:34 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 15:11:34 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 15:11:34 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-22 15:11:35 WARN  SqlExceptionHelper:129 - SQL Error: 23503, SQLState: 23503
+2018-08-22 15:11:35 ERROR SqlExceptionHelper:131 - Referential integrity constraint violation: "FK936U0EUIK3NVRWALFLEXYO4YU: PUBLIC.ENT_PROCESSO_HABILITACAO FOREIGN KEY(ALUNO_ID_PESSOA) REFERENCES PUBLIC.ALUNO(ID_PESSOA) ('9f2cbd4bb68741c3b73738ebb1f411ea')"; SQL statement:
+delete from Aluno [23503-193]
+2018-08-22 15:12:09 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-22 15:12:09 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-22 15:12:09 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-22 15:12:09 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-22 15:12:09 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-22 15:12:10 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-22 15:12:10 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-22 15:12:10 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-22 15:12:10 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-22 15:12:10 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-22 15:12:10 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-22 15:12:10 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-22 15:12:11 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 15:12:11 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-22 15:12:11 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 15:12:11 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 15:12:11 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 15:12:11 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-22 15:12:11 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 15:12:11 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 15:12:11 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 15:12:11 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-22 15:12:11 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 15:12:11 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 15:12:11 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-22 15:12:23 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-22 15:12:23 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-22 15:12:23 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-22 15:12:23 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-22 15:12:23 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-22 15:12:23 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-22 15:12:23 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-22 15:12:24 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-22 15:12:24 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-22 15:12:24 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-22 15:12:24 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-22 15:12:24 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-22 15:12:24 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 15:12:24 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-22 15:12:24 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 15:12:24 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 15:12:24 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 15:12:24 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-22 15:12:24 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 15:12:24 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 15:12:24 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-22 15:12:24 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-22 15:12:24 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-22 15:12:24 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-22 15:12:24 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
