@@ -5,6 +5,7 @@ import java.time.ZoneId;
 import java.util.Date;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -37,7 +38,7 @@ public class ProcessoHabilitacao extends BaseEntity<String> {
 	@Id
 	@GeneratedValue(generator = "UUIDGenerator")
 	@GenericGenerator(name = "UUIDGenerator", strategy = "br.edu.faculdadedelta.util.UUIDGenerator")
-	@Column(name = "id_processo", length = 32)
+	@Column(name = "id_processo", length = 32, unique = true, nullable = false)
 	private String id;
 
 	@Temporal(TemporalType.DATE)
@@ -45,7 +46,7 @@ public class ProcessoHabilitacao extends BaseEntity<String> {
 	@Column(name = "dt_abertura")
 	private Date dataAbertura;
 
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(cascade = { CascadeType.PERSIST }, fetch = FetchType.LAZY, optional = false)
 	private Aluno aluno;
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
