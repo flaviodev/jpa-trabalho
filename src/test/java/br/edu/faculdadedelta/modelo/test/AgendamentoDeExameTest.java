@@ -38,7 +38,7 @@ public class AgendamentoDeExameTest extends BaseCrudTest<String, AgendamentoDeEx
 				.persiste();
 
 		Aluno aluno = new Aluno("Flávio de Souza").setDataNascimento(LocalDate.of(1980, 8, 10)).setCpf("222.222.222-22")
-				.setSexo(Sexo.MASCULINO);
+				.setSexo(Sexo.MASCULINO).persiste();
 
 		Veiculo veiculo = new Veiculo("GM").setModelo("Spin LTZ").setCor("Preta").setPlaca("AAA-1111")
 				.setTipo(TipoVeiculo.CARRO).setAno(2015).persiste();
@@ -46,9 +46,10 @@ public class AgendamentoDeExameTest extends BaseCrudTest<String, AgendamentoDeEx
 		ProcessoHabilitacao processo = new ProcessoHabilitacao(LocalDate.of(2018, 7, 20)).setAluno(aluno)
 				.setInstrutor(instrutor).setVeiculo(veiculo).persiste();
 
+		Examinador examinador = new Examinador("Maria do Carmo").setCpf("999.999.999-99").persiste();
 		
 		BancaExaminadora banca = new BancaExaminadora(LocalDate.of(2018, 9, 20))
-				.adicionaExaminador(new Examinador("Maria do Carmo").setCpf("999.999.999-99")).persiste();
+				.adicionaExaminador(examinador).persiste();
 
 		return new AgendamentoDeExame(DATA_PADRAO).setBanca(banca).setProcesso(processo);
 	}

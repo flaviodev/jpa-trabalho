@@ -9,7 +9,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -53,7 +52,7 @@ public class BancaExaminadora extends BaseEntity<String> {
 	@Column(name = "dt_exame")
 	private Date data;
 
-	@ManyToMany(cascade = { CascadeType.PERSIST }, fetch = FetchType.LAZY)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "banca_examinador", joinColumns = @JoinColumn(name = "id_banca"), inverseJoinColumns = @JoinColumn(name = "id_examinador"))
 	private List<Examinador> examinadores;
 

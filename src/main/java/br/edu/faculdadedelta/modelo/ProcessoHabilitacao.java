@@ -7,7 +7,6 @@ import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -51,7 +50,7 @@ public class ProcessoHabilitacao extends BaseEntity<String> {
 	@Column(name = "dt_abertura")
 	private Date dataAbertura;
 
-	@ManyToOne(cascade = { CascadeType.PERSIST }, fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	private Aluno aluno;
 
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)

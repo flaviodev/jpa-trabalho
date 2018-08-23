@@ -47,22 +47,28 @@ public class BancaExaminadoraTest extends BaseCrudTest<String, BancaExaminadora>
 		return () -> Restrictions.eq(BancaExaminadora.Atributos.DATA, toDate(DATA_PADRAO));
 	}
 
-	@Test
-	public void deveAdicionarESalvarExaminador() {
-
-		BancaExaminadora banca = getEntidadeParaTeste();
-		Examinador examinador = new Examinador("José Pio de Alcântara").setCpf("777.777.777-77");
-		banca.adicionaExaminador(examinador);
-
+	private Examinador adicionaExaminadorABanca(BancaExaminadora banca) {
+		
 		assertNotNull("Banca examinadora não pode ser nula", banca);
 		assertTrue("Banca examinadora deve estar no estado transient antes de ser persistido", banca.isTransient());
-		assertTrue("Examinador deve estar no estado transient antes de ser persistido", examinador.isTransient());
+		
+		Examinador examinador = new Examinador("José Pio de Alcântara").setCpf("777.777.777-77").persiste();
+		assertFalse("Examinador não deve estar no estado transient após ter sido persistido", examinador.isTransient());
+
+		banca.adicionaExaminador(examinador);
+		
+		return examinador;
+	}
+	
+	@Test
+	public void deveAdicionarExaminador() {
+
+		BancaExaminadora banca = getEntidadeParaTeste();
+		adicionaExaminadorABanca(banca);
 
 		banca.persiste();
-
 		assertFalse("Banca examinadora não deve estar no estado transient após ter sido persistido",
 				banca.isTransient());
-		assertFalse("Examinador não deve estar no estado transient após ter sido persistido", examinador.isTransient());
 
 		assertTrue("Banca deve ter examinador adicionado a ela", banca.getExaminadores().size() > 0);
 	}
@@ -71,18 +77,12 @@ public class BancaExaminadoraTest extends BaseCrudTest<String, BancaExaminadora>
 	public void deveRetirarExaminador() {
 
 		BancaExaminadora banca = getEntidadeParaTeste();
-		Examinador examinador = new Examinador("José Pio de Alcântara").setCpf("777.777.777-77");
-		banca.adicionaExaminador(examinador);
-
-		assertNotNull("Banca examinadora não pode ser nula", banca);
-		assertTrue("Banca examinadora deve estar no estado transient antes de ser persistido", banca.isTransient());
-		assertTrue("Examinador deve estar no estado transient antes de ser persistido", examinador.isTransient());
-
+		Examinador examinador = adicionaExaminadorABanca(banca);
+		
 		banca.persiste();
 
 		assertFalse("Banca examinadora não deve estar no estado transient após ter sido persistido",
 				banca.isTransient());
-		assertFalse("Examinador não deve estar no estado transient após ter sido persistido", examinador.isTransient());
 
 		assertTrue("Banca deve ter examinador adicionado a ela", banca.getExaminadores().size() > 0);
 		
@@ -91,10 +91,8 @@ public class BancaExaminadoraTest extends BaseCrudTest<String, BancaExaminadora>
 		
 		assertFalse("Banca examinadora não deve estar no estado transient após ter sido persistido",
 				banca.isTransient());
-		assertFalse("Examinador não deve estar no estado transient após ter sido persistido", examinador.isTransient());
 
 		assertTrue("Banca não deve ter examinadores associados a ela", banca.getExaminadores().size() == 0);
-		
 	}
 	
 	@AfterClass
