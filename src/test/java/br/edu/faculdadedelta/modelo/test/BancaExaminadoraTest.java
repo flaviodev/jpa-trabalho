@@ -153,12 +153,12 @@ public class BancaExaminadoraTest extends BaseCrudTest<String, BancaExaminadora>
 	}
 
 	@Override
-	public void deveExluirTodasEntidade() {
+	public void deveExluirTodasEntidades() {
 
 		deveLimparBase(AgendamentoDeExame.class);
-		super.deveExluirTodasEntidade();
+		super.deveExluirTodasEntidades();
 	}
-
+	
 	@AfterClass
 	public static void deveLimparBase() {
 

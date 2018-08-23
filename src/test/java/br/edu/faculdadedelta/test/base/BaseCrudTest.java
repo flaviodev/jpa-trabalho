@@ -28,6 +28,18 @@ import br.edu.faculdadedelta.modelo.base.JPAUtil;
 
 import static br.edu.faculdadedelta.util.StringUtil.concat;
 
+/**
+ * @author Flávio de Souza
+ *
+ * @param <I>
+ *            tipo de chave (id) da entidade a ser testada
+ * @param <E>
+ *            tipo de entidade a ser testada
+ * 
+ *            Classe responsável por testar as operações CRUD de classes de
+ *            teste voltadas a testes de unidades das entidades de modelo
+ *            (@Entity)
+ */
 public abstract class BaseCrudTest<I extends Serializable, E extends BaseEntity<I>> extends BaseTest {
 
 	private Class<E> tipoEntidade;
@@ -59,6 +71,12 @@ public abstract class BaseCrudTest<I extends Serializable, E extends BaseEntity<
 		assertTrue(concat("Tabela ", nomeEntidade, " não deve possuir registros"), query.getResultList().size() == 0);
 	}
 
+	/**
+	 * Teste genérico de inclusão de uma entidade: Após instanciar entidade, testa
+	 * se é transient, persiste, testa se já não é mais transient (inclusive
+	 * verifiando se o id da entidade não é nulo)
+	 * 
+	 */
 	@Test
 	public void deveSalvarEntidade() {
 
@@ -71,6 +89,110 @@ public abstract class BaseCrudTest<I extends Serializable, E extends BaseEntity<
 				entidade.isTransient());
 
 		assertNotNull(concat(nomeEntidade, " deve ter um id definido após ter sido persistido"), entidade.getId());
+	}
+
+	/**
+	 * Teste genérico de alteração de uma entidade: instancia e persiste uma
+	 * entidade (verificando se não está transient após inclusão), aplica a
+	 * alteração dos dados e verifica se os dados foram alterados e versão da
+	 * entidade mudou
+	 */
+	@Test
+	@SuppressWarnings("unchecked")
+	public void deveAlterarEntidade() {
+
+		FuncaoAlteraEntidade<I, E> funcaoAltera = alteracaoEntidadeDeTeste();
+
+		if (funcaoAltera == null)
+			throw new IllegalStateException("Não foi possível carregar a função de alteração da entidade");
+
+		E entidade = getEntidadeParaTeste().persiste();
+		assertFalse("Deve possuir id", entidade.isTransient());
+
+		Criteria criteria = createCriteria(tipoEntidade);
+		criteria.add(Restrictions.eq("id", entidade.getId()));
+
+		entidade = (E) criteria.uniqueResult();
+
+		assertNotNull(concat("Deve ter encontrado ", nomeEntidade), entidade);
+
+		Integer versao = entidade.getVersion();
+		assertNotNull(concat(nomeEntidade, " deve possuir versão"), versao);
+
+		funcaoAltera.altera(entidade);
+		entidade = entidade.altera();
+
+		validaAlteracaoEntidadeDeTeste().validaAlteracao(entidade);
+
+		assertNotEquals(concat("Versão ", nomeEntidade, " deve ser diferente"), versao.intValue(),
+				entidade.getVersion().intValue());
+	}
+
+	/** continuar aqui
+	 * Teste genérico de exclusão de uma entidade: testa se uma entidade foi
+	 * excluída corretamente
+	 */
+	@Test
+	public void deveExluirEntidade() {
+
+		E entidade = getEntidadeParaTeste().persiste();
+		assertFalse(concat(nomeEntidade, " não deve estar no estado transient após ter sido pesistido"),
+				entidade.isTransient());
+
+		EntityManager dao = getDao();
+
+		I id = entidade.getId();
+		entidade = dao.find(tipoEntidade, id);
+		assertNotNull(concat("Deve encontrar ", nomeEntidade), entidade);
+
+		entidade.exclui();
+
+		dao.clear();
+		entidade = dao.find(tipoEntidade, id);
+
+		assertNull(concat("Não deve encontrar ", nomeEntidade), entidade);
+	}
+
+	/**
+	 * Teste genérico de exclusão de todos os elementos de uma entidade: testa a
+	 * exclusão de todos os itens de uma tabela
+	 */
+	@Test
+	@SuppressWarnings("unchecked")
+	public void deveExluirTodasEntidades() {
+
+		IntStream.range(0, 2).forEach(i -> deveSalvarEntidade());
+		Criteria critera = createCriteria(tipoEntidade);
+		List<E> entidades = (List<E>) critera.list();
+
+		assertFalse(concat("Tabela de ", nomeEntidade, " não deve estar vazia"), entidades.isEmpty());
+
+		EntityManager dao = getDao();
+
+		dao.getTransaction().begin();
+		Query query = dao.createQuery(concat("DELETE FROM ", nomeEntidade));
+		query.executeUpdate();
+		dao.getTransaction().commit();
+
+		entidades = (List<E>) critera.list();
+
+		assertTrue(concat("Tabela de ", nomeEntidade, " deve estar vazia"), entidades.isEmpty());
+	}
+
+	/**
+	 * Teste genérico para consultar todos os elementos de uma entidade: testa a
+	 * exclusão de todos os itens de uma tabela
+	 */
+	@SuppressWarnings("unchecked")
+	@Test
+	public void deveRetornaUmElementoOuMaisDaEntidadeNaConsulta() {
+
+		IntStream.range(0, 2).forEach(i -> deveSalvarEntidade());
+		Criteria critera = createCriteria(tipoEntidade);
+		List<E> entidades = (List<E>) critera.list();
+
+		assertFalse(concat(nomeEntidade, " não deve estar vazia"), entidades.isEmpty());
+		assertTrue(concat(nomeEntidade, " deve ter itens"), entidades.size() > 0);
 	}
 
 	@Test(expected = NoResultException.class)
@@ -104,92 +226,6 @@ public abstract class BaseCrudTest<I extends Serializable, E extends BaseEntity<
 		fail("metodo getSingleResult deve lançar exception NonUniqueResultException");
 	}
 
-	@SuppressWarnings("unchecked")
-	@Test
-	public void devePesquisarEntidades() {
-
-		IntStream.range(0, 2).forEach(i -> deveSalvarEntidade());
-		Criteria critera = createCriteria(tipoEntidade);
-		List<E> entidades = (List<E>) critera.list();
-
-		assertFalse(concat(nomeEntidade, " não deve estar vazia"), entidades.isEmpty());
-		assertTrue(concat(nomeEntidade, " deve ter itens"), entidades.size() > 0);
-	}
-
-	@Test
-	public void deveExluirEntidade() {
-
-		E entidade = getEntidadeParaTeste().persiste();
-		assertFalse(concat(nomeEntidade, " não deve estar no estado transient após ter sido pesistido"),
-				entidade.isTransient());
-
-		EntityManager dao = getDao();
-		
-		I id = entidade.getId();
-		entidade = dao.find(tipoEntidade, id);
-		assertNotNull(concat("Deve encontrar ", nomeEntidade), entidade);
-
-		entidade.exclui();
-
-		dao.clear();
-		entidade = dao.find(tipoEntidade, id);
-
-		assertNull(concat("Não deve encontrar ", nomeEntidade), entidade);
-	}
-
-	@SuppressWarnings("unchecked")
-	@Test
-	public void deveExluirTodasEntidade() {
-
-		IntStream.range(0, 2).forEach(i -> deveSalvarEntidade());
-		Criteria critera = createCriteria(tipoEntidade);
-		List<E> entidades = (List<E>) critera.list();
-
-		assertFalse(concat("Tabela de ", nomeEntidade, " não deve estar vazia"), entidades.isEmpty());
-
-		EntityManager dao = getDao();
-		
-		dao.getTransaction().begin();
-		Query query = dao.createQuery(concat("DELETE FROM ", nomeEntidade));
-		query.executeUpdate();
-		dao.getTransaction().commit();
-
-		entidades = (List<E>) critera.list();
-
-		assertTrue(concat("Tabela de ", nomeEntidade, " deve estar vazia"), entidades.isEmpty());
-	}
-
-	@SuppressWarnings("unchecked")
-	@Test
-	public void deveAlterarEntidade() {
-
-		FuncaoAlteraEntidade<I, E> funcaoAltera = alteracaoEntidadeDeTeste();
-
-		if (funcaoAltera == null)
-			throw new IllegalStateException("Não foi possível carregar a função de alteração da entidade");
-
-		E entidade = getEntidadeParaTeste().persiste();
-		assertFalse("Deve possuir id", entidade.isTransient());
-
-		Criteria criteria = createCriteria(tipoEntidade);
-		criteria.add(Restrictions.eq("id", entidade.getId()));
-
-		entidade = (E) criteria.uniqueResult();
-
-		assertNotNull(concat("Deve ter encontrado ", nomeEntidade), entidade);
-
-		Integer versao = entidade.getVersion();
-		assertNotNull(concat(nomeEntidade, " deve possuir versão"), versao);
-
-		funcaoAltera.altera(entidade);
-		entidade = entidade.altera();
-		
-		validaAlteracaoEntidadeDeTeste().validaAlteracao(entidade);
-
-		assertNotEquals(concat("Versão ", nomeEntidade, " deve ser diferente"), versao.intValue(),
-				entidade.getVersion().intValue());
-	}
-
 	@Test
 	public void devePesquisarEntidadesPorCriterio() {
 
@@ -216,7 +252,7 @@ public abstract class BaseCrudTest<I extends Serializable, E extends BaseEntity<
 	public abstract E getEntidadeParaTeste();
 
 	public abstract FuncaoAlteraEntidade<I, E> alteracaoEntidadeDeTeste();
-	
+
 	public abstract FuncaoValidaAlteracaoEntidade<I, E> validaAlteracaoEntidadeDeTeste();
 
 	public abstract FuncaoCriterioParaBuscaDeEntidade<I, E> getCriterioBuscaEntidadesTeste();
