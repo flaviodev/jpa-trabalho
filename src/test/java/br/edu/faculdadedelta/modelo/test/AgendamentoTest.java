@@ -1,12 +1,16 @@
-package br.edu.faculdadedelta.modelo;
+package br.edu.faculdadedelta.modelo.test;
+
+import static org.junit.Assert.assertTrue;
 
 import java.time.LocalDate;
 
 import org.hibernate.criterion.Restrictions;
 
-import br.edu.faculdadedelta.base.BaseCrudTest;
-import br.edu.faculdadedelta.base.FuncaoAlteraEntidade;
-import br.edu.faculdadedelta.base.FuncaoCriterioParaBuscaDeEntidade;
+import br.edu.faculdadedelta.modelo.Aluno;
+import br.edu.faculdadedelta.test.base.BaseCrudTest;
+import br.edu.faculdadedelta.test.base.FuncaoAlteraEntidade;
+import br.edu.faculdadedelta.test.base.FuncaoCriterioParaBuscaDeEntidade;
+import br.edu.faculdadedelta.test.base.FuncaoValidaAlteracaoEntidade;
 import br.edu.faculdadedelta.tipo.Sexo;
 
 public class AgendamentoTest extends BaseCrudTest<String, Aluno> {
@@ -14,19 +18,24 @@ public class AgendamentoTest extends BaseCrudTest<String, Aluno> {
 	private static final String CPF_PADRAO = "111.111.111-11";
 
 	@Override
-	public Aluno getInstanciaDaEntidade() {
+	public Aluno getEntidadeParaTeste() {
 
 		return new Aluno("Joaquim Barcelos").setCpf(CPF_PADRAO).setSexo(Sexo.MASCULINO)
 				.setDataNascimento(LocalDate.of(1980, 8, 12));
 	}
 
 	@Override
-	public FuncaoAlteraEntidade<String, Aluno> alteracaoEntidade() {
+	public FuncaoAlteraEntidade<String, Aluno> alteracaoEntidadeDeTeste() {
 		return (aluno) -> aluno.setNome("Joaquim Bragança");
 	}
 	
 	@Override
-	public FuncaoCriterioParaBuscaDeEntidade<String, Aluno> getCriterioBuscaEntidades() {
+	public FuncaoValidaAlteracaoEntidade<String, Aluno> validaAlteracaoEntidadeDeTeste() {
+		return (aluno) -> assertTrue("", aluno.getNome().equals("Joaquim Bragança"));
+	}
+	
+	@Override
+	public FuncaoCriterioParaBuscaDeEntidade<String, Aluno> getCriterioBuscaEntidadesTeste() {
 		return () -> Restrictions.eq(Aluno.Atributos.CPF, CPF_PADRAO);
 	}
 	

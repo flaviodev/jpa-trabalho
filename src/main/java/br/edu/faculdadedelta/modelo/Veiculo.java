@@ -1,5 +1,7 @@
 package br.edu.faculdadedelta.modelo;
 
+import java.time.LocalDate;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +14,10 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import br.edu.faculdadedelta.modelo.base.BaseEntity;
 import br.edu.faculdadedelta.tipo.TipoVeiculo;
+import br.edu.faculdadedelta.tipo.base.TipoEdicaoCRUD;
+import br.edu.faculdadedelta.util.ValidadorUtil;
 
 @Entity
 @Table(name = "tb_veiculo")
@@ -34,7 +39,7 @@ public class Veiculo extends BaseEntity<String> {
 	
 	@Id
 	@GeneratedValue(generator = "UUIDGenerator")
-	@GenericGenerator(name = "UUIDGenerator", strategy = "br.edu.faculdadedelta.util.UUIDGenerator")
+	@GenericGenerator(name = "UUIDGenerator", strategy = "br.edu.faculdadedelta.modelo.base.UUIDGenerator")
 	@Column(name = "id_veiculo", length = 32)
 	private String id;
 
@@ -111,6 +116,18 @@ public class Veiculo extends BaseEntity<String> {
 
 	public Veiculo setAno(Integer ano) {
 
+		if(ano == null)
+			throw new IllegalStateException("Ano de fabricação deve ser informado");
+		
+		if(tipo == null) 
+			throw new IllegalStateException("O tipo de veículo deve ser informado previamente");
+			
+		if(tipo == TipoVeiculo.CARRO && calculaIdade(ano) > 8) 
+			throw new IllegalStateException("Carros não devem ter mais que 8 anos uso");
+		
+		if(tipo == TipoVeiculo.MOTO && calculaIdade(ano) > 5) 
+			throw new IllegalStateException("Motos não devem ter mais que 5 anos uso");
+		
 		this.ano = ano;
 		return this;
 	}
@@ -146,6 +163,45 @@ public class Veiculo extends BaseEntity<String> {
 
 		this.tipo = tipo;
 		return this;
+	}
+	
+	@Override
+	public void validaDados(TipoEdicaoCRUD tipoEdicao) {
+		
+		if (marca == null || marca.isEmpty())
+			throw new IllegalStateException("Marca deve ser informada");
+
+		if (marca.length() > 100)
+			throw new IllegalStateException("Marca não pode exceder 100 caracteres");
+
+		if (modelo == null || modelo.isEmpty())
+			throw new IllegalStateException("Modelo deve ser informado");
+
+		if (modelo.length() > 150)
+			throw new IllegalStateException("Modelo não pode exceder 150 caracteres");
+		
+		if (cor == null || cor.isEmpty())
+			throw new IllegalStateException("Cor deve ser informada");
+
+		if (cor.length() > 50)
+			throw new IllegalStateException("Cor não pode exceder 150 caracteres");
+		
+		if (tipo == null)
+			throw new IllegalStateException("Tipo deve ser informado");
+		
+		if(ano == null)
+			throw new IllegalStateException("Ano de fabricação deve ser informado");
+		
+		if(!ValidadorUtil.isPlacaDeVeiculoValida(placa))
+			throw new IllegalStateException("Placa inválida! Utilizar formato: AAA-9999");
+	}
+	
+	private Integer calculaIdade(Integer ano) {
+		return LocalDate.now().getYear() - ano;
+	}
+	
+	public Integer getIdadeIdade() {
+		return calculaIdade(getAno());
 	}
 	
 	@Override

@@ -9,6 +9,10 @@ import javax.persistence.MappedSuperclass;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import br.edu.faculdadedelta.modelo.base.BaseEntity;
+import br.edu.faculdadedelta.tipo.base.TipoEdicaoCRUD;
+import br.edu.faculdadedelta.util.ValidadorUtil;
+
 @MappedSuperclass
 public abstract class Pessoa extends BaseEntity<String> {
 
@@ -16,7 +20,7 @@ public abstract class Pessoa extends BaseEntity<String> {
 
 	@Id
 	@GeneratedValue(generator = "UUIDGenerator")
-	@GenericGenerator(name = "UUIDGenerator", strategy = "br.edu.faculdadedelta.util.UUIDGenerator")
+	@GenericGenerator(name = "UUIDGenerator", strategy = "br.edu.faculdadedelta.modelo.base.UUIDGenerator")
 	@Column(name = "id_pessoa", length = 32)
 	private String id;
 
@@ -71,6 +75,20 @@ public abstract class Pessoa extends BaseEntity<String> {
 		return this;
 	}
 
+	@Override
+	public void validaDados(TipoEdicaoCRUD tipo) {
+		
+		if (nome == null || nome.isEmpty())
+			throw new IllegalStateException("Cpf deve ser informado");
+
+		if (nome.length() > 150)
+			throw new IllegalStateException("Nome não pode exceder 150 caracteres");
+		
+		if(!ValidadorUtil.isCPFValido(cpf))
+			throw new IllegalStateException("Cpf inválido");
+		
+	}
+	
 	@Override
 	public int hashCode() {
 

@@ -1,4 +1,4 @@
-package br.edu.faculdadedelta.util;
+package br.edu.faculdadedelta.modelo.base;
 
 import java.io.Serializable;
 import java.util.UUID;

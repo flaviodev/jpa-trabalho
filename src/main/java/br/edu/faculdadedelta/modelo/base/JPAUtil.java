@@ -1,4 +1,4 @@
-package br.edu.faculdadedelta.util;
+package br.edu.faculdadedelta.modelo.base;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

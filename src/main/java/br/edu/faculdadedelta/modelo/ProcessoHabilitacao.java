@@ -1,5 +1,7 @@
 package br.edu.faculdadedelta.modelo;
 
+import static br.edu.faculdadedelta.util.DateUtil.toLocalDate;
+
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
@@ -17,6 +19,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.GenericGenerator;
+
+import br.edu.faculdadedelta.modelo.base.BaseEntity;
+import br.edu.faculdadedelta.tipo.base.TipoEdicaoCRUD;
 
 @Entity
 @Table(name = "ent_processo_habilitacao")
@@ -37,7 +42,7 @@ public class ProcessoHabilitacao extends BaseEntity<String> {
 
 	@Id
 	@GeneratedValue(generator = "UUIDGenerator")
-	@GenericGenerator(name = "UUIDGenerator", strategy = "br.edu.faculdadedelta.util.UUIDGenerator")
+	@GenericGenerator(name = "UUIDGenerator", strategy = "br.edu.faculdadedelta.modelo.base.UUIDGenerator")
 	@Column(name = "id_processo", length = 32, unique = true, nullable = false)
 	private String id;
 
@@ -141,6 +146,25 @@ public class ProcessoHabilitacao extends BaseEntity<String> {
 		return this;
 	}
 
+	@Override
+	public void validaDados(TipoEdicaoCRUD tipo) {
+		
+		if(dataAbertura == null)
+			throw new IllegalStateException("Data de abertura deve ser informada");
+		
+		if(toLocalDate(dataAbertura).isAfter(LocalDate.now()))
+			throw new IllegalStateException("Data de abertura não pode ser maior que hoje");
+		
+		if(aluno == null)
+			throw new IllegalStateException("Aluno deve ser informado");
+		
+		if(veiculo == null)
+			throw new IllegalStateException("Veículo deve ser informado");
+		
+		if(instrutor == null)
+			throw new IllegalStateException("Instrutor deve ser informado");
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 

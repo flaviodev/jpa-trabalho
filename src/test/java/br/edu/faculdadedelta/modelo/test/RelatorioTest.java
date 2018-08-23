@@ -1,6 +1,6 @@
-package br.edu.faculdadedelta.modelo;
+package br.edu.faculdadedelta.modelo.test;
 
-import br.edu.faculdadedelta.base.BaseTest;
+import br.edu.faculdadedelta.test.base.BaseTest;
 
 public class RelatorioTest extends BaseTest {
 	

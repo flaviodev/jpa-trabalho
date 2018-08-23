@@ -1,5 +1,6 @@
-package br.edu.faculdadedelta.modelo;
+package br.edu.faculdadedelta.modelo.test;
 
+import static br.edu.faculdadedelta.util.StringUtil.concat;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -15,43 +16,53 @@ import org.hibernate.criterion.Restrictions;
 import org.junit.AfterClass;
 import org.junit.Test;
 
-import br.edu.faculdadedelta.base.BaseCrudTest;
-import br.edu.faculdadedelta.base.FuncaoAlteraEntidade;
-import br.edu.faculdadedelta.base.FuncaoCriterioParaBuscaDeEntidade;
+import br.edu.faculdadedelta.modelo.Instrutor;
+import br.edu.faculdadedelta.test.base.BaseCrudTest;
+import br.edu.faculdadedelta.test.base.FuncaoAlteraEntidade;
+import br.edu.faculdadedelta.test.base.FuncaoCriterioParaBuscaDeEntidade;
+import br.edu.faculdadedelta.test.base.FuncaoValidaAlteracaoEntidade;
 import br.edu.faculdadedelta.tipo.StatusInstrutor;
 
 public class InstrutorTest extends BaseCrudTest<String, Instrutor> {
 
 	private static final String CPF_PADRAO = "222.222.222-22";
+	private static final String NOME_ALTERACAO = "José de Arimatéia";
 
 	@Override
-	public Instrutor getInstanciaDaEntidade() {
+	public Instrutor getEntidadeParaTeste() {
 
 		return new Instrutor("José De Almeida Prado").setCpf(CPF_PADRAO).setStatus(StatusInstrutor.ATIVO);
 	}
 
 	@Override
-	public FuncaoAlteraEntidade<String, Instrutor> alteracaoEntidade() {
-		return (instrutor) -> instrutor.setNome("José de Arimatéia");
+	public FuncaoAlteraEntidade<String, Instrutor> alteracaoEntidadeDeTeste() {
+		return (instrutor) -> instrutor.setNome(NOME_ALTERACAO);
 	}
-	
+
 	@Override
-	public FuncaoCriterioParaBuscaDeEntidade<String, Instrutor> getCriterioBuscaEntidades() {
+	public FuncaoValidaAlteracaoEntidade<String, Instrutor> validaAlteracaoEntidadeDeTeste() {
+		return (instrutor) -> assertTrue(
+				concat("valor esperado <", NOME_ALTERACAO, "> : retornado <", instrutor.getNome(), ">"),
+				instrutor.getNome().equals(NOME_ALTERACAO));
+	}
+
+	@Override
+	public FuncaoCriterioParaBuscaDeEntidade<String, Instrutor> getCriterioBuscaEntidadesTeste() {
 		return () -> Restrictions.eq(Instrutor.Atributos.CPF, CPF_PADRAO);
 	}
 
 	// @Test(expected = LazyInitializationException.class)
 	public void naoDeveAcessarAtributoLazyForaEscopoEntityManager() {
 
-		Instrutor instrutorInserido = salvaEntidade();
+		Instrutor instrutorInserido = getEntidadeParaTeste().persiste();
 		fecharEntityManager();
 		instanciarEntityManager();
 
-		Instrutor instrutor = getEntityManager().find(Instrutor.class, instrutorInserido.getId());
+		Instrutor instrutor = getDao().find(Instrutor.class, instrutorInserido.getId());
 
 		assertNotNull("Verifica se encontrou um registro", instrutor);
 
-		getEntityManager().detach(instrutor);
+		getDao().detach(instrutor);
 		// cliente.getCompras().size();
 
 		fail("deve disparar LazyInitializationException ao Acessar Atributo Lazy Fora do Escopo EntityManager");
@@ -60,8 +71,8 @@ public class InstrutorTest extends BaseCrudTest<String, Instrutor> {
 	// @Test
 	public void deveAcessarAtributoLazy() {
 
-		Instrutor InstrutorInserido = salvaEntidade();
-		Instrutor instrutor = getEntityManager().find(Instrutor.class, InstrutorInserido.getId());
+		Instrutor InstrutorInserido = getEntidadeParaTeste().persiste();
+		Instrutor instrutor = getDao().find(Instrutor.class, InstrutorInserido.getId());
 
 		assertNotNull("Verifica se encontrou um registro", instrutor);
 		// assertNotNull("Lista lazy não deve ser nula", cliente.getCompras());
@@ -98,7 +109,7 @@ public class InstrutorTest extends BaseCrudTest<String, Instrutor> {
 	public void deveConsultarIdNomeForeach() {
 		deveSalvarEntidade();
 
-		Query query = getEntityManager().createQuery(montaHqlParaObterIdENomePeloCpf());
+		Query query = getDao().createQuery(montaHqlParaObterIdENomePeloCpf());
 		query.setParameter("cpf", CPF_PADRAO);
 
 		List<Object[]> resultado = query.getResultList();
@@ -121,7 +132,7 @@ public class InstrutorTest extends BaseCrudTest<String, Instrutor> {
 	public void deveConsultarIdNome() {
 		deveSalvarEntidade();
 
-		Query query = getEntityManager().createQuery(montaHqlParaObterIdENomePeloCpf());
+		Query query = getDao().createQuery(montaHqlParaObterIdENomePeloCpf());
 		query.setParameter("cpf", CPF_PADRAO);
 
 		List<Object[]> resultado = query.getResultList();
@@ -161,7 +172,7 @@ public class InstrutorTest extends BaseCrudTest<String, Instrutor> {
 
 		deveSalvarEntidade();
 
-		Query query = getEntityManager().createQuery(montaHqlParaObterEntidadeComIdENomePeloCpf());
+		Query query = getDao().createQuery(montaHqlParaObterEntidadeComIdENomePeloCpf());
 		query.setParameter("cpf", CPF_PADRAO);
 
 		@SuppressWarnings("unchecked")
@@ -176,7 +187,7 @@ public class InstrutorTest extends BaseCrudTest<String, Instrutor> {
 	public void deveConsultarInstrutorComIdNome() {
 		deveSalvarEntidade();
 
-		Query query = getEntityManager().createQuery(montaHqlParaObterEntidadeComIdENomePeloCpf());
+		Query query = getDao().createQuery(montaHqlParaObterEntidadeComIdENomePeloCpf());
 		query.setParameter("cpf", CPF_PADRAO);
 
 		@SuppressWarnings("unchecked")
@@ -205,7 +216,7 @@ public class InstrutorTest extends BaseCrudTest<String, Instrutor> {
 		hql.append(Instrutor.Atributos.NOME);
 		hql.append(" LIKE :nome ");
 
-		Query query = getEntityManager().createQuery(hql.toString());
+		Query query = getDao().createQuery(hql.toString());
 		query.setParameter("nome", filtro);
 
 		List<String> listaCpf = query.getResultList();
