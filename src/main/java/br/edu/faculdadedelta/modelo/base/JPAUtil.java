@@ -20,7 +20,7 @@ public enum JPAUtil {
 		return this.factory.createEntityManager();
 	}
 	
-	public String getAlias(String... aliases) {
+	public static String getAlias(String... aliases) {
 		
 	    if (aliases == null || aliases.length == 0)
 	      return null;

@@ -101,9 +101,10 @@ public class ProcessoHabilitacao extends BaseEntity<String> {
 		this.dataAbertura = dataAbertura;
 	}
 
-	public void setDataAbertura(LocalDate dataAbertura) {
+	public ProcessoHabilitacao setDataAbertura(LocalDate dataAbertura) {
 
 		setDataAbertura(toDate(dataAbertura));
+		return this;
 	}
 
 	public Aluno getAluno() {

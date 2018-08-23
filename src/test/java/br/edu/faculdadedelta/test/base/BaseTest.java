@@ -8,9 +8,13 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.BeforeClass;
 
 import br.edu.faculdadedelta.modelo.base.BaseEntity;
 import br.edu.faculdadedelta.modelo.base.JPAUtil;
+import br.edu.faculdadedelta.repositorio.RepositorioAgendamento;
+import br.edu.faculdadedelta.repositorio.RepositorioAgendamentoImpl;
+import br.edu.faculdadedelta.repositorio.base.FabricaDeRepositorios;
 
 public abstract class BaseTest {
 
@@ -29,6 +33,13 @@ public abstract class BaseTest {
 			dao.close();
 	}
 
+	@BeforeClass
+	public static void iniciaRepositorios() {
+		
+		if(FabricaDeRepositorios.getRepositorio(RepositorioAgendamento.class) == null)
+			FabricaDeRepositorios.registraRepositorio(RepositorioAgendamento.class, new RepositorioAgendamentoImpl());
+	}
+	
 	protected EntityManager getDao() {
 
 		return this.dao;
@@ -43,4 +54,5 @@ public abstract class BaseTest {
 		
 		return ((Session) getDao().getDelegate()).createCriteria(classeEntidade);
 	}
+	
 }

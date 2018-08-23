@@ -24,18 +24,19 @@ import br.edu.faculdadedelta.test.base.BaseCrudTest;
 import br.edu.faculdadedelta.test.base.FuncaoAlteraEntidade;
 import br.edu.faculdadedelta.test.base.FuncaoCriterioParaBuscaDeEntidade;
 import br.edu.faculdadedelta.test.base.FuncaoValidaAlteracaoEntidade;
-import br.edu.faculdadedelta.tipo.Sexo;
+import br.edu.faculdadedelta.test.util.FabricaTeste;
 
 public class AlunoTest extends BaseCrudTest<String, Aluno> {
 
-	private static final String CPF_PADRAO = "111.111.111-11";
-	private static final String NOME_ALTERACAO = "Joaquim Bragança";
+	private static final String CPF = "111.111.111-11";
+	private static final String NOME = "Joaquim Bragança";
+	private static final String NOME_ALTERACAO = "Joaquim Albuquerque";
+	private static final String NOME_FILTRO = "Joaquim";
 
 	@Override
 	public Aluno getEntidadeParaTeste() {
 
-		return new Aluno("Joaquim Barcelos").setCpf(CPF_PADRAO).setSexo(Sexo.MASCULINO)
-				.setDataNascimento(LocalDate.of(1980, 8, 12));
+		return FabricaTeste.criaAluno(NOME, CPF);
 	}
 
 	@Override
@@ -52,7 +53,7 @@ public class AlunoTest extends BaseCrudTest<String, Aluno> {
 
 	@Override
 	public FuncaoCriterioParaBuscaDeEntidade<String, Aluno> getCriterioBuscaEntidadesTeste() {
-		return () -> Restrictions.eq(Aluno.Atributos.CPF, CPF_PADRAO);
+		return () -> Restrictions.eq(Aluno.Atributos.CPF, CPF);
 	}
 
 	@Test(expected = IllegalStateException.class)
@@ -143,7 +144,7 @@ public class AlunoTest extends BaseCrudTest<String, Aluno> {
 		deveSalvarEntidade();
 
 		Query query = getDao().createQuery(montaHqlParaObterIdENomePeloCpf());
-		query.setParameter("cpf", CPF_PADRAO);
+		query.setParameter("cpf", CPF);
 
 		List<Object[]> resultado = query.getResultList();
 
@@ -165,7 +166,7 @@ public class AlunoTest extends BaseCrudTest<String, Aluno> {
 		deveSalvarEntidade();
 
 		Query query = getDao().createQuery(montaHqlParaObterIdENomePeloCpf());
-		query.setParameter("cpf", CPF_PADRAO);
+		query.setParameter("cpf", CPF);
 
 		List<Object[]> resultado = query.getResultList();
 
@@ -205,7 +206,7 @@ public class AlunoTest extends BaseCrudTest<String, Aluno> {
 		deveSalvarEntidade();
 
 		Query query = getDao().createQuery(montaHqlParaObterEntidadeComIdENomePeloCpf());
-		query.setParameter("cpf", CPF_PADRAO);
+		query.setParameter("cpf", CPF);
 
 		@SuppressWarnings("unchecked")
 		List<Aluno> alunos = query.getResultList();
@@ -220,7 +221,7 @@ public class AlunoTest extends BaseCrudTest<String, Aluno> {
 		deveSalvarEntidade();
 
 		Query query = getDao().createQuery(montaHqlParaObterEntidadeComIdENomePeloCpf());
-		query.setParameter("cpf", CPF_PADRAO);
+		query.setParameter("cpf", CPF);
 
 		@SuppressWarnings("unchecked")
 		List<Aluno> alunos = query.getResultList();
@@ -229,7 +230,7 @@ public class AlunoTest extends BaseCrudTest<String, Aluno> {
 
 		alunos.forEach(aluno -> {
 			assertNull("Verifica que o cpf deve estar nulo", aluno.getCpf());
-			aluno.setCpf(CPF_PADRAO);
+			aluno.setCpf(CPF);
 		});
 	}
 
@@ -237,8 +238,6 @@ public class AlunoTest extends BaseCrudTest<String, Aluno> {
 	@SuppressWarnings("unchecked")
 	public void deveConsultarCpf() {
 		deveSalvarEntidade();
-
-		String filtro = "%Joaquim%";
 
 		StringBuilder hql = new StringBuilder("SELECT ");
 		hql.append(Aluno.Atributos.CPF);
@@ -249,7 +248,7 @@ public class AlunoTest extends BaseCrudTest<String, Aluno> {
 		hql.append(" LIKE :nome ");
 
 		Query query = getDao().createQuery(hql.toString());
-		query.setParameter("nome", filtro);
+		query.setParameter("nome", concat("%", NOME_FILTRO, "%"));
 
 		List<String> listaCpf = query.getResultList();
 

@@ -8,6 +8,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
 
+import br.edu.faculdadedelta.repositorio.base.FabricaDeRepositorios;
+import br.edu.faculdadedelta.repositorio.base.Repositorio;
 import br.edu.faculdadedelta.tipo.base.TipoEdicaoCRUD;
 
 @MappedSuperclass
@@ -35,6 +37,12 @@ public abstract class BaseEntity<I extends Serializable> implements Serializable
 		return JPAUtil.INSTANCE.getEntityManager();
 	}
 
+	@SuppressWarnings("unchecked")
+	public <R extends Repositorio> R getRepositorio(Class<R> classeRepositorio) {
+		
+		return (R) FabricaDeRepositorios.getRepositorio(classeRepositorio);
+	}
+	
 	@SuppressWarnings("unchecked")
 	public <E extends BaseEntity<I>> E persiste() {
 

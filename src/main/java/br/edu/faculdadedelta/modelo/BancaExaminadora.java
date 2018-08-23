@@ -4,6 +4,7 @@ import static br.edu.faculdadedelta.util.DateUtil.toDate;
 import static br.edu.faculdadedelta.util.DateUtil.toLocalDate;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -20,10 +21,12 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.GenericGenerator;
 
 import br.edu.faculdadedelta.modelo.base.BaseEntity;
+import br.edu.faculdadedelta.repositorio.RepositorioAgendamento;
 import br.edu.faculdadedelta.tipo.base.TipoEdicaoCRUD;
 
 @Entity
@@ -31,7 +34,7 @@ import br.edu.faculdadedelta.tipo.base.TipoEdicaoCRUD;
 public class BancaExaminadora extends BaseEntity<String> {
 
 	private static final long serialVersionUID = 123447920782851623L;
-
+	
 	public static class Atributos {
 		private Atributos() {
 		}
@@ -40,6 +43,9 @@ public class BancaExaminadora extends BaseEntity<String> {
 		public static final String DATA = "data";
 		public static final String EXAMINADORES = "examinadores";
 	}
+	
+	@Transient
+	private RepositorioAgendamento repositorioAgendamento = getRepositorio(RepositorioAgendamento.class);
 
 	@Id
 	@GeneratedValue(generator = "UUIDGenerator")
@@ -55,6 +61,10 @@ public class BancaExaminadora extends BaseEntity<String> {
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "banca_examinador", joinColumns = @JoinColumn(name = "id_banca"), inverseJoinColumns = @JoinColumn(name = "id_examinador"))
 	private List<Examinador> examinadores;
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "banca_agendamento", joinColumns = @JoinColumn(name = "id_banca"), inverseJoinColumns = @JoinColumn(name = "id_agendamento"))
+	private List<AgendamentoDeExame> agendamentos;
 
 	public BancaExaminadora() {
 
@@ -82,6 +92,26 @@ public class BancaExaminadora extends BaseEntity<String> {
 		setData(data);
 	}
 
+	@Override
+	public String getId() {
+
+		return id;
+	}
+
+	public Date getData() {
+		return data;
+	}
+
+	public void setData(Date data) {
+		this.data = data;
+	}
+
+	public BancaExaminadora setData(LocalDate data) {
+
+		setData(toDate(data));
+		return this;
+	}
+
 	public List<Examinador> getExaminadores() {
 
 		if (examinadores == null)
@@ -104,7 +134,7 @@ public class BancaExaminadora extends BaseEntity<String> {
 			throw new IllegalArgumentException("Examinador já pertence a banca");
 
 		getExaminadores().add(examinador);
-		
+
 		return this;
 	}
 
@@ -117,27 +147,62 @@ public class BancaExaminadora extends BaseEntity<String> {
 			throw new IllegalArgumentException("Examinador não pertence a banca");
 
 		getExaminadores().remove(examinador);
-		
+
 		return this;
 	}
 
-	@Override
-	public String getId() {
+	public List<AgendamentoDeExame> getAgendamentos() {
 
-		return id;
+		if (agendamentos == null)
+			agendamentos = new ArrayList<>();
+
+		return agendamentos;
 	}
 
-	public Date getData() {
-		return data;
+	public void setAgendamentos(List<AgendamentoDeExame> agendamentos) {
+
+		this.agendamentos = agendamentos;
 	}
 
-	public void setData(Date data) {
-		this.data = data;
+	public AgendamentoDeExame agendaExame(LocalDateTime dataHora, ProcessoHabilitacao processo) {
+
+		if (isTransient())
+			throw new IllegalArgumentException("Banca examinadora deve estar persistida para efetuar agendamento");
+
+		if (processo == null)
+			throw new IllegalArgumentException("Processo habilitação não pode ser nulo");
+
+		AgendamentoDeExame agendamentoJaExistente = repositorioAgendamento.getAgendamentoPelaBancaEDataHora(this, toDate(dataHora));
+		
+		if(agendamentoJaExistente != null)
+			throw new IllegalArgumentException("Já existe agendamento para o horário informado");
+				
+		AgendamentoDeExame agendamento = new AgendamentoDeExame(dataHora).setBanca(this).setProcesso(processo)
+				.persiste();
+
+		getAgendamentos().add(agendamento);
+
+		return agendamento;
 	}
 
-	public void setData(LocalDate data) {
+	public AgendamentoDeExame cancelaAgendamentoDeExame(ProcessoHabilitacao processo) {
 
-		setData(toDate(data));
+		if (isTransient())
+			throw new IllegalArgumentException("Banca examinadora deve estar persistida para efetuar cancelamento de agendamento");
+		
+		if (processo == null)
+			throw new IllegalArgumentException("Processo habilitação não pode ser nulo");
+
+		AgendamentoDeExame agendamentoACancelar = repositorioAgendamento.getAgendamentoPelaBancaEProcesso(this, processo);
+		
+		if(agendamentoACancelar == null)
+			throw new IllegalArgumentException("Não há agendamento nesta banca para o processo informado");
+		
+		getAgendamentos().remove(agendamentoACancelar);
+		
+		agendamentoACancelar.exclui();
+		
+		return agendamentoACancelar;
 	}
 
 	@Override

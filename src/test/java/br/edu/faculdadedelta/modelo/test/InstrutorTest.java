@@ -22,28 +22,30 @@ import br.edu.faculdadedelta.test.base.BaseCrudTest;
 import br.edu.faculdadedelta.test.base.FuncaoAlteraEntidade;
 import br.edu.faculdadedelta.test.base.FuncaoCriterioParaBuscaDeEntidade;
 import br.edu.faculdadedelta.test.base.FuncaoValidaAlteracaoEntidade;
-import br.edu.faculdadedelta.tipo.StatusInstrutor;
+import br.edu.faculdadedelta.test.util.FabricaTeste;
 
 public class InstrutorTest extends BaseCrudTest<String, Instrutor> {
 
-	private static final String CPF_PADRAO = "222.222.222-22";
+	private static final String CPF = "222.222.222-22";
+	private static final String NOME = "José De Almeida Prado";
 	private static final String NOME_ALTERACAO = "José de Arimatéia";
+	private static final String NOME_FILTRO = "José";
 
 	@Override
 	public Instrutor getEntidadeParaTeste() {
 
-		return new Instrutor("José De Almeida Prado").setCpf(CPF_PADRAO).setStatus(StatusInstrutor.ATIVO);
+		return FabricaTeste.criaInstrutor(NOME, CPF);
 	}
 
 	@Override
 	public FuncaoAlteraEntidade<String, Instrutor> alteracaoEntidadeDeTeste() {
-		
+
 		return (instrutor) -> instrutor.setNome(NOME_ALTERACAO);
 	}
 
 	@Override
 	public FuncaoValidaAlteracaoEntidade<String, Instrutor> validaAlteracaoEntidadeDeTeste() {
-		
+
 		return (instrutor) -> assertTrue(
 				concat("valor esperado <", NOME_ALTERACAO, "> : retornado <", instrutor.getNome(), ">"),
 				instrutor.getNome().equals(NOME_ALTERACAO));
@@ -51,8 +53,8 @@ public class InstrutorTest extends BaseCrudTest<String, Instrutor> {
 
 	@Override
 	public FuncaoCriterioParaBuscaDeEntidade<String, Instrutor> getCriterioBuscaEntidadesTeste() {
-		
-		return () -> Restrictions.eq(Instrutor.Atributos.CPF, CPF_PADRAO);
+
+		return () -> Restrictions.eq(Instrutor.Atributos.CPF, CPF);
 	}
 
 	@Test(expected = LazyInitializationException.class)
@@ -81,14 +83,14 @@ public class InstrutorTest extends BaseCrudTest<String, Instrutor> {
 		assertNotNull("Verifica se encontrou um registro", instrutor);
 		assertNotNull("Lista lazy não deve ser nula", instrutor.getProcessos());
 	}
-	
+
 	@Test
 	public void deveVerificarExistenciaInstrutor() {
 
 		deveSalvarEntidade();
 
 		Criteria critera = createCriteria(Instrutor.class);
-		critera.add(Restrictions.eq(Instrutor.Atributos.CPF, CPF_PADRAO));
+		critera.add(Restrictions.eq(Instrutor.Atributos.CPF, CPF));
 
 		assertTrue("Verifica se há registros na lista", critera.list().size() > 0L);
 	}
@@ -114,7 +116,7 @@ public class InstrutorTest extends BaseCrudTest<String, Instrutor> {
 		deveSalvarEntidade();
 
 		Query query = getDao().createQuery(montaHqlParaObterIdENomePeloCpf());
-		query.setParameter("cpf", CPF_PADRAO);
+		query.setParameter("cpf", CPF);
 
 		List<Object[]> resultado = query.getResultList();
 
@@ -133,11 +135,11 @@ public class InstrutorTest extends BaseCrudTest<String, Instrutor> {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void deveConsultarIdNome() {
-		
+
 		deveSalvarEntidade();
 
 		Query query = getDao().createQuery(montaHqlParaObterIdENomePeloCpf());
-		query.setParameter("cpf", CPF_PADRAO);
+		query.setParameter("cpf", CPF);
 
 		List<Object[]> resultado = query.getResultList();
 
@@ -177,7 +179,7 @@ public class InstrutorTest extends BaseCrudTest<String, Instrutor> {
 		deveSalvarEntidade();
 
 		Query query = getDao().createQuery(montaHqlParaObterEntidadeComIdENomePeloCpf());
-		query.setParameter("cpf", CPF_PADRAO);
+		query.setParameter("cpf", CPF);
 
 		@SuppressWarnings("unchecked")
 		List<Instrutor> instrutores = query.getResultList();
@@ -192,7 +194,7 @@ public class InstrutorTest extends BaseCrudTest<String, Instrutor> {
 		deveSalvarEntidade();
 
 		Query query = getDao().createQuery(montaHqlParaObterEntidadeComIdENomePeloCpf());
-		query.setParameter("cpf", CPF_PADRAO);
+		query.setParameter("cpf", CPF);
 
 		@SuppressWarnings("unchecked")
 		List<Instrutor> instrutores = query.getResultList();
@@ -201,7 +203,7 @@ public class InstrutorTest extends BaseCrudTest<String, Instrutor> {
 
 		instrutores.forEach(instrutor -> {
 			assertNull("Verifica que o cpf deve estar nulo", instrutor.getCpf());
-			instrutor.setCpf(CPF_PADRAO);
+			instrutor.setCpf(CPF);
 		});
 	}
 
@@ -209,8 +211,6 @@ public class InstrutorTest extends BaseCrudTest<String, Instrutor> {
 	@SuppressWarnings("unchecked")
 	public void deveConsultarCpf() {
 		deveSalvarEntidade();
-
-		String filtro = "%José%";
 
 		StringBuilder hql = new StringBuilder("SELECT ");
 		hql.append(Instrutor.Atributos.CPF);
@@ -221,7 +221,7 @@ public class InstrutorTest extends BaseCrudTest<String, Instrutor> {
 		hql.append(" LIKE :nome ");
 
 		Query query = getDao().createQuery(hql.toString());
-		query.setParameter("nome", filtro);
+		query.setParameter("nome", concat("%", NOME_FILTRO, "%"));
 
 		List<String> listaCpf = query.getResultList();
 

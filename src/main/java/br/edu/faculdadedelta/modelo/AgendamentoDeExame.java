@@ -128,6 +128,8 @@ public class AgendamentoDeExame extends BaseEntity<String> {
 		if (toLocalDate(dataHora).isBefore(LocalDate.now()))
 			throw new IllegalStateException("Data do agendamento não pode ser menor que hoje");
 	}
+	
+
 
 	@Override
 	public boolean equals(Object obj) {

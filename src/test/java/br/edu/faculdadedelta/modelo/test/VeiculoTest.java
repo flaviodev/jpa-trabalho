@@ -11,19 +11,19 @@ import br.edu.faculdadedelta.test.base.BaseCrudTest;
 import br.edu.faculdadedelta.test.base.FuncaoAlteraEntidade;
 import br.edu.faculdadedelta.test.base.FuncaoCriterioParaBuscaDeEntidade;
 import br.edu.faculdadedelta.test.base.FuncaoValidaAlteracaoEntidade;
+import br.edu.faculdadedelta.test.util.FabricaTeste;
 import br.edu.faculdadedelta.tipo.TipoVeiculo;
 
 public class VeiculoTest extends BaseCrudTest<String, Veiculo> {
 
-	private static final String MARCA_PADRAO = "Chevrolet";
-	private static final TipoVeiculo TIPO_PADRAO = TipoVeiculo.CARRO;
-	private static final String COR_ALTERACAO = "José de Arimatéia";
+	private static final String COR = "Preta";
+	private static final String COR_ALTERACAO = "Branca";
+	private static final TipoVeiculo TIPO = TipoVeiculo.CARRO;
 
 	@Override
 	public Veiculo getEntidadeParaTeste() {
 
-		return new Veiculo(MARCA_PADRAO).setModelo("Spin LTZ").setCor("Preta").setPlaca("AAA-1111")
-				.setTipo(TIPO_PADRAO).setAno(2015);
+		return FabricaTeste.criaVeiculo(COR, TIPO);
 	}
 
 	public FuncaoAlteraEntidade<String, Veiculo> alteracaoEntidadeDeTeste() {
@@ -39,7 +39,7 @@ public class VeiculoTest extends BaseCrudTest<String, Veiculo> {
 
 	@Override
 	public FuncaoCriterioParaBuscaDeEntidade<String, Veiculo> getCriterioBuscaEntidadesTeste() {
-		return () -> Restrictions.eq(Veiculo.Atributos.TIPO, TIPO_PADRAO);
+		return () -> Restrictions.eq(Veiculo.Atributos.TIPO, TIPO);
 	}
 
 	@AfterClass
