@@ -1,11 +1,15 @@
 package br.edu.faculdadedelta.modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 
 import br.edu.faculdadedelta.tipo.StatusInstrutor;
 import br.edu.faculdadedelta.tipo.base.TipoEdicaoCRUD;
@@ -29,6 +33,9 @@ public class Instrutor extends Pessoa {
 	@Basic(fetch = FetchType.LAZY, optional = false)
 	@Column(length = 7)
 	private StatusInstrutor status;
+	
+	@OneToMany(mappedBy = "instrutor", fetch = FetchType.LAZY)
+	private List<ProcessoHabilitacao> processos;
 
 	public Instrutor() {
 
@@ -67,6 +74,19 @@ public class Instrutor extends Pessoa {
 		return (Instrutor) super.setCpf(cpf);
 	}
 
+	public List<ProcessoHabilitacao> getProcessos() {
+		
+		if(processos == null)
+			processos = new ArrayList<>();
+		
+		return processos;
+	}
+
+	public void setProcessos(List<ProcessoHabilitacao> processos) {
+		
+		this.processos = processos;
+	}
+	
 	@Override
 	public void validaDados(TipoEdicaoCRUD tipo) {
 		super.validaDados(tipo);

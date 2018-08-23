@@ -9,8 +9,11 @@
 
 		<class>br.edu.faculdadedelta.modelo.Aluno</class>
 		<class>br.edu.faculdadedelta.modelo.Instrutor</class>
+		<class>br.edu.faculdadedelta.modelo.Examinador</class>
 		<class>br.edu.faculdadedelta.modelo.Veiculo</class>
 		<class>br.edu.faculdadedelta.modelo.ProcessoHabilitacao</class>
+		<class>br.edu.faculdadedelta.modelo.BancaExaminadora</class>
+		<class>br.edu.faculdadedelta.modelo.AgendamentoDeExame</class>
 
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:jpadelta" />

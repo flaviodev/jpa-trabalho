@@ -5,7 +5,9 @@ import static br.edu.faculdadedelta.util.DateUtil.toLocalDate;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -13,6 +15,7 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -44,6 +47,9 @@ public class Aluno extends Pessoa {
 	@Basic(fetch = FetchType.LAZY, optional = false)
 	@Column(length = 9)
 	private Sexo sexo;
+	
+	@OneToMany(mappedBy = "aluno", fetch = FetchType.LAZY)
+	private List<ProcessoHabilitacao> processos;
 
 	public Aluno() {
 
@@ -84,6 +90,19 @@ public class Aluno extends Pessoa {
 
 		this.sexo = sexo;
 		return this;
+	}
+	
+	public List<ProcessoHabilitacao> getProcessos() {
+		
+		if(processos == null)
+			processos = new ArrayList<>();
+		
+		return processos;
+	}
+
+	public void setProcessos(List<ProcessoHabilitacao> processos) {
+		
+		this.processos = processos;
 	}
 
 	@Override

@@ -2411,3 +2411,1234 @@ line 1:1: unexpected token: [
 	Unsaved transient entity: ([br.edu.faculdadedelta.modelo.Instrutor#<null>])
 	Dependent entities: ([[br.edu.faculdadedelta.modelo.ProcessoHabilitacao#2c577375cecb4a39b0b8b1ba6c83030e]])
 	Non-nullable association(s): ([br.edu.faculdadedelta.modelo.ProcessoHabilitacao.instrutor])
+2018-08-23 00:52:52 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 00:52:52 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 00:52:52 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 00:52:52 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 00:52:52 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 00:52:53 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 00:52:53 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 00:52:53 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 00:52:53 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 00:52:53 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 00:52:53 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 00:52:53 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 00:52:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 00:52:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 00:52:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 00:52:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 00:52:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 00:52:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 00:52:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 00:52:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 00:52:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 00:52:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 00:52:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 00:52:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 00:52:54 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 00:52:55 WARN  UnresolvedEntityInsertActions:145 - HHH000437: Attempting to save one or more entities that have a non-nullable association with an unsaved transient entity. The unsaved transient entity must be saved in an operation prior to saving these dependent entities.
+	Unsaved transient entity: ([br.edu.faculdadedelta.modelo.Instrutor#<null>])
+	Dependent entities: ([[br.edu.faculdadedelta.modelo.ProcessoHabilitacao#59ffc737922e4ecfa2f2805cc535d478]])
+	Non-nullable association(s): ([br.edu.faculdadedelta.modelo.ProcessoHabilitacao.instrutor])
+2018-08-23 00:59:48 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 00:59:48 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 00:59:48 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 00:59:48 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 00:59:48 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 00:59:49 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 00:59:49 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 00:59:50 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 00:59:50 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 00:59:50 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 00:59:50 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 00:59:50 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 00:59:50 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 00:59:50 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 00:59:50 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 00:59:50 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 00:59:50 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 00:59:50 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 00:59:50 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 00:59:50 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 00:59:50 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 00:59:50 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 00:59:50 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 00:59:50 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 00:59:51 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 00:59:51 WARN  UnresolvedEntityInsertActions:145 - HHH000437: Attempting to save one or more entities that have a non-nullable association with an unsaved transient entity. The unsaved transient entity must be saved in an operation prior to saving these dependent entities.
+	Unsaved transient entity: ([br.edu.faculdadedelta.modelo.Instrutor#<null>])
+	Dependent entities: ([[br.edu.faculdadedelta.modelo.ProcessoHabilitacao#57899b73ca014259b8b41761a7bb57bc]])
+	Non-nullable association(s): ([br.edu.faculdadedelta.modelo.ProcessoHabilitacao.instrutor])
+2018-08-23 01:04:08 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 01:04:08 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 01:04:08 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 01:04:08 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 01:04:08 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 01:04:08 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 01:04:08 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 01:04:09 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 01:04:09 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 01:04:09 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 01:04:09 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 01:04:09 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 01:04:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:04:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:04:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:04:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:04:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:04:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:04:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:04:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:04:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:04:09 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:04:10 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:04:10 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:04:10 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 01:04:11 WARN  UnresolvedEntityInsertActions:145 - HHH000437: Attempting to save one or more entities that have a non-nullable association with an unsaved transient entity. The unsaved transient entity must be saved in an operation prior to saving these dependent entities.
+	Unsaved transient entity: ([br.edu.faculdadedelta.modelo.Instrutor#<null>])
+	Dependent entities: ([[br.edu.faculdadedelta.modelo.ProcessoHabilitacao#ecb7ac9ee505438cb2cdcf183f0f6ae3]])
+	Non-nullable association(s): ([br.edu.faculdadedelta.modelo.ProcessoHabilitacao.instrutor])
+2018-08-23 01:08:46 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 01:08:46 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 01:08:46 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 01:08:46 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 01:08:46 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 01:08:46 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 01:08:46 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 01:08:47 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 01:08:47 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 01:08:47 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 01:08:47 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 01:08:47 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 01:08:47 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:08:47 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:08:47 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:08:47 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:08:47 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:08:47 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:08:47 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:08:47 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:08:47 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:08:47 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:08:47 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:08:47 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:08:48 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 01:08:49 WARN  UnresolvedEntityInsertActions:145 - HHH000437: Attempting to save one or more entities that have a non-nullable association with an unsaved transient entity. The unsaved transient entity must be saved in an operation prior to saving these dependent entities.
+	Unsaved transient entity: ([br.edu.faculdadedelta.modelo.Instrutor#<null>])
+	Dependent entities: ([[br.edu.faculdadedelta.modelo.ProcessoHabilitacao#9b088a71be2644468c5df10b9a8ccebb]])
+	Non-nullable association(s): ([br.edu.faculdadedelta.modelo.ProcessoHabilitacao.instrutor])
+2018-08-23 01:11:28 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 01:11:28 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 01:11:28 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 01:11:28 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 01:11:28 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 01:11:28 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 01:11:28 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 01:11:29 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 01:11:29 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 01:11:29 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 01:11:29 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 01:11:29 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 01:11:30 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:11:30 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:11:30 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:11:30 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:11:30 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:11:30 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:11:30 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:11:30 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:11:30 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:11:30 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:11:30 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:11:30 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:11:30 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 01:12:45 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 01:12:45 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 01:12:45 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 01:12:45 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 01:12:46 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 01:12:46 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 01:12:46 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 01:12:47 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 01:12:47 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 01:12:47 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 01:12:47 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 01:12:47 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 01:12:47 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:12:47 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:12:47 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:12:47 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:12:47 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:12:47 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:12:47 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:12:47 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:12:47 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:12:47 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:12:47 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:12:47 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:12:48 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 01:14:46 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 01:14:46 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 01:14:46 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 01:14:46 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 01:14:46 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 01:14:46 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 01:14:46 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 01:14:47 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 01:14:47 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 01:14:47 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 01:14:47 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 01:14:47 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 01:14:48 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:14:48 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:14:48 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:14:48 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:14:48 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:14:48 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:14:48 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:14:48 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:14:48 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:14:48 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:14:48 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:14:48 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:14:48 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 01:14:49 WARN  UnresolvedEntityInsertActions:145 - HHH000437: Attempting to save one or more entities that have a non-nullable association with an unsaved transient entity. The unsaved transient entity must be saved in an operation prior to saving these dependent entities.
+	Unsaved transient entity: ([br.edu.faculdadedelta.modelo.Instrutor#<null>])
+	Dependent entities: ([[br.edu.faculdadedelta.modelo.ProcessoHabilitacao#04f7816bf36e48f3a3c2599170685143]])
+	Non-nullable association(s): ([br.edu.faculdadedelta.modelo.ProcessoHabilitacao.instrutor])
+2018-08-23 01:29:52 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 01:29:52 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 01:29:52 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 01:29:52 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 01:29:52 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 01:29:53 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 01:29:53 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 01:29:54 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 01:29:54 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 01:29:54 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 01:29:54 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 01:29:54 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 01:29:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:29:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:29:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:29:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:29:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:29:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:29:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:29:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:29:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:29:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:29:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:29:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:29:54 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 01:29:55 WARN  UnresolvedEntityInsertActions:145 - HHH000437: Attempting to save one or more entities that have a non-nullable association with an unsaved transient entity. The unsaved transient entity must be saved in an operation prior to saving these dependent entities.
+	Unsaved transient entity: ([br.edu.faculdadedelta.modelo.Instrutor#<null>])
+	Dependent entities: ([[br.edu.faculdadedelta.modelo.ProcessoHabilitacao#0957e45897e34628905056438fff8321]])
+	Non-nullable association(s): ([br.edu.faculdadedelta.modelo.ProcessoHabilitacao.instrutor])
+2018-08-23 01:36:44 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 01:36:44 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 01:36:44 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 01:36:44 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 01:36:45 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 01:36:45 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 01:36:45 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 01:36:46 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 01:36:46 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 01:36:46 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 01:36:46 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 01:36:46 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 01:36:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:36:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:36:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:36:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:36:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:36:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:36:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:36:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:36:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:36:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:36:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:36:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:36:47 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 01:36:47 WARN  UnresolvedEntityInsertActions:145 - HHH000437: Attempting to save one or more entities that have a non-nullable association with an unsaved transient entity. The unsaved transient entity must be saved in an operation prior to saving these dependent entities.
+	Unsaved transient entity: ([br.edu.faculdadedelta.modelo.Instrutor#<null>])
+	Dependent entities: ([[br.edu.faculdadedelta.modelo.ProcessoHabilitacao#e363c67888ff4bbda9c679a5ed5d6103]])
+	Non-nullable association(s): ([br.edu.faculdadedelta.modelo.ProcessoHabilitacao.instrutor])
+2018-08-23 01:46:34 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 01:46:34 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 01:46:34 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 01:46:34 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 01:46:34 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 01:46:34 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 01:46:34 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 01:46:35 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 01:46:35 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 01:46:35 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 01:46:35 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 01:46:35 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 01:46:36 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:46:36 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:46:36 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:46:36 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:46:36 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:46:36 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:46:36 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:46:36 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:46:36 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:46:36 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:46:36 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:46:36 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:46:36 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 01:47:34 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 01:47:34 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 01:47:34 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 01:47:34 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 01:47:34 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 01:47:34 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 01:47:34 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 01:47:35 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 01:47:35 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 01:47:35 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 01:47:35 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 01:47:35 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 01:47:35 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:47:35 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 01:47:35 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:47:35 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 01:47:35 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:47:35 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 01:47:35 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:47:35 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:47:35 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 01:47:35 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:47:35 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 01:47:35 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:47:35 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 01:47:35 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:47:35 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:47:35 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 01:47:36 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:47:36 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 01:47:36 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:47:36 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 01:47:36 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:47:36 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 01:48:01 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 01:48:01 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 01:48:01 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 01:48:01 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 01:48:01 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 01:48:02 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 01:48:02 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 01:48:02 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 01:48:02 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 01:48:02 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 01:48:02 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 01:48:02 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 01:48:03 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:48:03 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 01:48:03 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:48:03 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 01:48:03 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:48:03 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 01:48:03 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:48:03 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:48:03 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 01:48:03 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:48:03 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 01:48:03 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:48:03 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 01:48:03 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:48:03 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:48:03 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 01:48:03 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:48:03 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 01:48:03 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:48:03 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 01:48:03 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:48:03 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 01:50:53 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 01:50:53 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 01:50:53 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 01:50:53 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 01:50:53 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 01:50:53 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 01:50:53 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 01:50:54 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 01:50:54 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 01:50:54 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 01:50:54 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 01:50:54 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 01:50:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:50:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 01:50:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:50:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 01:50:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:50:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 01:50:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:50:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:50:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 01:50:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:50:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 01:50:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:50:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 01:50:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:50:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 01:50:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 01:50:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 01:50:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 01:50:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 01:50:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 01:50:55 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 01:50:55 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 01:50:56 WARN  UnresolvedEntityInsertActions:145 - HHH000437: Attempting to save one or more entities that have a non-nullable association with an unsaved transient entity. The unsaved transient entity must be saved in an operation prior to saving these dependent entities.
+	Unsaved transient entity: ([br.edu.faculdadedelta.modelo.Instrutor#<null>])
+	Dependent entities: ([[br.edu.faculdadedelta.modelo.ProcessoHabilitacao#f12b7046ec754b70b279b7b95d2f562c]])
+	Non-nullable association(s): ([br.edu.faculdadedelta.modelo.ProcessoHabilitacao.instrutor])
+2018-08-23 02:05:24 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 02:05:24 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 02:05:24 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 02:05:24 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 02:05:24 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 02:05:25 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 02:05:25 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 02:05:26 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 02:05:26 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 02:05:26 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 02:05:26 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 02:05:26 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 02:05:26 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:05:26 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:05:26 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:05:26 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:05:26 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:05:26 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:05:26 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:05:26 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:05:26 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:05:26 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:05:26 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:05:26 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:05:26 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:05:26 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:05:26 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:05:26 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:05:26 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:05:26 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:05:26 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:05:26 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:05:26 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:05:26 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 02:05:28 WARN  UnresolvedEntityInsertActions:145 - HHH000437: Attempting to save one or more entities that have a non-nullable association with an unsaved transient entity. The unsaved transient entity must be saved in an operation prior to saving these dependent entities.
+	Unsaved transient entity: ([br.edu.faculdadedelta.modelo.Instrutor#<null>])
+	Dependent entities: ([[br.edu.faculdadedelta.modelo.ProcessoHabilitacao#c5b2f41f7de1478c9623143607331fca]])
+	Non-nullable association(s): ([br.edu.faculdadedelta.modelo.ProcessoHabilitacao.instrutor])
+2018-08-23 02:06:26 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 02:06:26 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 02:06:26 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 02:06:26 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 02:06:26 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 02:06:26 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 02:06:26 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 02:06:27 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 02:06:27 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 02:06:27 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 02:06:27 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 02:06:27 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 02:06:28 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:06:28 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:06:28 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:06:28 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:06:28 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:06:28 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:06:28 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:06:28 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:06:28 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:06:28 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:06:28 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:06:28 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:06:28 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:06:28 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:06:28 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:06:28 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:06:28 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:06:28 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:06:28 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:06:28 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:06:28 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:06:28 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 02:06:29 WARN  UnresolvedEntityInsertActions:145 - HHH000437: Attempting to save one or more entities that have a non-nullable association with an unsaved transient entity. The unsaved transient entity must be saved in an operation prior to saving these dependent entities.
+	Unsaved transient entity: ([br.edu.faculdadedelta.modelo.Instrutor#<null>])
+	Dependent entities: ([[br.edu.faculdadedelta.modelo.ProcessoHabilitacao#520d320b4928458ebcadee7461fce2a6]])
+	Non-nullable association(s): ([br.edu.faculdadedelta.modelo.ProcessoHabilitacao.instrutor])
+2018-08-23 02:07:00 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 02:07:00 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 02:07:00 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 02:07:00 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 02:07:00 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 02:07:01 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 02:07:01 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 02:07:01 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 02:07:01 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 02:07:01 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 02:07:01 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 02:07:01 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 02:07:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:07:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:07:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:07:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:07:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:07:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:07:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:07:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:07:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:07:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:07:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:07:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:07:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:07:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:07:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:07:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:07:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:07:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:07:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:07:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:07:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:07:02 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 02:07:03 WARN  UnresolvedEntityInsertActions:145 - HHH000437: Attempting to save one or more entities that have a non-nullable association with an unsaved transient entity. The unsaved transient entity must be saved in an operation prior to saving these dependent entities.
+	Unsaved transient entity: ([br.edu.faculdadedelta.modelo.Instrutor#<null>])
+	Dependent entities: ([[br.edu.faculdadedelta.modelo.ProcessoHabilitacao#b630b01792ed4f208545b0c03b586475]])
+	Non-nullable association(s): ([br.edu.faculdadedelta.modelo.ProcessoHabilitacao.instrutor])
+2018-08-23 02:07:43 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 02:07:44 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 02:07:44 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 02:07:44 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 02:07:44 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 02:07:44 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 02:07:44 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 02:07:45 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 02:07:45 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 02:07:45 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 02:07:45 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 02:07:45 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 02:07:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:07:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:07:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:07:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:07:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:07:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:07:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:07:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:07:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:07:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:07:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:07:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:07:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:07:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:07:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:07:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:07:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:07:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:07:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:07:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:07:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:07:46 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 02:07:46 WARN  UnresolvedEntityInsertActions:145 - HHH000437: Attempting to save one or more entities that have a non-nullable association with an unsaved transient entity. The unsaved transient entity must be saved in an operation prior to saving these dependent entities.
+	Unsaved transient entity: ([br.edu.faculdadedelta.modelo.Instrutor#<null>])
+	Dependent entities: ([[br.edu.faculdadedelta.modelo.ProcessoHabilitacao#48d140480ad045529e2b39e1203f182d]])
+	Non-nullable association(s): ([br.edu.faculdadedelta.modelo.ProcessoHabilitacao.instrutor])
+2018-08-23 02:08:15 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 02:08:15 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 02:08:15 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 02:08:15 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 02:08:15 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 02:08:15 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 02:08:16 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 02:08:16 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 02:08:16 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 02:08:16 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 02:08:16 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 02:08:16 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 02:08:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:08:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:08:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:08:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:08:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:08:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:08:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:08:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:08:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:08:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:08:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:08:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:08:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:08:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:08:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:08:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:08:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:08:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:08:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:08:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:08:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:08:17 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 02:08:18 WARN  UnresolvedEntityInsertActions:145 - HHH000437: Attempting to save one or more entities that have a non-nullable association with an unsaved transient entity. The unsaved transient entity must be saved in an operation prior to saving these dependent entities.
+	Unsaved transient entity: ([br.edu.faculdadedelta.modelo.Instrutor#<null>])
+	Dependent entities: ([[br.edu.faculdadedelta.modelo.ProcessoHabilitacao#9f219b34ede64779bc0e1d539307b56d]])
+	Non-nullable association(s): ([br.edu.faculdadedelta.modelo.ProcessoHabilitacao.instrutor])
+2018-08-23 02:10:20 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 02:10:20 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 02:10:20 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 02:10:20 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 02:10:21 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 02:10:21 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 02:10:21 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 02:10:22 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 02:10:22 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 02:10:22 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 02:10:22 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 02:10:22 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 02:10:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:10:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:10:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:10:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:10:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:10:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:10:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:10:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:10:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:10:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:10:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:10:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:10:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:10:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:10:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:10:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:10:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:10:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:10:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:10:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:10:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:10:23 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 02:10:24 WARN  UnresolvedEntityInsertActions:145 - HHH000437: Attempting to save one or more entities that have a non-nullable association with an unsaved transient entity. The unsaved transient entity must be saved in an operation prior to saving these dependent entities.
+	Unsaved transient entity: ([br.edu.faculdadedelta.modelo.Instrutor#<null>])
+	Dependent entities: ([[br.edu.faculdadedelta.modelo.ProcessoHabilitacao#81fa11ad67a741e89bfe802404a9f593]])
+	Non-nullable association(s): ([br.edu.faculdadedelta.modelo.ProcessoHabilitacao.instrutor])
+2018-08-23 02:10:44 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 02:10:44 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 02:10:44 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 02:10:44 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 02:10:44 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 02:10:45 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 02:10:45 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 02:10:45 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 02:10:45 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 02:10:45 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 02:10:45 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 02:10:45 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 02:10:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:10:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:10:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:10:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:10:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:10:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:10:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:10:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:10:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:10:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:10:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:10:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:10:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:10:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:10:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:10:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:10:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:10:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:10:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:10:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:10:46 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:10:46 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 02:10:47 WARN  UnresolvedEntityInsertActions:145 - HHH000437: Attempting to save one or more entities that have a non-nullable association with an unsaved transient entity. The unsaved transient entity must be saved in an operation prior to saving these dependent entities.
+	Unsaved transient entity: ([br.edu.faculdadedelta.modelo.Instrutor#<null>])
+	Dependent entities: ([[br.edu.faculdadedelta.modelo.ProcessoHabilitacao#89a9219ceccd4974aff79e5759f45a89]])
+	Non-nullable association(s): ([br.edu.faculdadedelta.modelo.ProcessoHabilitacao.instrutor])
+2018-08-23 02:11:52 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 02:11:52 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 02:11:52 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 02:11:52 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 02:11:52 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 02:11:52 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 02:11:52 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 02:11:53 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 02:11:53 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 02:11:53 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 02:11:53 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 02:11:53 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 02:11:53 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:11:53 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:11:53 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:11:53 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:11:53 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:11:53 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:11:53 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:11:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:11:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:11:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:11:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:11:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:11:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:11:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:11:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:11:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:11:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:11:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:11:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:11:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:11:54 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:11:54 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 02:11:55 WARN  UnresolvedEntityInsertActions:145 - HHH000437: Attempting to save one or more entities that have a non-nullable association with an unsaved transient entity. The unsaved transient entity must be saved in an operation prior to saving these dependent entities.
+	Unsaved transient entity: ([br.edu.faculdadedelta.modelo.Instrutor#<null>])
+	Dependent entities: ([[br.edu.faculdadedelta.modelo.ProcessoHabilitacao#0a2f31843de9492581b2fb6071aea799]])
+	Non-nullable association(s): ([br.edu.faculdadedelta.modelo.ProcessoHabilitacao.instrutor])
+2018-08-23 02:50:00 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 02:50:00 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 02:50:00 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 02:50:00 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 02:50:00 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 02:50:01 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 02:50:01 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 02:50:02 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 02:50:02 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 02:50:02 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 02:50:02 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 02:50:02 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 02:50:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:50:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:50:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:50:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:50:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:50:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:50:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:50:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:50:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:50:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:50:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:50:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:50:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:50:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:50:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:50:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:50:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:50:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:50:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:50:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:50:02 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:50:03 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 02:52:29 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 02:52:29 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 02:52:29 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 02:52:29 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 02:52:29 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 02:52:30 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 02:52:30 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 02:52:30 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 02:52:30 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 02:52:30 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 02:52:30 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 02:52:30 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 02:52:31 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:52:31 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:52:31 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:52:31 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:52:31 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:52:31 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:52:31 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:52:31 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:52:31 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:52:31 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:52:31 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:52:31 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:52:31 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:52:31 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:52:31 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:52:31 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:52:31 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:52:31 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:52:31 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:52:31 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:52:31 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:52:31 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 02:53:20 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 02:53:20 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 02:53:20 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 02:53:20 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 02:53:20 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 02:53:20 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 02:53:20 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 02:53:21 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 02:53:21 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 02:53:21 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 02:53:21 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 02:53:21 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 02:53:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:53:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:53:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:53:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:53:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:53:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:53:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:53:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:53:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:53:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:53:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:53:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:53:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:53:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:53:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:53:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:53:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:53:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:53:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:53:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:53:22 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:53:22 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 02:54:47 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 02:54:47 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 02:54:47 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 02:54:47 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 02:54:48 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 02:54:48 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 02:54:48 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 02:54:49 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 02:54:49 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 02:54:49 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 02:54:49 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 02:54:49 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 02:54:49 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:54:49 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:54:49 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:54:49 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:54:49 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:54:49 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:54:49 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:54:49 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:54:49 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:54:49 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:54:49 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:54:49 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:54:49 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:54:49 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:54:49 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:54:49 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:54:49 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:54:49 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:54:49 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:54:49 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:54:49 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:54:50 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 02:56:21 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 02:56:21 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 02:56:21 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 02:56:21 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 02:56:21 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 02:56:21 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 02:56:21 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 02:56:22 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 02:56:22 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 02:56:22 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 02:56:22 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 02:56:22 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 02:56:23 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:56:23 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:56:23 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:56:23 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:56:23 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:56:23 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_agendamento
+2018-08-23 02:56:23 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:56:23 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:56:23 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:56:23 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:56:23 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:56:23 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:56:23 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:56:23 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_agendamento
+2018-08-23 02:56:23 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:56:23 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:56:23 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:56:23 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:56:23 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:56:23 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:56:23 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:56:23 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_agendamento
+2018-08-23 02:56:23 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:56:23 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:56:23 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 02:56:24 WARN  SqlExceptionHelper:129 - SQL Error: 23503, SQLState: 23503
+2018-08-23 02:56:24 ERROR SqlExceptionHelper:131 - Referential integrity constraint violation: "FKDYTPGTIME8I0MQ5AUK5LYO3JG: PUBLIC.BANCA_EXAMINADOR FOREIGN KEY(ID_EXAMINADOR) REFERENCES PUBLIC.EXAMINADOR(ID_PESSOA) ('ed08c5c6b6224dc7af4a2b0e2b9b0e57')"; SQL statement:
+delete from Examinador [23503-193]
+2018-08-23 02:59:11 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 02:59:11 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 02:59:11 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 02:59:11 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 02:59:11 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 02:59:11 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 02:59:12 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 02:59:12 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 02:59:12 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 02:59:12 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 02:59:12 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 02:59:12 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 02:59:13 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:59:13 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:59:13 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:59:13 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:59:13 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:59:13 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_agendamento
+2018-08-23 02:59:13 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:59:13 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:59:13 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:59:13 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:59:13 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:59:13 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:59:13 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:59:13 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_agendamento
+2018-08-23 02:59:13 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:59:13 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:59:13 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 02:59:13 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 02:59:13 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 02:59:13 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 02:59:13 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 02:59:13 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_agendamento
+2018-08-23 02:59:13 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 02:59:13 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 02:59:13 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 02:59:14 WARN  SqlExceptionHelper:129 - SQL Error: 23503, SQLState: 23503
+2018-08-23 02:59:14 ERROR SqlExceptionHelper:131 - Referential integrity constraint violation: "FKDYTPGTIME8I0MQ5AUK5LYO3JG: PUBLIC.BANCA_EXAMINADOR FOREIGN KEY(ID_EXAMINADOR) REFERENCES PUBLIC.EXAMINADOR(ID_PESSOA) ('616ed03c7e4e499bb9ec237191acb2eb')"; SQL statement:
+delete from Examinador [23503-193]
+2018-08-23 02:59:58 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 02:59:58 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 02:59:58 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 02:59:58 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 02:59:58 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 02:59:58 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 02:59:58 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 02:59:59 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 02:59:59 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 02:59:59 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 02:59:59 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 02:59:59 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 02:59:59 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 03:00:00 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 03:00:00 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 03:00:00 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 03:00:00 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 03:00:00 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_agendamento
+2018-08-23 03:00:00 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 03:00:00 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 03:00:00 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 03:00:00 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 03:00:00 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 03:00:00 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 03:00:00 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 03:00:00 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_agendamento
+2018-08-23 03:00:00 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 03:00:00 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 03:00:00 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 03:00:00 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 03:00:00 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 03:00:00 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 03:00:00 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 03:00:00 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_agendamento
+2018-08-23 03:00:00 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 03:00:00 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 03:00:00 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 03:00:15 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 03:00:16 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 03:00:16 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 03:00:16 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 03:00:16 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 03:00:16 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 03:00:16 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 03:00:17 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 03:00:17 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 03:00:17 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 03:00:17 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 03:00:17 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 03:00:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 03:00:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 03:00:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 03:00:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 03:00:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 03:00:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_agendamento
+2018-08-23 03:00:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 03:00:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 03:00:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 03:00:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 03:00:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 03:00:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 03:00:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 03:00:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_agendamento
+2018-08-23 03:00:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 03:00:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 03:00:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 03:00:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 03:00:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 03:00:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 03:00:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 03:00:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_agendamento
+2018-08-23 03:00:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 03:00:17 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 03:00:18 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 03:00:36 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 03:00:36 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 03:00:36 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 03:00:36 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 03:00:36 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 03:00:36 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 03:00:36 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 03:00:37 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 03:00:37 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 03:00:37 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 03:00:37 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 03:00:37 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 03:00:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 03:00:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 03:00:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 03:00:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 03:00:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 03:00:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_agendamento
+2018-08-23 03:00:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 03:00:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 03:00:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 03:00:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 03:00:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 03:00:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 03:00:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 03:00:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_agendamento
+2018-08-23 03:00:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 03:00:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 03:00:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 03:00:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 03:00:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 03:00:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 03:00:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 03:00:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_agendamento
+2018-08-23 03:00:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 03:00:38 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 03:00:38 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 03:01:05 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 03:01:05 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 03:01:05 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 03:01:05 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 03:01:06 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 03:01:06 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 03:01:06 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 03:01:07 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 03:01:07 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 03:01:07 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 03:01:07 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 03:01:07 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 03:01:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 03:01:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 03:01:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 03:01:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 03:01:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 03:01:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_agendamento
+2018-08-23 03:01:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 03:01:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 03:01:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 03:01:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 03:01:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 03:01:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 03:01:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 03:01:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_agendamento
+2018-08-23 03:01:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 03:01:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 03:01:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 03:01:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 03:01:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 03:01:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 03:01:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 03:01:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_agendamento
+2018-08-23 03:01:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 03:01:07 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 03:01:08 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 03:01:43 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 03:01:43 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 03:01:43 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 03:01:43 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 03:01:43 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 03:01:43 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 03:01:43 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 03:01:44 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 03:01:44 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 03:01:44 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 03:01:44 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 03:01:44 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 03:01:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 03:01:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 03:01:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 03:01:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 03:01:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 03:01:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_agendamento
+2018-08-23 03:01:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 03:01:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 03:01:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 03:01:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 03:01:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 03:01:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 03:01:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 03:01:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_agendamento
+2018-08-23 03:01:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 03:01:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 03:01:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 03:01:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 03:01:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 03:01:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 03:01:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 03:01:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_agendamento
+2018-08-23 03:01:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 03:01:45 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 03:01:45 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 03:03:06 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 03:03:06 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 03:03:06 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 03:03:06 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 03:03:06 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 03:03:07 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 03:03:07 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 03:03:08 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 03:03:08 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 03:03:08 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 03:03:08 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 03:03:08 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 03:03:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 03:03:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 03:03:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 03:03:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 03:03:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 03:03:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_agendamento
+2018-08-23 03:03:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 03:03:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 03:03:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 03:03:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 03:03:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 03:03:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 03:03:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 03:03:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_agendamento
+2018-08-23 03:03:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 03:03:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 03:03:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 03:03:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 03:03:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 03:03:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 03:03:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 03:03:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_agendamento
+2018-08-23 03:03:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 03:03:08 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 03:03:08 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory
+2018-08-23 03:03:56 INFO  LogHelper:31 - HHH000204: Processing PersistenceUnitInfo [
+	name: DeltaPU
+	...]
+2018-08-23 03:03:57 INFO  Version:37 - HHH000412: Hibernate Core {5.1.0.Final}
+2018-08-23 03:03:57 INFO  Environment:213 - HHH000206: hibernate.properties not found
+2018-08-23 03:03:57 INFO  Environment:317 - HHH000021: Bytecode provider name : javassist
+2018-08-23 03:03:57 INFO  Version:66 - HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-08-23 03:03:57 INFO  Dialect:156 - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2018-08-23 03:03:57 INFO  LobCreatorBuilderImpl:63 - HHH000422: Disabling contextual LOB creation as connection was null
+2018-08-23 03:03:58 WARN  connections:71 - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2018-08-23 03:03:58 INFO  connections:127 - HHH10001005: using driver [org.h2.Driver] at URL [jdbc:h2:mem:jpadelta]
+2018-08-23 03:03:58 INFO  connections:136 - HHH10001001: Connection properties: {user=sa}
+2018-08-23 03:03:58 INFO  connections:141 - HHH10001003: Autocommit mode: false
+2018-08-23 03:03:58 INFO  DriverManagerConnectionProviderImpl:39 - HHH000115: Hibernate connection pool size: 20 (min=1)
+2018-08-23 03:03:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 03:03:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 03:03:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 03:03:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 03:03:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 03:03:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_agendamento
+2018-08-23 03:03:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 03:03:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 03:03:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 03:03:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 03:03:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 03:03:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 03:03:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 03:03:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_agendamento
+2018-08-23 03:03:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 03:03:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 03:03:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Aluno
+2018-08-23 03:03:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: banca_examinador
+2018-08-23 03:03:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: ent_processo_habilitacao
+2018-08-23 03:03:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Examinador
+2018-08-23 03:03:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: Instrutor
+2018-08-23 03:03:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_agendamento
+2018-08-23 03:03:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_banca
+2018-08-23 03:03:58 INFO  InformationExtractorJdbcDatabaseMetaDataImpl:365 - HHH000262: Table not found: tb_veiculo
+2018-08-23 03:03:59 INFO  QueryTranslatorFactoryInitiator:47 - HHH000397: Using ASTQueryTranslatorFactory

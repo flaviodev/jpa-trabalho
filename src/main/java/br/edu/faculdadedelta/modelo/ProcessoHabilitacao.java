@@ -1,9 +1,9 @@
 package br.edu.faculdadedelta.modelo;
 
+import static br.edu.faculdadedelta.util.DateUtil.toDate;
 import static br.edu.faculdadedelta.util.DateUtil.toLocalDate;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Date;
 
 import javax.persistence.Basic;
@@ -99,18 +99,12 @@ public class ProcessoHabilitacao extends BaseEntity<String> {
 
 	public void setDataAbertura(Date dataAbertura) {
 
-		if (dataAbertura == null)
-			throw new IllegalArgumentException("Data de abertura não pode ser nula");
-
 		this.dataAbertura = dataAbertura;
 	}
 
 	public void setDataAbertura(LocalDate dataAbertura) {
 
-		if (dataAbertura == null)
-			throw new IllegalArgumentException("Data de abertura não pode ser nula");
-
-		setDataAbertura(Date.from(dataAbertura.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+		setDataAbertura(toDate(dataAbertura));
 	}
 
 	public Aluno getAluno() {
@@ -148,23 +142,23 @@ public class ProcessoHabilitacao extends BaseEntity<String> {
 
 	@Override
 	public void validaDados(TipoEdicaoCRUD tipo) {
-		
-		if(dataAbertura == null)
+
+		if (dataAbertura == null)
 			throw new IllegalStateException("Data de abertura deve ser informada");
-		
-		if(toLocalDate(dataAbertura).isAfter(LocalDate.now()))
+
+		if (toLocalDate(dataAbertura).isAfter(LocalDate.now()))
 			throw new IllegalStateException("Data de abertura não pode ser maior que hoje");
-		
-		if(aluno == null)
+
+		if (aluno == null)
 			throw new IllegalStateException("Aluno deve ser informado");
-		
-		if(veiculo == null)
+
+		if (veiculo == null)
 			throw new IllegalStateException("Veículo deve ser informado");
-		
-		if(instrutor == null)
+
+		if (instrutor == null)
 			throw new IllegalStateException("Instrutor deve ser informado");
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 

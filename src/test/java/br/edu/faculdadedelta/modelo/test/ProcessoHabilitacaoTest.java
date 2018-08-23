@@ -1,5 +1,6 @@
 package br.edu.faculdadedelta.modelo.test;
 
+import static br.edu.faculdadedelta.util.DateUtil.toDate;
 import static br.edu.faculdadedelta.util.StringUtil.concat;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
@@ -7,7 +8,6 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Date;
 
 import org.hibernate.criterion.Restrictions;
@@ -25,12 +25,12 @@ import br.edu.faculdadedelta.test.base.FuncaoValidaAlteracaoEntidade;
 import br.edu.faculdadedelta.tipo.Sexo;
 import br.edu.faculdadedelta.tipo.StatusInstrutor;
 import br.edu.faculdadedelta.tipo.TipoVeiculo;
+import br.edu.faculdadedelta.util.DateUtil;
 
 public class ProcessoHabilitacaoTest extends BaseCrudTest<String, ProcessoHabilitacao> {
 
-	private static final LocalDate DATA_ABERTURA_PADARO = LocalDate.of(2018, 8, 10);
-	private static final Date DATA_ABERTURA_ALTERACAO = Date
-			.from(LocalDate.of(2018, 8, 15).atStartOfDay(ZoneId.systemDefault()).toInstant());
+	private static final LocalDate DATA_ABERTURA_PADRAO = LocalDate.of(2018, 8, 10);
+	private static final Date DATA_ABERTURA_ALTERACAO = DateUtil.toDate(LocalDate.of(2018, 8, 15));
 
 	@Override
 	public ProcessoHabilitacao getEntidadeParaTeste() {
@@ -54,8 +54,7 @@ public class ProcessoHabilitacaoTest extends BaseCrudTest<String, ProcessoHabili
 
 	@Override
 	public FuncaoCriterioParaBuscaDeEntidade<String, ProcessoHabilitacao> getCriterioBuscaEntidadesTeste() {
-		return () -> Restrictions.eq(ProcessoHabilitacao.Atributos.DATA_ABERTURA,
-				Date.from(DATA_ABERTURA_PADARO.atStartOfDay(ZoneId.systemDefault()).toInstant()));
+		return () -> Restrictions.eq(ProcessoHabilitacao.Atributos.DATA_ABERTURA, toDate(DATA_ABERTURA_PADRAO));
 	}
 
 	private ProcessoHabilitacao criaProcessoDeHabilitacao() {
@@ -73,7 +72,7 @@ public class ProcessoHabilitacaoTest extends BaseCrudTest<String, ProcessoHabili
 		Aluno aluno = new Aluno("Sebastião Antônio").setCpf("333.333.333-333")
 				.setDataNascimento(LocalDate.of(1964, 2, 12)).setSexo(Sexo.MASCULINO);
 
-		return new ProcessoHabilitacao(DATA_ABERTURA_PADARO).setAluno(aluno).setVeiculo(veiculo)
+		return new ProcessoHabilitacao(DATA_ABERTURA_PADRAO).setAluno(aluno).setVeiculo(veiculo)
 				.setInstrutor(instrutor);
 	}
 
@@ -84,9 +83,7 @@ public class ProcessoHabilitacaoTest extends BaseCrudTest<String, ProcessoHabili
 		assertNotNull("Processo de Habilitação não pode ser nulo", processo);
 		assertTrue("Aluno deve estar no estado transient antes de ser persistido", processo.getAluno().isTransient());
 
-		getDao().getTransaction().begin();
-		getDao().persist(processo);
-		getDao().getTransaction().commit();
+		processo.persiste();
 
 		assertFalse("Processo não deve estar no estado transient após ter sido persistido", processo.isTransient());
 		assertFalse("Aluno não deve estar no estado transient após ter sido persistido",

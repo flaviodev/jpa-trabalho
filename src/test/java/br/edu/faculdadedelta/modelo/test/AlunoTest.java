@@ -14,6 +14,7 @@ import java.util.List;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 
+import org.hibernate.LazyInitializationException;
 import org.hibernate.criterion.Restrictions;
 import org.junit.AfterClass;
 import org.junit.Test;
@@ -94,31 +95,31 @@ public class AlunoTest extends BaseCrudTest<String, Aluno> {
 		fail("deveria disparar PersistenceException porque o campo sexo é optional = false");
 	}
 
-	// @Test(expected = LazyInitializationException.class)
+	@Test(expected = LazyInitializationException.class)
 	public void naoDeveAcessarAtributoLazyForaEscopoEntityManager() {
 
-		Aluno clienteInserido = getEntidadeParaTeste().persiste();
+		Aluno aluno = getEntidadeParaTeste().persiste();
 		fecharEntityManager();
 		instanciarEntityManager();
 
-		Aluno cliente = getDao().find(Aluno.class, clienteInserido.getId());
+		aluno = getDao().find(Aluno.class, aluno.getId());
 
-		assertNotNull("Verifica se encontrou um registro", cliente);
+		assertNotNull("Verifica se encontrou um registro", aluno);
 
-		getDao().detach(cliente);
-		// cliente.getCompras().size();
+		getDao().detach(aluno);
+		aluno.getProcessos().size();
 
-		fail("deve disparar LazyInitializationException ao Acessar Atributo Lazy Fora do Escopo EntityManager");
+		fail("deveria lançar LazyInitializationException ao Acessar Atributo Lazy Fora do Escopo EntityManager");
 	}
 
-	// @Test
+	@Test
 	public void deveAcessarAtributoLazy() {
 
-		Aluno clienteInserido = getEntidadeParaTeste().persiste();
-		Aluno cliente = getDao().find(Aluno.class, clienteInserido.getId());
+		Aluno aluno = getEntidadeParaTeste().persiste();
+		aluno = getDao().find(Aluno.class, aluno.getId());
 
-		assertNotNull("Verifica se encontrou um registro", cliente);
-		// assertNotNull("Lista lazy não deve ser nula", cliente.getCompras());
+		assertNotNull("Verifica se encontrou um registro", aluno);
+		assertNotNull("Lista lazy não deve ser nula", aluno.getProcessos());
 	}
 
 	private String montaHqlParaObterIdENomePeloCpf() {
