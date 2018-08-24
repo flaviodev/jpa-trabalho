@@ -1,6 +1,8 @@
 package br.edu.faculdadedelta.modelo.test;
 
+import static br.edu.faculdadedelta.modelo.base.JPAUtil.getAlias;
 import static br.edu.faculdadedelta.util.DateUtil.toDate;
+import static br.edu.faculdadedelta.util.StringUtil.concat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
@@ -8,11 +10,23 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.IntStream;
 
+import org.hibernate.Criteria;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.ProjectionList;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.criterion.Subqueries;
+import org.hibernate.sql.JoinType;
+import org.hibernate.transform.Transformers;
 import org.junit.AfterClass;
 import org.junit.Test;
 
@@ -27,6 +41,7 @@ import br.edu.faculdadedelta.test.base.FuncaoValidaAlteracaoEntidade;
 import br.edu.faculdadedelta.test.util.FabricaTeste;
 import br.edu.faculdadedelta.tipo.CategoriaExame;
 import br.edu.faculdadedelta.tipo.TipoVeiculo;
+import br.edu.faculdadedelta.util.DateUtil;
 
 public class AgendamentoTest extends BaseCrudTest<String, Agendamento> {
 
@@ -397,6 +412,289 @@ public class AgendamentoTest extends BaseCrudTest<String, Agendamento> {
 		assertTrue("Agendamento deve estar com o novo carro",
 				agendamento.getVeiculos().get(0).getId().equals(idNovoCarro));
 		assertNotEquals(agendamento.getVersion().intValue(), versao);
+	}
+
+	/**
+	 * Teste implementação do SELECT DISTINCT
+	 */
+	@Test
+	@SuppressWarnings("unchecked")
+	public void deveConsultarTodosOsAlunos() {
+
+		IntStream.range(0, 3)
+				.forEach(i -> FabricaTeste.criaAluno().setNome(concat("Aluno ", String.valueOf(i))).persiste());
+
+		Criteria criteria = createCriteria(Aluno.class, "a");
+
+		List<Aluno> alunos = criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+
+		assertTrue("Deve ser retornado 3 alunos ou mais", alunos.size() >= 3);
+		alunos.forEach(aluno -> assertFalse(aluno.isTransient()));
+	}
+
+	/**
+	 * Teste implementação do MAX
+	 */
+	@Test
+	public void deveConsultarAlunoMaiorDataDeNasimento() {
+
+		LocalDate maiorDataDeNascimentoInformada = LocalDate.of(2000, 10, 1);
+
+		FabricaTeste.criaAluno().setDataNascimento(maiorDataDeNascimentoInformada).persiste();
+		FabricaTeste.criaAluno().setDataNascimento(LocalDate.of(1980, 1, 13)).persiste();
+		FabricaTeste.criaAluno().setDataNascimento(LocalDate.of(1977, 2, 20)).persiste();
+
+		Criteria criteria = createCriteria(Aluno.class).setProjection(Projections.max(Aluno.Atributos.DATA_NASCIMENTO));
+
+		Date maiorDataDeNascimentoRetornada = (Date) criteria.setResultTransformer(Criteria.PROJECTION).uniqueResult();
+
+		assertTrue("Maior data de nascimento deve ser maior que 1/10/2000",
+				DateUtil.toLocalDate(maiorDataDeNascimentoRetornada).compareTo(maiorDataDeNascimentoInformada) != -1);
+	}
+
+	/**
+	 * Teste implementação do WHERE, BETWEEN E COUNT
+	 */
+	@Test
+	public void deveConsultarAgendamentosDosUltimos15DiasEDosProximos15Dias() {
+
+		LocalDateTime quinzeDiasAtras = LocalDateTime.now().minusDays(15);
+		LocalDateTime daquiQuinzeDias = LocalDateTime.now().plusDays(15);
+
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(1)).persiste();
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(5)).persiste();
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(10)).persiste();
+
+		Criteria criteria = createCriteria(Agendamento.class);
+		criteria.add(Restrictions.between(Agendamento.Atributos.DATA_HORA_PROVA, toDate(quinzeDiasAtras),
+				toDate(daquiQuinzeDias))).setProjection(Projections.rowCount());
+
+		Long quantidadeDeRegistros = (Long) criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).uniqueResult();
+
+		assertTrue("Deve ser retornado 3 agendamentos ou mais", quantidadeDeRegistros >= 3);
+	}
+
+	/**
+	 * Teste implementação do IN e ORDERBY
+	 */
+	@Test
+	@SuppressWarnings("unchecked")
+	public void deveConsultarAgendamentosParaOsExaminadores() {
+
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(1)).setNomeExaminador("Pedro").persiste();
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(5)).setNomeExaminador("Maria").persiste();
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(5)).setNomeExaminador("Pedro").persiste();
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(8)).setNomeExaminador("João").persiste();
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(10)).setNomeExaminador("Ricardo").persiste();
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(11)).setNomeExaminador("Miguel").persiste();
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(15)).setNomeExaminador("Maria").persiste();
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(13)).setNomeExaminador("Pedro").persiste();
+
+		Criteria criteria = createCriteria(Agendamento.class);
+		criteria.add(Restrictions.in(Agendamento.Atributos.NOME_EXAMINADOR, "Pedro", "Maria"))
+				.addOrder(Order.asc(Agendamento.Atributos.DATA_HORA_PROVA));
+
+		List<Agendamento> agendamentos = criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+
+		assertTrue("Deve ser retornado 5 agendamentos ou mais", agendamentos.size() >= 5);
+
+		agendamentos.forEach(agendamento -> assertFalse(agendamento.isTransient()));
+	}
+
+	/**
+	 * Teste implementação do LIMIT e OFFSET
+	 */
+	@Test
+	@SuppressWarnings("unchecked")
+	public void deveConsultarqQuatroPrimeirosAlunos() {
+
+		FabricaTeste.criaAluno().setNome("Flávio").persiste();
+		FabricaTeste.criaAluno().setNome("Rogério").persiste();
+		FabricaTeste.criaAluno().setNome("Tereza").persiste();
+		FabricaTeste.criaAluno().setNome("Iago").persiste();
+		FabricaTeste.criaAluno().setNome("Esther").persiste();
+		FabricaTeste.criaAluno().setNome("Maria Clara").persiste();
+		FabricaTeste.criaAluno().setNome("Maria Helena").persiste();
+		FabricaTeste.criaAluno().setNome("José Marcel").persiste();
+
+		Criteria criteria = createCriteria(Aluno.class).setFirstResult(1).setMaxResults(5);
+
+		List<Aluno> alunos = criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+
+		assertTrue("Deve ser retornado 5 alunos", alunos.size() == 5);
+
+		alunos.forEach(aluno -> assertFalse(aluno.isTransient()));
+	}
+
+	/**
+	 * Teste implementação do ILIKE
+	 */
+	@Test
+	@SuppressWarnings("unchecked")
+	public void deveConsultarAlunosContendoParteDoNome() {
+
+		FabricaTeste.criaAluno().setNome("Flávio").persiste();
+		FabricaTeste.criaAluno().setNome("Rogério").persiste();
+		FabricaTeste.criaAluno().setNome("Tereza").persiste();
+		FabricaTeste.criaAluno().setNome("Iago").persiste();
+		FabricaTeste.criaAluno().setNome("Esther").persiste();
+		FabricaTeste.criaAluno().setNome("Maria Clara").persiste();
+		FabricaTeste.criaAluno().setNome("Maria Helena").persiste();
+		FabricaTeste.criaAluno().setNome("José Marcel").persiste();
+
+		Criteria criteria = createCriteria(Aluno.class)
+				.add(Restrictions.ilike(Aluno.Atributos.NOME, "ia", MatchMode.ANYWHERE));
+
+		List<Aluno> alunos = criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+
+		assertTrue("Deve ser retornado 3 alunos ou mais", alunos.size() >= 3);
+
+		alunos.forEach(aluno -> assertFalse(aluno.isTransient()));
+	}
+
+	/**
+	 * Teste implementação do OR
+	 */
+	@Test
+	@SuppressWarnings("unchecked")
+	public void deveConsultarAgendamentosParaOExaminadorRicardoOuMiguel() {
+
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(1)).setNomeExaminador("Pedro").persiste();
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(5)).setNomeExaminador("Maria").persiste();
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(5)).setNomeExaminador("Pedro").persiste();
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(8)).setNomeExaminador("João").persiste();
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(10)).setNomeExaminador("Ricardo").persiste();
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(11)).setNomeExaminador("Miguel").persiste();
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(15)).setNomeExaminador("Maria").persiste();
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(13)).setNomeExaminador("Pedro").persiste();
+
+		Criteria criteria = createCriteria(Agendamento.class);
+		criteria.add(Restrictions.or(Restrictions.eq(Agendamento.Atributos.NOME_EXAMINADOR, "Ricardo"),
+				Restrictions.eq(Agendamento.Atributos.NOME_EXAMINADOR, "Miguel")));
+
+		List<Agendamento> agendamentos = criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+
+		assertTrue("Deve ser retornado 2 agendamentos ou mais", agendamentos.size() >= 2);
+
+		agendamentos.forEach(agendamento -> assertFalse(agendamento.isTransient()));
+	}
+
+	/**
+	 * Teste implementação do LEFT JOIN
+	 */
+	@Test
+	@SuppressWarnings("unchecked")
+	public void deveConsultarAgendamentosENomeAlunoCasoExista() {
+
+		Aluno sabiniao = FabricaTeste.criaAluno().setNome("Sabiniano").persiste();
+
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(1)).setAluno(sabiniao).persiste();
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(5)).persiste();
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(5)).persiste();
+
+		Criteria criteria = createCriteria(Agendamento.class).createAlias(Agendamento.Atributos.ALUNO,
+				Agendamento.Atributos.ALUNO, JoinType.LEFT_OUTER_JOIN);
+		criteria.add(Restrictions.ilike(getAlias(Agendamento.Atributos.ALUNO, Aluno.Atributos.NOME), "sabi",
+				MatchMode.START));
+
+		List<Agendamento> agendamentos = criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+
+		assertTrue("Deve ser retornado 1 agendamento", agendamentos.size() == 1);
+
+		agendamentos.forEach(agendamento -> assertFalse(agendamento.isTransient()));
+	}
+
+	/**
+	 * Teste implementação do RIGHT JOIN E SUBQUERIES
+	 */
+	@Test
+	@SuppressWarnings("unchecked")
+	public void deveConsultarAgendamentosPorNomeAlunoUsandoSubquery() {
+
+		Aluno atanasio = FabricaTeste.criaAluno().setNome("Atanásio").persiste();
+		Aluno antao = FabricaTeste.criaAluno().setNome("Antão").persiste();
+		Aluno bento = FabricaTeste.criaAluno().setNome("Bento").persiste();
+
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(1)).setAluno(atanasio).persiste();
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(1)).setAluno(antao).persiste();
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(1)).setAluno(bento).persiste();
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(5)).persiste();
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(5)).persiste();
+
+		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(Aluno.class, Agendamento.Atributos.ALUNO)
+				.add(Restrictions.in(Aluno.Atributos.ID, atanasio.getId(), antao.getId(), bento.getId()))
+				.setProjection(Projections.property(Aluno.Atributos.NOME));
+
+		Criteria criteria = createCriteria(Agendamento.class).createAlias(Agendamento.Atributos.ALUNO,
+				Agendamento.Atributos.ALUNO, JoinType.RIGHT_OUTER_JOIN);
+		criteria.add(
+				Subqueries.propertyIn(getAlias(Agendamento.Atributos.ALUNO, Aluno.Atributos.NOME), detachedCriteria));
+
+		List<Agendamento> agendamentos = criteria.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
+
+		assertTrue("Devem ser retornado 3 agendamentos", agendamentos.size() == 3);
+
+		agendamentos.forEach(agendamento -> assertFalse(agendamento.isTransient()));
+	}
+
+	/**
+	 * Teste implementação do Select field
+	 */
+	@Test
+	@SuppressWarnings("unchecked")
+	public void deveConsultarIdENomeConverterAluno() {
+
+		FabricaTeste.criaAluno().setNome("Flávio").persiste();
+		FabricaTeste.criaAluno().setNome("Tereza").persiste();
+		FabricaTeste.criaAluno().setNome("Iago").persiste();
+		FabricaTeste.criaAluno().setNome("Esther").persiste();
+		FabricaTeste.criaAluno().setNome("Maria Clara").persiste();
+		FabricaTeste.criaAluno().setNome("Maria Helena").persiste();
+		FabricaTeste.criaAluno().setNome("José Marcel").persiste();
+
+		ProjectionList projection = Projections.projectionList()
+				.add(Projections.property(getAlias(Agendamento.Atributos.ALUNO, Aluno.Atributos.ID))
+						.as(Aluno.Atributos.ID))
+				.add(Projections.property(getAlias(Agendamento.Atributos.ALUNO, Aluno.Atributos.NOME))
+						.as(Aluno.Atributos.NOME));
+
+		Criteria criteria = createCriteria(Aluno.class, Agendamento.Atributos.ALUNO).setProjection(projection);
+
+		List<Aluno> alunos = criteria.setResultTransformer(Transformers.aliasToBean(Aluno.class)).list();
+
+		assertTrue("Deve ser retornado 7 alunos ou mais", alunos.size() >= 7);
+
+		alunos.forEach(aluno -> {
+			assertTrue("Id deve estar preenchido", aluno.getId() != null);
+			assertTrue("Nome deve estar preenchido", aluno.getNome() != null);
+			assertTrue("Cpf não deve estar preenchido", aluno.getCpf() == null);
+		});
+	}
+
+	/**
+	 * Teste implementação do GROUPBY E MAP
+	 */
+	@Test
+	@SuppressWarnings({ "unchecked" })
+	public void deveConsultarAgendamentosContandoAgendamentosPorExaminador() {
+
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(1)).setNomeExaminador("Pedro").persiste();
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(5)).setNomeExaminador("Pedro").persiste();
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(13)).setNomeExaminador("Pedro").persiste();
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(5)).setNomeExaminador("Maria").persiste();
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(15)).setNomeExaminador("Maria").persiste();
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(8)).setNomeExaminador("João").persiste();
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(10)).setNomeExaminador("Ricardo").persiste();
+		FabricaTeste.criaAgendamento(LocalDateTime.now().plusDays(11)).setNomeExaminador("Miguel").persiste();
+
+		Criteria criteria = createCriteria(Agendamento.class).setProjection(
+				Projections.projectionList().add(Projections.groupProperty(Agendamento.Atributos.NOME_EXAMINADOR),
+						Agendamento.Atributos.NOME_EXAMINADOR).add(Projections.rowCount(), "count"));
+
+		List<Map<String, Object>> agendamentosPorExaminador = criteria
+				.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP).list();
+
+		assertTrue("Deve ser retornado 5 agendamentos ou mais", agendamentosPorExaminador.size() >= 5);
 	}
 
 	@AfterClass
