@@ -168,13 +168,13 @@ public class Veiculo extends BaseEntity<String> {
 	@Override
 	public void validaDados(TipoEdicaoCRUD tipoEdicao) {
 		
-		if (marca == null || marca.isEmpty())
+		if (marca == null || marca.trim().isEmpty())
 			throw new IllegalStateException("Marca deve ser informada");
 
 		if (marca.length() > 100)
 			throw new IllegalStateException("Marca não pode exceder 100 caracteres");
 
-		if (modelo == null || modelo.isEmpty())
+		if (modelo == null || modelo.trim().isEmpty())
 			throw new IllegalStateException("Modelo deve ser informado");
 
 		if (modelo.length() > 150)

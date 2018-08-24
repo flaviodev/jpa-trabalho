@@ -17,6 +17,15 @@ import br.edu.faculdadedelta.util.ValidadorUtil;
 public abstract class Pessoa extends BaseEntity<String> {
 
 	private static final long serialVersionUID = 6548447923572856584L;
+	
+	public static class Atributos {
+		private Atributos() {
+		}
+
+		public static final String ID = "id";
+		public static final String NOME = "nome";
+		public static final String CPF = "cpf";
+	}
 
 	@Id
 	@GeneratedValue(generator = "UUIDGenerator")
@@ -78,7 +87,7 @@ public abstract class Pessoa extends BaseEntity<String> {
 	@Override
 	public void validaDados(TipoEdicaoCRUD tipo) {
 		
-		if (nome == null || nome.isEmpty())
+		if (nome == null || nome.trim().isEmpty())
 			throw new IllegalStateException("Nome deve ser informado");
 
 		if (nome.length() > 150)

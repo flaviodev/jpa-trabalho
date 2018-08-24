@@ -1,32 +1,24 @@
 package br.edu.faculdadedelta.modelo.test;
 
-import static br.edu.faculdadedelta.util.StringUtil.concat;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.time.LocalDate;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.PersistenceException;
-import javax.persistence.Query;
 
 import org.hibernate.criterion.Restrictions;
 import org.junit.AfterClass;
 import org.junit.Test;
 
 import br.edu.faculdadedelta.modelo.Aluno;
-import br.edu.faculdadedelta.test.base.BaseCrudTest;
 import br.edu.faculdadedelta.test.base.FuncaoAlteraEntidade;
 import br.edu.faculdadedelta.test.base.FuncaoCriterioParaBuscaDeEntidade;
 import br.edu.faculdadedelta.test.base.FuncaoValidaAlteracaoEntidade;
 import br.edu.faculdadedelta.test.util.FabricaTeste;
 
-public class AlunoTest extends BaseCrudTest<String, Aluno> {
+public class AlunoTest extends BasePessoaCrudTest<String, Aluno> {
 
 	private static final String CPF = "111.111.111-11";
 	private static final String NOME = "Joaquim Bragança";
@@ -41,6 +33,7 @@ public class AlunoTest extends BaseCrudTest<String, Aluno> {
 
 	@Override
 	public FuncaoAlteraEntidade<String, Aluno> alteracaoEntidadeDeTeste() {
+		
 		return (aluno) -> aluno.setNome(NOME_ALTERACAO);
 	}
 
@@ -52,19 +45,26 @@ public class AlunoTest extends BaseCrudTest<String, Aluno> {
 
 	@Override
 	public FuncaoCriterioParaBuscaDeEntidade<String, Aluno> getCriterioBuscaEntidadesTeste() {
+		
 		return () -> Restrictions.eq(Aluno.Atributos.CPF, CPF);
 	}
 
+	/**
+	 * Teste validação de data de nascimento nula
+	 */
 	@Test(expected = IllegalStateException.class)
 	public void naoDevePersistirComDataDeNascimentoNula() {
 
 		Aluno aluno = getEntidadeParaTeste();
 		aluno.setDataNascimento((Date) null);
 		aluno.persiste();
-
-		fail("deveria disparar PersistenceException porque o campo dataDeNascimento é optional = false");
+		
+		fail("devia ter lançado IllegalStateException ao tentar persistir aluno com data de nascimento null");
 	}
 
+	/**
+	 * Teste validação de data de nascimento maior que data correte
+	 */
 	@Test(expected = IllegalStateException.class)
 	public void naoDevePersistirComDataDeNascimentoMaiorQueDataCorrente() {
 
@@ -72,19 +72,25 @@ public class AlunoTest extends BaseCrudTest<String, Aluno> {
 		aluno.setDataNascimento(LocalDate.now().plusDays(1));
 		aluno.persiste();
 
-		fail("deveria disparar IllegalStateException no validaDados");
+		fail("devia ter lançado IllegalStateException ao tentar persistir aluno com data de nascimento mair que a data corrente");
 	}
 
+	/**
+	 * Teste validação de aluno com menos de 17 anos
+	 */
 	@Test(expected = IllegalStateException.class)
 	public void naoDevePersistirAlunoMenoDeDezesseteAnos() {
 
 		Aluno aluno = getEntidadeParaTeste();
-		aluno.setDataNascimento(LocalDate.of(2010, 1, 1));
+		aluno.setDataNascimento(LocalDate.now().minusYears(15));
 		aluno.persiste();
 
-		fail("deveria disparar IllegalStateException no validaDados");
+		fail("devia ter lançado IllegalStateException ao tentar persistir aluno com 15 anos");
 	}
 
+	/**
+	 * Teste validação de sexo nulo
+	 */
 	@Test(expected = PersistenceException.class)
 	public void naoDevePersistirComSexoNulo() {
 
@@ -92,139 +98,34 @@ public class AlunoTest extends BaseCrudTest<String, Aluno> {
 		aluno.setSexo(null);
 		aluno.persiste();
 
-		fail("deveria disparar PersistenceException porque o campo sexo é optional = false");
+		fail("devia ter lançado PersistenceException ao tentar persistir aluno com sexo nulo");
 	}
 
-	private String montaHqlParaObterIdENomePeloCpf() {
-
-		StringBuilder hql = new StringBuilder("SELECT ");
-		hql.append(Aluno.Atributos.ID);
-		hql.append(',');
-		hql.append(Aluno.Atributos.NOME);
-		hql.append(" FROM ");
-		hql.append(Aluno.class.getSimpleName());
-		hql.append(" WHERE ");
-		hql.append(Aluno.Atributos.CPF);
-		hql.append(" = :cpf ");
-
-		return hql.toString();
-	}
-
+	/**
+	 * Teste consulta atributos do aluno
+	 */
 	@Test
-	@SuppressWarnings("unchecked")
-	public void deveConsultarIdNomeForeach() {
-		deveSalvarEntidade();
+	public void deveConsultarIdENomeDosAlunosPeloCpf() {
 
-		Query query = getDao().createQuery(montaHqlParaObterIdENomePeloCpf());
-		query.setParameter("cpf", CPF);
-
-		List<Object[]> resultado = query.getResultList();
-
-		assertFalse("Verifica se há registros na lista", resultado.isEmpty());
-
-		resultado.forEach(linha -> {
-			assertTrue("Verifica que o id deve estar nulo", linha[0] instanceof String);
-			assertTrue("Verifica que o cpf deve estar nulo", linha[1] instanceof String);
-
-			Aluno aluno = new Aluno((String) linha[0], (String) linha[1]);
-
-			assertNotNull("Verifica que o aluno não deve estar nulo", aluno);
-		});
+		deveConsultarIdENomeDasPessoasPeloCpf(Aluno.class, CPF);
 	}
-
+	
+	/**
+	 * Teste consulta objetos com apenas alguns atributos do aluno
+	 */
 	@Test
-	@SuppressWarnings("unchecked")
-	public void deveConsultarIdNome() {
-		deveSalvarEntidade();
+	public void deveConsultarObjetosComApenasIdeNomeDoAlunoPeloCpf() {
 
-		Query query = getDao().createQuery(montaHqlParaObterIdENomePeloCpf());
-		query.setParameter("cpf", CPF);
-
-		List<Object[]> resultado = query.getResultList();
-
-		assertFalse("Verifica se há registros na lista", resultado.isEmpty());
-
-		for (Object[] linha : resultado) {
-			assertTrue("Verifica que o id deve estar nulo", linha[0] instanceof String);
-			assertTrue("Verifica que o cpf deve estar nulo", linha[1] instanceof String);
-
-			Aluno aluno = new Aluno((String) linha[0], (String) linha[1]);
-
-			assertNotNull("Verifica que o aluno não deve estar nulo", aluno);
-		}
+		deveConsultarObjetosApenasComIdENomeDaPessoaPeloCpf(Aluno.class, CPF);
 	}
 
-	private String montaHqlParaObterEntidadeComIdENomePeloCpf() {
-
-		StringBuilder hql = new StringBuilder("SELECT new ");
-		hql.append(Aluno.class.getSimpleName());
-		hql.append('(');
-		hql.append(Aluno.Atributos.ID);
-		hql.append(',');
-		hql.append(Aluno.Atributos.NOME);
-		hql.append(')');
-		hql.append(" FROM ");
-		hql.append(Aluno.class.getSimpleName());
-		hql.append(" WHERE ");
-		hql.append(Aluno.Atributos.CPF);
-		hql.append(" = :cpf ");
-
-		return hql.toString();
-	}
-
+	/**
+	 * Teste consulta alunos pelo nome
+	 */
 	@Test
-	public void deveConsultarApenasIdNome() {
+	public void deveConsultarAlunosPeloNome() {
 
-		deveSalvarEntidade();
-
-		Query query = getDao().createQuery(montaHqlParaObterEntidadeComIdENomePeloCpf());
-		query.setParameter("cpf", CPF);
-
-		@SuppressWarnings("unchecked")
-		List<Aluno> alunos = query.getResultList();
-
-		assertFalse("Verifica se há registros na lista", alunos.isEmpty());
-
-		alunos.forEach(aluno -> assertNull("Verifica que o cpf deve estar nulo", aluno.getCpf()));
-	}
-
-	@Test
-	public void deveConsultarAlunoComIdNome() {
-		deveSalvarEntidade();
-
-		Query query = getDao().createQuery(montaHqlParaObterEntidadeComIdENomePeloCpf());
-		query.setParameter("cpf", CPF);
-
-		@SuppressWarnings("unchecked")
-		List<Aluno> alunos = query.getResultList();
-
-		assertFalse("Verifica se há registros na lista", alunos.isEmpty());
-
-		alunos.forEach(aluno -> {
-			assertNull("Verifica que o cpf deve estar nulo", aluno.getCpf());
-			aluno.setCpf(CPF);
-		});
-	}
-
-	@Test
-	@SuppressWarnings("unchecked")
-	public void deveConsultarCpf() {
-		deveSalvarEntidade();
-
-		StringBuilder hql = new StringBuilder("SELECT ");
-		hql.append(Aluno.Atributos.CPF);
-		hql.append(" FROM ");
-		hql.append(Aluno.class.getSimpleName());
-		hql.append(" WHERE ");
-		hql.append(Aluno.Atributos.NOME);
-		hql.append(" LIKE :nome ");
-
-		Query query = getDao().createQuery(hql.toString());
-		query.setParameter("nome", concat("%", NOME_FILTRO, "%"));
-
-		List<String> listaCpf = query.getResultList();
-
-		assertFalse("Deve possuir itens", listaCpf.isEmpty());
+		deveConsultarPessoasPeloNome(Aluno.class, NOME_FILTRO);
 	}
 
 	@AfterClass

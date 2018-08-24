@@ -16,7 +16,7 @@ public class JPAUtilTest extends BaseTest {
 	@Test
 	public void deveTerInstanciaDoEntityManagerDefinida() {
 		
-		assertNotNull("instância do EntityManager não deve ser nula", getDao());
+		assertNotNull("instância do EntityManager não deve ser nula", getEntittyManager());
 	}
 	
 	/**
@@ -25,9 +25,9 @@ public class JPAUtilTest extends BaseTest {
 	@Test
 	public void deveFecharEntityManager() {
 	
-		getDao().close();
+		getEntittyManager().close();
 		
-		assertFalse("instância do EntityManager deve estar fechada", getDao().isOpen());
+		assertFalse("instância do EntityManager deve estar fechada", getEntittyManager().isOpen());
 	}
 	
 	/**
@@ -36,10 +36,10 @@ public class JPAUtilTest extends BaseTest {
 	@Test
 	public void deveAbrirUmaTransacao(){
 		
-		assertFalse("Transação deve estar fechada", getDao().getTransaction().isActive());	
+		assertFalse("Transação deve estar fechada", getEntittyManager().getTransaction().isActive());	
 		
-		getDao().getTransaction().begin();
+		getEntittyManager().getTransaction().begin();
 		
-		assertTrue("Transação deve estar aberta", getDao().getTransaction().isActive());
+		assertTrue("Transação deve estar aberta", getEntittyManager().getTransaction().isActive());
 	}
 }

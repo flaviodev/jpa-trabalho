@@ -29,7 +29,7 @@ public abstract class BaseTest {
 			dao.close();
 	}
 
-	protected EntityManager getDao() {
+	protected EntityManager getEntittyManager() {
 
 		return this.dao;
 	}
@@ -37,12 +37,12 @@ public abstract class BaseTest {
 	protected <I extends Serializable, E extends BaseEntity<I>> Criteria createCriteria(Class<E> classeEntidade,
 			String alias) {
 
-		return ((Session) getDao().getDelegate()).createCriteria(classeEntidade, alias);
+		return ((Session) getEntittyManager().getDelegate()).createCriteria(classeEntidade, alias);
 	}
 
 	protected <I extends Serializable, E extends BaseEntity<I>> Criteria createCriteria(Class<E> classeEntidade) {
 
-		return ((Session) getDao().getDelegate()).createCriteria(classeEntidade);
+		return ((Session) getEntittyManager().getDelegate()).createCriteria(classeEntidade);
 	}
 
 }

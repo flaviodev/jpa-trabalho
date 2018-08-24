@@ -1,31 +1,26 @@
 package br.edu.faculdadedelta.modelo.test;
 
-import static br.edu.faculdadedelta.util.StringUtil.concat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import java.util.List;
-
-import javax.persistence.Query;
-
-import org.hibernate.Criteria;
 import org.hibernate.LazyInitializationException;
 import org.hibernate.criterion.Restrictions;
 import org.junit.AfterClass;
 import org.junit.Test;
 
+import br.edu.faculdadedelta.modelo.Aluno;
 import br.edu.faculdadedelta.modelo.Instrutor;
-import br.edu.faculdadedelta.test.base.BaseCrudTest;
 import br.edu.faculdadedelta.test.base.FuncaoAlteraEntidade;
 import br.edu.faculdadedelta.test.base.FuncaoCriterioParaBuscaDeEntidade;
 import br.edu.faculdadedelta.test.base.FuncaoValidaAlteracaoEntidade;
 import br.edu.faculdadedelta.test.util.FabricaTeste;
+import br.edu.faculdadedelta.tipo.StatusInstrutor;
 
-public class InstrutorTest extends BaseCrudTest<String, Instrutor> {
+public class InstrutorTest extends BasePessoaCrudTest<String, Instrutor> {
 
 	private static final String CPF = "222.222.222-22";
 	private static final String NOME = "José De Almeida Prado";
@@ -56,6 +51,9 @@ public class InstrutorTest extends BaseCrudTest<String, Instrutor> {
 		return () -> Restrictions.eq(Instrutor.Atributos.CPF, CPF);
 	}
 
+	/**
+	 * Teste tentar acessar alunos fora do escopo do EntityManager
+	 */
 	@Test(expected = LazyInitializationException.class)
 	public void naoDeveAcessarAtributoLazyForaEscopoEntityManager() {
 
@@ -63,168 +61,175 @@ public class InstrutorTest extends BaseCrudTest<String, Instrutor> {
 		fecharEntityManager();
 		instanciarEntityManager();
 
-		instrutor = getDao().find(Instrutor.class, instrutor.getId());
+		instrutor = getEntittyManager().find(Instrutor.class, instrutor.getId());
 
-		assertNotNull("Verifica se encontrou um registro", instrutor);
+		assertNotNull("Retorno da busca do instrutor não pode ser nulo", instrutor);
 
-		getDao().detach(instrutor);
+		getEntittyManager().detach(instrutor);
 		instrutor.getAlunos().size();
 
-		fail("deveria lançar LazyInitializationException ao Acessar Atributo Lazy Fora do Escopo EntityManager");
+		fail("devia ter lançado LazyInitializationException ao tentar acessar alunos (lazy) fora do escopo do EntityManager");
 	}
 
+	/**
+	 * Teste acessar alunos dentro do escopo do EntityManager
+	 */
 	@Test
 	public void deveAcessarAtributoLazy() {
 
 		Instrutor instrutor = getEntidadeParaTeste().persiste();
-		instrutor = getDao().find(Instrutor.class, instrutor.getId());
+		instrutor = getEntittyManager().find(Instrutor.class, instrutor.getId());
 
-		assertNotNull("Verifica se encontrou um registro", instrutor);
-		assertNotNull("Lista lazy não deve ser nula", instrutor.getAlunos());
+		assertNotNull("Retorno da busca do instrutor não pode ser nulo", instrutor);
+		assertNotNull("Lista de alunos (lazy) não pode ser nula", instrutor.getAlunos());
 	}
 
+	/**
+	 * Teste consulta atributos do instrutor
+	 */
 	@Test
-	public void deveVerificarExistenciaInstrutor() {
+	public void deveConsultarIdENomeDosInstrutoresPeloCpf() {
 
-		deveSalvarEntidade();
-
-		Criteria critera = createCriteria(Instrutor.class);
-		critera.add(Restrictions.eq(Instrutor.Atributos.CPF, CPF));
-
-		assertTrue("Verifica se há registros na lista", critera.list().size() > 0L);
+		deveConsultarIdENomeDasPessoasPeloCpf(Instrutor.class, CPF);
 	}
 
-	private String montaHqlParaObterIdENomePeloCpf() {
-
-		StringBuilder hql = new StringBuilder("SELECT ");
-		hql.append(Instrutor.Atributos.ID);
-		hql.append(',');
-		hql.append(Instrutor.Atributos.NOME);
-		hql.append(" FROM ");
-		hql.append(Instrutor.class.getSimpleName());
-		hql.append(" WHERE ");
-		hql.append(Instrutor.Atributos.CPF);
-		hql.append(" = :cpf ");
-
-		return hql.toString();
-	}
-
+	/**
+	 * Teste consulta objetos com apenas alguns atributos do instrutor
+	 */
 	@Test
-	@SuppressWarnings("unchecked")
-	public void deveConsultarIdNomeForeach() {
-		deveSalvarEntidade();
+	public void deveConsultarObjetosApenasComIdENomeDoInstrutorPeloCpf() {
 
-		Query query = getDao().createQuery(montaHqlParaObterIdENomePeloCpf());
-		query.setParameter("cpf", CPF);
-
-		List<Object[]> resultado = query.getResultList();
-
-		assertFalse("Verifica se há registros na lista", resultado.isEmpty());
-
-		resultado.forEach(linha -> {
-			assertTrue("Verifica que o id deve estar nulo", linha[0] instanceof String);
-			assertTrue("Verifica que o cpf deve estar nulo", linha[1] instanceof String);
-
-			Instrutor instrutor = new Instrutor((String) linha[0], (String) linha[1]);
-
-			assertNotNull("Verifica que o instrutor não deve estar nulo", instrutor);
-		});
+		deveConsultarObjetosApenasComIdENomeDaPessoaPeloCpf(Instrutor.class, CPF);
 	}
 
+	/**
+	 * Teste consulta instrutores pelo nome
+	 */
 	@Test
-	@SuppressWarnings("unchecked")
-	public void deveConsultarIdNome() {
+	public void deveConsultarInstrutoresPeloNome() {
 
-		deveSalvarEntidade();
-
-		Query query = getDao().createQuery(montaHqlParaObterIdENomePeloCpf());
-		query.setParameter("cpf", CPF);
-
-		List<Object[]> resultado = query.getResultList();
-
-		assertFalse("Verifica se há registros na lista", resultado.isEmpty());
-
-		for (Object[] linha : resultado) {
-			assertTrue("Verifica que o id deve estar nulo", linha[0] instanceof String);
-			assertTrue("Verifica que o cpf deve estar nulo", linha[1] instanceof String);
-
-			Instrutor instrutor = new Instrutor((String) linha[0], (String) linha[1]);
-
-			assertNotNull("Verifica que o instrutor não deve estar nulo", instrutor);
-		}
+		deveConsultarPessoasPeloNome(Instrutor.class, NOME_FILTRO);
 	}
 
-	private String montaHqlParaObterEntidadeComIdENomePeloCpf() {
+	/**
+	 * Teste validação de status nulo
+	 */
+	@Test(expected = IllegalStateException.class)
+	public void naoDevePersistirComStatusNulo() {
 
-		StringBuilder hql = new StringBuilder("SELECT new ");
-		hql.append(Instrutor.class.getSimpleName());
-		hql.append('(');
-		hql.append(Instrutor.Atributos.ID);
-		hql.append(',');
-		hql.append(Instrutor.Atributos.NOME);
-		hql.append(')');
-		hql.append(" FROM ");
-		hql.append(Instrutor.class.getSimpleName());
-		hql.append(" WHERE ");
-		hql.append(Instrutor.Atributos.CPF);
-		hql.append(" = :cpf ");
+		Instrutor instrutor = getEntidadeParaTeste();
+		instrutor.setStatus(null);
+		instrutor.persiste();
 
-		return hql.toString();
+		fail("devia ter lançado IllegalStateException ao tentar persistir instrutor com status null");
 	}
 
+	/**
+	 * Teste validação de status inativo na inclusao
+	 */
+	@Test(expected = IllegalStateException.class)
+	public void naoDevePersistirComStatusInativo() {
+
+		Instrutor instrutor = getEntidadeParaTeste();
+		instrutor.setStatus(StatusInstrutor.INATIVO);
+		instrutor.persiste();
+
+		fail("devia ter lançado IllegalStateException ao tentar persistir instrutor com status inativo");
+	}
+
+	/**
+	 * Teste validação alteracao de status
+	 */
 	@Test
-	public void deveConsultarApenasIdNome() {
+	public void deveAlterarParaStatusInativo() {
 
-		deveSalvarEntidade();
+		Instrutor instrutor = getEntidadeParaTeste();
+		instrutor.setStatus(StatusInstrutor.ATIVO);
+		instrutor.persiste();
+		assertFalse("Instrutor não deve estar no estado transient após ter sido persistido", instrutor.isTransient());
 
-		Query query = getDao().createQuery(montaHqlParaObterEntidadeComIdENomePeloCpf());
-		query.setParameter("cpf", CPF);
+		int versao = instrutor.getVersion();
+		assertNotNull("Instrutor deve possuir versão", versao);
 
-		@SuppressWarnings("unchecked")
-		List<Instrutor> instrutores = query.getResultList();
-
-		assertFalse("Verifica se há registros na lista", instrutores.isEmpty());
-
-		instrutores.forEach(instrutor -> assertNull("Verifica que o cpf deve estar nulo", instrutor.getCpf()));
+		instrutor.setStatus(StatusInstrutor.INATIVO);
+		instrutor = instrutor.altera();
+		assertTrue("Instrutor deve estar com status inativo", instrutor.getStatus() == StatusInstrutor.INATIVO);
+		assertNotEquals(instrutor.getVersion().intValue(), versao);
 	}
 
-	@Test
-	public void deveConsultarInstrutorComIdNome() {
-		deveSalvarEntidade();
+	/**
+	 * Teste validação adicionar aluno nulo
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void naoDeveAdicionarAlunoNulo() {
 
-		Query query = getDao().createQuery(montaHqlParaObterEntidadeComIdENomePeloCpf());
-		query.setParameter("cpf", CPF);
+		Instrutor instrutor = getEntidadeParaTeste();
+		instrutor.adicionaAluno(null);
 
-		@SuppressWarnings("unchecked")
-		List<Instrutor> instrutores = query.getResultList();
-
-		assertFalse("Verifica se há registros na lista", instrutores.isEmpty());
-
-		instrutores.forEach(instrutor -> {
-			assertNull("Verifica que o cpf deve estar nulo", instrutor.getCpf());
-			instrutor.setCpf(CPF);
-		});
+		fail("devia ter lançado IllegalArgumentException ao tentar adicionar aluno nulo ao instrutor");
 	}
 
-	@Test
-	@SuppressWarnings("unchecked")
-	public void deveConsultarCpf() {
-		deveSalvarEntidade();
+	/**
+	 * Teste validação adicionar aluno não persistido
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void naoDeveAdicionarAlunoNaoPersistido() {
 
-		StringBuilder hql = new StringBuilder("SELECT ");
-		hql.append(Instrutor.Atributos.CPF);
-		hql.append(" FROM ");
-		hql.append(Instrutor.class.getSimpleName());
-		hql.append(" WHERE ");
-		hql.append(Instrutor.Atributos.NOME);
-		hql.append(" LIKE :nome ");
+		Instrutor instrutor = getEntidadeParaTeste();
+		instrutor.adicionaAluno(FabricaTeste.criaAluno());
 
-		Query query = getDao().createQuery(hql.toString());
-		query.setParameter("nome", concat("%", NOME_FILTRO, "%"));
+		fail("devia ter lançado IllegalArgumentException ao tentar adicionar ao instrutor aluno não persistido");
+	}
 
-		List<String> listaCpf = query.getResultList();
+	/**
+	 * Teste validação adicionar aluno já pertencente
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void naoDeveAdicionarAlunoJaPertencenteAoInstrutor() {
 
-		assertFalse("Deve possuir itens", listaCpf.isEmpty());
+		Instrutor instrutor = getEntidadeParaTeste();
+		Aluno aluno = FabricaTeste.criaAluno().persiste();
+		instrutor.adicionaAluno(aluno);
+		instrutor.adicionaAluno(aluno);
+
+		fail("devia ter lançado IllegalArgumentException ao tentar adicionar aluno já pertencente ao instrutor");
+	}
+
+	/**
+	 * Teste validação retirar aluno nulo
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void naoDeveRetirarAlunoNulo() {
+
+		Instrutor instrutor = getEntidadeParaTeste();
+		instrutor.retiraAluno(null);
+
+		fail("devia ter lançado IllegalArgumentException ao tentar retirar aluno nulo ao instrutor");
+	}
+
+	/**
+	 * Teste validação retirar aluno não persistido
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void naoDeveRetirarAlunoNaoPersistido() {
+
+		Instrutor instrutor = getEntidadeParaTeste();
+		instrutor.retiraAluno(FabricaTeste.criaAluno());
+
+		fail("devia ter lançado IllegalArgumentException ao tentar retirar do instrutor aluno não persistido");
+	}
+
+	/**
+	 * Teste validação retirar aluno não pertencente
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void naoDeveRetirarAlunoNaoPertencenteAoInstrutor() {
+
+		Instrutor instrutor = getEntidadeParaTeste();
+		Aluno veiculo = FabricaTeste.criaAluno().persiste();
+		instrutor.retiraAluno(veiculo);
+
+		fail("devia ter lançado IllegalArgumentException ao tentar retirar aluno não pertencente ao instrutor");
 	}
 
 	@AfterClass

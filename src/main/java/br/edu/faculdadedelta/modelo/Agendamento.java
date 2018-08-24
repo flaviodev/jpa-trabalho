@@ -213,7 +213,7 @@ public class Agendamento extends BaseEntity<String> {
 		if (toLocalDate(dataHoraProva).isBefore(LocalDate.now()))
 			throw new IllegalStateException("Data da prova não pode ser anterior a hoje");
 
-		if (nomeExaminador == null || nomeExaminador.isEmpty())
+		if (nomeExaminador == null || nomeExaminador.trim().isEmpty())
 			throw new IllegalStateException("Nome do examinador deve ser informado");
 
 		if (nomeExaminador.length() > 150)
