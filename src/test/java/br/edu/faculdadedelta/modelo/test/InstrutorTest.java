@@ -1,6 +1,7 @@
 package br.edu.faculdadedelta.modelo.test;
 
 import static br.edu.faculdadedelta.util.StringUtil.concat;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -46,9 +47,7 @@ public class InstrutorTest extends BaseCrudTest<String, Instrutor> {
 	@Override
 	public FuncaoValidaAlteracaoEntidade<String, Instrutor> validaAlteracaoEntidadeDeTeste() {
 
-		return (instrutor) -> assertTrue(
-				concat("valor esperado <", NOME_ALTERACAO, "> : retornado <", instrutor.getNome(), ">"),
-				instrutor.getNome().equals(NOME_ALTERACAO));
+		return (instrutor) -> assertEquals(NOME_ALTERACAO, instrutor.getNome());
 	}
 
 	@Override
@@ -69,7 +68,7 @@ public class InstrutorTest extends BaseCrudTest<String, Instrutor> {
 		assertNotNull("Verifica se encontrou um registro", instrutor);
 
 		getDao().detach(instrutor);
-		instrutor.getProcessos().size();
+		instrutor.getAlunos().size();
 
 		fail("deveria lançar LazyInitializationException ao Acessar Atributo Lazy Fora do Escopo EntityManager");
 	}
@@ -81,7 +80,7 @@ public class InstrutorTest extends BaseCrudTest<String, Instrutor> {
 		instrutor = getDao().find(Instrutor.class, instrutor.getId());
 
 		assertNotNull("Verifica se encontrou um registro", instrutor);
-		assertNotNull("Lista lazy não deve ser nula", instrutor.getProcessos());
+		assertNotNull("Lista lazy não deve ser nula", instrutor.getAlunos());
 	}
 
 	@Test

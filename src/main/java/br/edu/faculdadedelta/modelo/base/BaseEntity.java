@@ -8,8 +8,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
 
-import br.edu.faculdadedelta.repositorio.base.FabricaDeRepositorios;
-import br.edu.faculdadedelta.repositorio.base.Repositorio;
 import br.edu.faculdadedelta.tipo.base.TipoEdicaoCRUD;
 
 @MappedSuperclass
@@ -21,7 +19,7 @@ public abstract class BaseEntity<I extends Serializable> implements Serializable
 	private Integer version;
 
 	public abstract I getId();
-	
+
 	public abstract void validaDados(TipoEdicaoCRUD tipo);
 
 	public Integer getVersion() {
@@ -38,24 +36,18 @@ public abstract class BaseEntity<I extends Serializable> implements Serializable
 	}
 
 	@SuppressWarnings("unchecked")
-	public <R extends Repositorio> R getRepositorio(Class<R> classeRepositorio) {
-		
-		return (R) FabricaDeRepositorios.getRepositorio(classeRepositorio);
-	}
-	
-	@SuppressWarnings("unchecked")
 	public <E extends BaseEntity<I>> E persiste() {
 
 		if (!isTransient())
 			throw new IllegalStateException(concat(getClass().getSimpleName(), " já persistido(a)"));
 
 		validaDados(TipoEdicaoCRUD.INCLUSAO);
-		
+
 		EntityManager dao = getDao();
 		dao.getTransaction().begin();
 		dao.persist(this);
 		dao.getTransaction().commit();
-		
+
 		if (dao.isOpen())
 			dao.close();
 
@@ -63,23 +55,23 @@ public abstract class BaseEntity<I extends Serializable> implements Serializable
 	}
 
 	@SuppressWarnings("unchecked")
-	public <E extends BaseEntity<I>> E  altera() {
+	public <E extends BaseEntity<I>> E altera() {
 
 		E entidadeAlterada = null;
-		
+
 		if (isTransient())
 			throw new IllegalStateException(concat(getClass().getSimpleName(), " não está persistido(a)"));
 
 		validaDados(TipoEdicaoCRUD.ALTERACAO);
-		
+
 		EntityManager dao = getDao();
 		dao.getTransaction().begin();
 		entidadeAlterada = (E) dao.merge(this);
 		dao.getTransaction().commit();
-		
+
 		if (dao.isOpen())
 			dao.close();
-		
+
 		return entidadeAlterada;
 	}
 
@@ -92,7 +84,7 @@ public abstract class BaseEntity<I extends Serializable> implements Serializable
 		dao.getTransaction().begin();
 		dao.remove(dao.contains(this) ? this : dao.merge(this));
 		dao.getTransaction().commit();
-		
+
 		if (dao.isOpen())
 			dao.close();
 	}

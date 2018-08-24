@@ -49,15 +49,15 @@ public class Veiculo extends BaseEntity<String> {
 	@Column(name = "nm_modelo", nullable = false, length = 150)
 	private String modelo;
 
-	@Basic(fetch = FetchType.LAZY, optional = false)
+	@Basic(optional = false)
 	@Column(name = "nu_ano")
 	private Integer ano;
 
-	@Basic(fetch = FetchType.LAZY, optional = false)
+	@Basic(optional = false)
 	@Column(name = "nm_cor", length = 50)
 	private String cor;
 
-	@Basic(fetch = FetchType.LAZY, optional = false)
+	@Basic(optional = false)
 	@Column(name = "nm_placa", length = 8)
 	private String placa;
 

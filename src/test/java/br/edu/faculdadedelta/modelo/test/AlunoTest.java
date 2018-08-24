@@ -1,6 +1,7 @@
 package br.edu.faculdadedelta.modelo.test;
 
 import static br.edu.faculdadedelta.util.StringUtil.concat;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -14,7 +15,6 @@ import java.util.List;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 
-import org.hibernate.LazyInitializationException;
 import org.hibernate.criterion.Restrictions;
 import org.junit.AfterClass;
 import org.junit.Test;
@@ -46,9 +46,8 @@ public class AlunoTest extends BaseCrudTest<String, Aluno> {
 
 	@Override
 	public FuncaoValidaAlteracaoEntidade<String, Aluno> validaAlteracaoEntidadeDeTeste() {
-		return (aluno) -> assertTrue(
-				concat("valor esperado <", NOME_ALTERACAO, "> : retornado <", aluno.getNome(), ">"),
-				aluno.getNome().equals(NOME_ALTERACAO));
+
+		return (aluno) -> assertEquals(NOME_ALTERACAO, aluno.getNome());
 	}
 
 	@Override
@@ -94,33 +93,6 @@ public class AlunoTest extends BaseCrudTest<String, Aluno> {
 		aluno.persiste();
 
 		fail("deveria disparar PersistenceException porque o campo sexo é optional = false");
-	}
-
-	@Test(expected = LazyInitializationException.class)
-	public void naoDeveAcessarAtributoLazyForaEscopoEntityManager() {
-
-		Aluno aluno = getEntidadeParaTeste().persiste();
-		fecharEntityManager();
-		instanciarEntityManager();
-
-		aluno = getDao().find(Aluno.class, aluno.getId());
-
-		assertNotNull("Verifica se encontrou um registro", aluno);
-
-		getDao().detach(aluno);
-		aluno.getProcessos().size();
-
-		fail("deveria lançar LazyInitializationException ao Acessar Atributo Lazy Fora do Escopo EntityManager");
-	}
-
-	@Test
-	public void deveAcessarAtributoLazy() {
-
-		Aluno aluno = getEntidadeParaTeste().persiste();
-		aluno = getDao().find(Aluno.class, aluno.getId());
-
-		assertNotNull("Verifica se encontrou um registro", aluno);
-		assertNotNull("Lista lazy não deve ser nula", aluno.getProcessos());
 	}
 
 	private String montaHqlParaObterIdENomePeloCpf() {

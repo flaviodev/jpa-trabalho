@@ -9,7 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 import br.edu.faculdadedelta.tipo.StatusInstrutor;
 import br.edu.faculdadedelta.tipo.base.TipoEdicaoCRUD;
@@ -27,15 +29,17 @@ public class Instrutor extends Pessoa {
 		public static final String NOME = "nome";
 		public static final String CPF = "cpf";
 		public static final String STATUS = "status";
+		public static final String ALUNOS = "alunos";
 	}
 
 	@Enumerated(EnumType.STRING)
 	@Basic(fetch = FetchType.LAZY, optional = false)
 	@Column(length = 7)
 	private StatusInstrutor status;
-	
-	@OneToMany(mappedBy = "instrutor", fetch = FetchType.LAZY)
-	private List<ProcessoHabilitacao> processos;
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "instrutor_aluno", joinColumns = @JoinColumn(name = "id_instrutor"), inverseJoinColumns = @JoinColumn(name = "id_aluno"))
+	private List<Aluno> alunos;
 
 	public Instrutor() {
 
@@ -74,19 +78,51 @@ public class Instrutor extends Pessoa {
 		return (Instrutor) super.setCpf(cpf);
 	}
 
-	public List<ProcessoHabilitacao> getProcessos() {
-		
-		if(processos == null)
-			processos = new ArrayList<>();
-		
-		return processos;
+	public List<Aluno> getAlunos() {
+
+		if (alunos == null)
+			alunos = new ArrayList<>();
+
+		return alunos;
 	}
 
-	public void setProcessos(List<ProcessoHabilitacao> processos) {
-		
-		this.processos = processos;
+	public void setAlunos(List<Aluno> alunos) {
+
+		this.alunos = alunos;
 	}
-	
+
+	public Instrutor adicionaAluno(Aluno aluno) {
+
+		if (aluno == null)
+			throw new IllegalArgumentException("Aluno deve ser informado");
+
+		if (aluno.isTransient())
+			throw new IllegalArgumentException("Aluno informado não está salvo");
+
+		if (getAlunos().contains(aluno))
+			throw new IllegalArgumentException("Aluno já pertence ao instrutor");
+
+		getAlunos().add(aluno);
+
+		return this;
+	}
+
+	public Instrutor retiraAluno(Aluno aluno) {
+
+		if (aluno == null)
+			throw new IllegalArgumentException("Aluno deve ser informado");
+
+		if (aluno.isTransient())
+			throw new IllegalArgumentException("Aluno informado não está salvo");
+
+		if (!getAlunos().contains(aluno))
+			throw new IllegalArgumentException("Aluno não pertence ao instrutor");
+
+		getAlunos().remove(aluno);
+
+		return this;
+	}
+
 	@Override
 	public void validaDados(TipoEdicaoCRUD tipo) {
 		super.validaDados(tipo);

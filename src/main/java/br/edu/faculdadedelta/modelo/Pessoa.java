@@ -79,7 +79,7 @@ public abstract class Pessoa extends BaseEntity<String> {
 	public void validaDados(TipoEdicaoCRUD tipo) {
 		
 		if (nome == null || nome.isEmpty())
-			throw new IllegalStateException("Cpf deve ser informado");
+			throw new IllegalStateException("Nome deve ser informado");
 
 		if (nome.length() > 150)
 			throw new IllegalStateException("Nome não pode exceder 150 caracteres");
