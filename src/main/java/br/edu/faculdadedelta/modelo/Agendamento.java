@@ -79,25 +79,8 @@ public class Agendamento extends BaseEntity<String> {
 
 	}
 
-	public Agendamento(Date dataHoraProva) {
-
-		setDataHoraProva(dataHoraProva);
-	}
-
-	public Agendamento(String id, Date dataHoraProva) {
-
-		this.id = id;
-		setDataHoraProva(dataHoraProva);
-	}
-
 	public Agendamento(LocalDateTime dataHoraProva) {
 
-		setDataHoraProva(dataHoraProva);
-	}
-
-	public Agendamento(String id, LocalDateTime dataHoraProva) {
-
-		this.id = id;
 		setDataHoraProva(dataHoraProva);
 	}
 

@@ -2,6 +2,8 @@ package br.edu.faculdadedelta.modelo.test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.time.LocalDate;
@@ -18,6 +20,7 @@ import br.edu.faculdadedelta.test.base.FuncaoCriterioParaBuscaDeEntidade;
 import br.edu.faculdadedelta.test.base.FuncaoValidaAlteracaoEntidade;
 import br.edu.faculdadedelta.test.util.FabricaTeste;
 import br.edu.faculdadedelta.tipo.TipoVeiculo;
+import br.edu.faculdadedelta.util.StringUtil;
 
 public class VeiculoTest extends BaseCrudTest<String, Veiculo> {
 
@@ -243,12 +246,19 @@ public class VeiculoTest extends BaseCrudTest<String, Veiculo> {
 	@Test
 	public void devePersistirCarroCom8AnosDeUso() {
 
+		Integer ano = LocalDate.now().minusYears(8).getYear();
+
 		Veiculo veiculo = getEntidadeParaTeste();
 		veiculo.setTipo(TipoVeiculo.CARRO);
-		veiculo.setAno(LocalDate.now().minusYears(8).getYear());
+		veiculo.setPlaca("FFF-7777");
+		veiculo.setAno(ano);
 
 		veiculo.persiste();
 		assertFalse("Veículo não deve estar no estado transient após ter sido persistido", veiculo.isTransient());
+
+		assertTrue("A placa deve ser FFF-777", veiculo.getPlaca().equals("FFF-7777"));
+		assertTrue(StringUtil.concat("O ano deve ser", ano.toString()), veiculo.getAno().equals(ano));
+		assertTrue("A idade deve ser 8 anos", veiculo.getIdade().equals(8));
 	}
 
 	/**
@@ -276,6 +286,73 @@ public class VeiculoTest extends BaseCrudTest<String, Veiculo> {
 
 		veiculo.persiste();
 		assertFalse("Veículo não deve estar no estado transient após ter sido persistido", veiculo.isTransient());
+	}
+
+	/**
+	 * Teste validação alteração objeto não persistido
+	 */
+	@Test(expected = IllegalStateException.class)
+	public void naoDeveAlterarVeiculoNaoPersistido() {
+
+		Veiculo veiculo = getEntidadeParaTeste();
+		veiculo.altera();
+
+		fail("devia ter lançado IllegalStateException ao tentar alterar veículo não persistido");
+	}
+
+	/**
+	 * Teste validação exclusão objeto não persistido
+	 */
+	@Test(expected = IllegalStateException.class)
+	public void naoDeveExcluirVeiculoNaoPersistido() {
+
+		Veiculo veiculo = getEntidadeParaTeste();
+		veiculo.exclui();
+
+		fail("devia ter lançado IllegalStateException ao tentar excluir veículo não persistido");
+	}
+
+	/**
+	 * Teste validação persistir objeto já persistido
+	 */
+	@Test(expected = IllegalStateException.class)
+	public void naoDevePeristirVeiculoJaPersistido() {
+
+		Veiculo veiculo = getEntidadeParaTeste();
+		veiculo.persiste();
+		veiculo.persiste();
+
+		fail("devia ter lançado IllegalStateException ao tentar persistir veículo já persistido");
+	}
+
+	/**
+	 * Teste validação persistir e remover objeto
+	 */
+	@Test
+	public void devePeristirERemoverVeiculo() {
+
+		Veiculo veiculo = getEntidadeParaTeste();
+		veiculo.persiste();
+		String id = veiculo.getId();
+		
+		veiculo.exclui();
+
+		veiculo = getEntittyManager().find(Veiculo.class, id);
+		
+		assertNull("Veículo não deve encontrado após ser ter sido excluído", veiculo);
+	}
+
+	/**
+	 * Teste verificacao equals e hashcode com objeto null e id null
+	 */
+	@Test
+	public void deveVerificarEqualsHashCodeComObjetoEIdNull() {
+
+		Veiculo veiculo = getEntidadeParaTeste();
+
+		assertTrue("Veículo não deve estar no estado transient", veiculo.isTransient());
+		assertFalse("Veículo deve retornar false ao testar equals com referência nula", veiculo.equals(null));
+		assertTrue("Veículo deve retornar 31 para hashcode de id null", veiculo.hashCode() == 31);
 	}
 
 	@AfterClass

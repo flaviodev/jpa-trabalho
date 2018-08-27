@@ -47,9 +47,7 @@ public abstract class BaseEntity<I extends Serializable> implements Serializable
 		dao.getTransaction().begin();
 		dao.persist(this);
 		dao.getTransaction().commit();
-
-		if (dao.isOpen())
-			dao.close();
+		dao.close();
 
 		return (E) this;
 	}
@@ -68,9 +66,7 @@ public abstract class BaseEntity<I extends Serializable> implements Serializable
 		dao.getTransaction().begin();
 		entidadeAlterada = (E) dao.merge(this);
 		dao.getTransaction().commit();
-
-		if (dao.isOpen())
-			dao.close();
+		dao.close();
 
 		return entidadeAlterada;
 	}
@@ -82,11 +78,9 @@ public abstract class BaseEntity<I extends Serializable> implements Serializable
 
 		EntityManager dao = getDao();
 		dao.getTransaction().begin();
-		dao.remove(dao.contains(this) ? this : dao.merge(this));
+		dao.remove(dao.merge(this));
 		dao.getTransaction().commit();
-
-		if (dao.isOpen())
-			dao.close();
+		dao.close();
 	}
 
 	@Override

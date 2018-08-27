@@ -11,7 +11,6 @@ public class DateUtil {
 
 	private DateUtil() {
 
-		throw new IllegalStateException("Classe Utilitária");
 	}
 
 	public static LocalDate toLocalDate(Date data) {

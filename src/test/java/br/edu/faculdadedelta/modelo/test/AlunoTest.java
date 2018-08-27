@@ -1,5 +1,6 @@
 package br.edu.faculdadedelta.modelo.test;
 
+import static br.edu.faculdadedelta.util.DateUtil.toDate;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
@@ -17,18 +18,21 @@ import br.edu.faculdadedelta.test.base.FuncaoAlteraEntidade;
 import br.edu.faculdadedelta.test.base.FuncaoCriterioParaBuscaDeEntidade;
 import br.edu.faculdadedelta.test.base.FuncaoValidaAlteracaoEntidade;
 import br.edu.faculdadedelta.test.util.FabricaTeste;
+import br.edu.faculdadedelta.tipo.Sexo;
 
 public class AlunoTest extends BasePessoaCrudTest<String, Aluno> {
 
 	private static final String CPF = "111.111.111-11";
 	private static final String NOME = "Joaquim Bragança";
+	private static final LocalDate DATA_NASCIMENTO = LocalDate.of(1982, 10, 14);
+	private static final Sexo SEXO = Sexo.MASCULINO;
 	private static final String NOME_ALTERACAO = "Joaquim Albuquerque";
 	private static final String NOME_FILTRO = "Joaquim";
 
 	@Override
 	public Aluno getEntidadeParaTeste() {
 
-		return FabricaTeste.criaAluno(NOME, CPF);
+		return FabricaTeste.criaAluno(NOME, CPF).setDataNascimento(toDate(DATA_NASCIMENTO)).setSexo(SEXO);
 	}
 
 	@Override
@@ -40,7 +44,12 @@ public class AlunoTest extends BasePessoaCrudTest<String, Aluno> {
 	@Override
 	public FuncaoValidaAlteracaoEntidade<String, Aluno> validaAlteracaoEntidadeDeTeste() {
 
-		return (aluno) -> assertEquals(NOME_ALTERACAO, aluno.getNome());
+		return (aluno) -> { 
+			assertEquals(NOME_ALTERACAO, aluno.getNome()); 
+			assertEquals(CPF, aluno.getCpf());
+			assertEquals(toDate(DATA_NASCIMENTO), aluno.getDataNascimento());
+			assertEquals(SEXO, aluno.getSexo());
+		};
 	}
 
 	@Override

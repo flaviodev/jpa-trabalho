@@ -12,6 +12,7 @@ import static org.junit.Assert.fail;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -47,11 +48,13 @@ public class AgendamentoTest extends BaseCrudTest<String, Agendamento> {
 
 	private static final LocalDateTime DATA_HORA_PROVA = LocalDateTime.of(2018, 9, 20, 10, 00);
 	private static final Date DATA_HORA_PROVA_ALTERACAO = toDate(LocalDateTime.of(2018, 9, 20, 11, 00));
+	private static final Aluno ALUNO = FabricaTeste.criaAluno().setNome("Ignácio Loyola").persiste();
+	private static final CategoriaExame CATEGORIA = CategoriaExame.CARRO;
 
 	@Override
 	public Agendamento getEntidadeParaTeste() {
 
-		return FabricaTeste.criaAgendamento(DATA_HORA_PROVA);
+		return FabricaTeste.criaAgendamento(DATA_HORA_PROVA).setAluno(ALUNO).setCategoria(CATEGORIA);
 	}
 
 	public FuncaoAlteraEntidade<String, Agendamento> alteracaoEntidadeDeTeste() {
@@ -62,7 +65,11 @@ public class AgendamentoTest extends BaseCrudTest<String, Agendamento> {
 	@Override
 	public FuncaoValidaAlteracaoEntidade<String, Agendamento> validaAlteracaoEntidadeDeTeste() {
 
-		return (agendamento) -> assertEquals(DATA_HORA_PROVA_ALTERACAO, agendamento.getDataHoraProva());
+		return (agendamento) -> {
+			assertEquals(DATA_HORA_PROVA_ALTERACAO, agendamento.getDataHoraProva());
+			assertEquals(ALUNO.getId(), agendamento.getAluno().getId());
+			assertEquals(CATEGORIA, agendamento.getCategoria());
+		};
 	}
 
 	@Override
@@ -246,6 +253,38 @@ public class AgendamentoTest extends BaseCrudTest<String, Agendamento> {
 	}
 
 	/**
+	 * Teste validação de categoria ambos
+	 */
+	@Test(expected = IllegalStateException.class)
+	public void naoDevePersistirComCategoriaAmbosInformandoDoisCarros() {
+
+		Agendamento agendamento = getEntidadeParaTeste();
+		agendamento.setCategoria(CategoriaExame.AMBOS);
+		agendamento.setVeiculos(new ArrayList<>());
+		agendamento.adicionaVeiculo(FabricaTeste.criaVeiculo().setTipo(TipoVeiculo.CARRO).persiste());
+		agendamento.adicionaVeiculo(FabricaTeste.criaVeiculo().setTipo(TipoVeiculo.CARRO).persiste());
+		agendamento.persiste();
+
+		fail("devia ter lançado IllegalStateException ao tentar persistir agendamento com categoria ambos informando dois carros");
+	}
+	
+	/**
+	 * Teste validação de categoria ambos
+	 */
+	@Test(expected = IllegalStateException.class)
+	public void naoDevePersistirComCategoriaAmbosInformandoDuasMotos() {
+
+		Agendamento agendamento = getEntidadeParaTeste();
+		agendamento.setCategoria(CategoriaExame.AMBOS);
+		agendamento.setVeiculos(new ArrayList<>());
+		agendamento.adicionaVeiculo(FabricaTeste.criaVeiculo().setTipo(TipoVeiculo.MOTO).persiste());
+		agendamento.adicionaVeiculo(FabricaTeste.criaVeiculo().setTipo(TipoVeiculo.MOTO).persiste());
+		agendamento.persiste();
+
+		fail("devia ter lançado IllegalStateException ao tentar persistir agendamento com categoria ambos informando duas motos");
+	}
+	
+	/**
 	 * Teste validação de categoria Carro
 	 */
 	public void devePersistirComCategoriaCarro() {
@@ -355,6 +394,30 @@ public class AgendamentoTest extends BaseCrudTest<String, Agendamento> {
 	}
 
 	/**
+	 * Teste validação setar localdatetime
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void naoDeveAceitarDataNula() {
+
+		Agendamento agendamento = getEntidadeParaTeste();
+		agendamento.setDataHoraProva((LocalDateTime) null);
+
+		fail("devia ter lançado IllegalArgumentException ao tentar setar localdatetime null no agendamento");
+	}
+
+	/**
+	 * Teste comparacao
+	 */
+	@Test
+	public void deveRetornarFalseComparacaoDeDoisAgendamentos() {
+
+		Agendamento agendamento = getEntidadeParaTeste().persiste();
+		Agendamento agendamento2 = getEntidadeParaTeste().persiste();
+
+		assertFalse("Deve retornar false na comparação de dos agendamentos diferentes", agendamento.equals(agendamento2));
+	}
+	
+	/**
 	 * Teste validação de categoria alteracao do veículo
 	 */
 	@Test(expected = IllegalStateException.class)
@@ -389,7 +452,7 @@ public class AgendamentoTest extends BaseCrudTest<String, Agendamento> {
 
 		Agendamento agendamento = getEntidadeParaTeste();
 		agendamento.setCategoria(CategoriaExame.CARRO);
-		agendamento.getVeiculos().clear();
+		agendamento.setVeiculos(new ArrayList<>());
 		agendamento.adicionaVeiculo(carro);
 		agendamento.persiste();
 

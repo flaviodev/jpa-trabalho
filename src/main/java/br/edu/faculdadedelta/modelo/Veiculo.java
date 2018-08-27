@@ -75,12 +75,6 @@ public class Veiculo extends BaseEntity<String> {
 		this.marca = marca;
 	}
 	
-	public Veiculo(String id, String marca) {
-		
-		this.id = id;
-		this.marca = marca;
-	}
-	
 	@Override
 	public String getId() {
 
@@ -189,9 +183,6 @@ public class Veiculo extends BaseEntity<String> {
 		if (tipo == null)
 			throw new IllegalStateException("Tipo deve ser informado");
 		
-		if(ano == null)
-			throw new IllegalStateException("Ano de fabricação deve ser informado");
-		
 		if(!ValidadorUtil.isPlacaDeVeiculoValida(placa))
 			throw new IllegalStateException("Placa inválida! Utilizar formato: AAA-9999");
 	}
@@ -200,7 +191,8 @@ public class Veiculo extends BaseEntity<String> {
 		return LocalDate.now().getYear() - ano;
 	}
 	
-	public Integer getIdadeIdade() {
+	public Integer getIdade() {
+		
 		return calculaIdade(getAno());
 	}
 	

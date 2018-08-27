@@ -113,10 +113,16 @@ public abstract class BaseCrudTest<I extends Serializable, E extends BaseEntity<
 
 		funcaoAltera.altera(entidade);
 		entidade = entidade.altera();
+		assertNotEquals(entidade.getVersion().intValue(), versao);
+		
+		criteria = createCriteria(tipoEntidade);
+		criteria.add(Restrictions.eq("id", entidade.getId()));
+
+		entidade = (E) criteria.uniqueResult();
+		assertNotNull(concat("Retorno da busca de ", nomeEntidade, " não pode ser nulo"), entidade);
 
 		validaAlteracaoEntidadeDeTeste().validaAlteracao(entidade);
 
-		assertNotEquals(entidade.getVersion().intValue(), versao);
 	}
 
 	/**

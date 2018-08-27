@@ -17,7 +17,7 @@ import br.edu.faculdadedelta.util.ValidadorUtil;
 public abstract class Pessoa extends BaseEntity<String> {
 
 	private static final long serialVersionUID = 6548447923572856584L;
-	
+
 	public static class Atributos {
 		private Atributos() {
 		}
@@ -86,58 +86,27 @@ public abstract class Pessoa extends BaseEntity<String> {
 
 	@Override
 	public void validaDados(TipoEdicaoCRUD tipo) {
-		
+
 		if (nome == null || nome.trim().isEmpty())
 			throw new IllegalStateException("Nome deve ser informado");
 
 		if (nome.length() > 150)
 			throw new IllegalStateException("Nome não pode exceder 150 caracteres");
-		
-		if(!ValidadorUtil.isCPFValido(cpf))
-			throw new IllegalStateException("Cpf inválido");
-		
-	}
-	
-	@Override
-	public int hashCode() {
 
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
+		if (!ValidadorUtil.isCPFValido(cpf))
+			throw new IllegalStateException("Cpf inválido");
+
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-
-		if (this == obj)
-			return true;
-
-		if (!super.equals(obj))
-			return false;
-
-		if (getClass() != obj.getClass())
-			return false;
-
-		Pessoa other = (Pessoa) obj;
-		if (cpf == null) {
-			if (other.cpf != null) {
-				return false;
-			}
-		} else if (!cpf.equals(other.cpf)) {
-			return false;
-		}
-
-		if (id == null) {
-			if (other.id != null) {
-				return false;
-			}
-		} else if (!id.equals(other.id)) {
-			return false;
-		}
-
-		return true;
+		
+		return super.equals(obj);
 	}
-
+	
+	@Override
+	public int hashCode() {
+		
+		return super.hashCode();
+	}
 }

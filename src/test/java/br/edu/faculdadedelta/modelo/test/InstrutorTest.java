@@ -4,8 +4,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+
+import java.util.ArrayList;
 
 import org.hibernate.LazyInitializationException;
 import org.hibernate.criterion.Restrictions;
@@ -226,12 +229,130 @@ public class InstrutorTest extends BasePessoaCrudTest<String, Instrutor> {
 	public void naoDeveRetirarAlunoNaoPertencenteAoInstrutor() {
 
 		Instrutor instrutor = getEntidadeParaTeste();
-		Aluno veiculo = FabricaTeste.criaAluno().persiste();
-		instrutor.retiraAluno(veiculo);
+		Aluno aluno = FabricaTeste.criaAluno().persiste();
+		instrutor.retiraAluno(aluno);
 
 		fail("devia ter lançado IllegalArgumentException ao tentar retirar aluno não pertencente ao instrutor");
 	}
 
+	/**
+	 * Teste adicionar aluno
+	 */
+	@Test
+	public void deveAcrescentarAluno() {
+		Instrutor instrutor = getEntidadeParaTeste();
+		Aluno aluno = FabricaTeste.criaAluno().persiste();
+		instrutor.setAlunos(new ArrayList<>());
+		instrutor.adicionaAluno(aluno);
+		instrutor.persiste();
+
+		assertTrue("Instrutor deve ter um aluno", instrutor.getAlunos().size() == 1);
+	}
+
+	/**
+	 * Teste adicionar aluno
+	 */
+	@Test
+	public void deveAcrescentarERetirarAluno() {
+		Instrutor instrutor = getEntidadeParaTeste();
+		Aluno aluno = FabricaTeste.criaAluno().persiste();
+		instrutor.adicionaAluno(aluno);
+		instrutor.persiste();
+
+		instrutor.retiraAluno(aluno);
+		instrutor.altera();
+
+		assertTrue("Instrutor não deve ter alunos", instrutor.getAlunos().isEmpty());
+	}
+
+	/**
+	 * Teste persistir e exluir instrutor
+	 */
+	@Test
+	public void devePersistirEExcluirInstrutor() {
+		Instrutor instrutor = getEntidadeParaTeste();
+		Aluno aluno = FabricaTeste.criaAluno().persiste();
+		instrutor.adicionaAluno(aluno);
+		instrutor.persiste();
+
+		String id = instrutor.getId();
+
+		instrutor = getEntittyManager().find(Instrutor.class, id);
+
+		assertNotNull("Instrutor não pode ser nulo", instrutor);
+
+		instrutor.exclui();
+
+		getEntittyManager().clear();
+		instrutor = getEntittyManager().find(Instrutor.class, id);
+
+		assertNull("Instrutor deve ser nulo", instrutor);
+	}
+
+	/**
+	 * Teste comparador equals
+	 */
+	@Test
+	@SuppressWarnings("unlikely-arg-type")
+	public void deveRetornarFalseComaparacaoAlunoEInstrutor() {
+		Instrutor instrutor = getEntidadeParaTeste();
+		Aluno aluno = FabricaTeste.criaAluno().persiste();
+		instrutor.adicionaAluno(aluno);
+		instrutor.persiste();
+
+		assertTrue("Instrutor deve ter um aluno", instrutor.getAlunos().size() == 1);
+		assertFalse("Comparação entre aluno e instrutor deve ser falsa", aluno.equals(instrutor));
+	}
+
+	/**
+	 * Teste comparador equals
+	 */
+	@Test
+	public void deveRetornarFalseComaparacaoEntreUmInstrutorPersistidoEOutroNaoPersistido() {
+		Instrutor instrutor = getEntidadeParaTeste();
+		Instrutor instrutor2 = getEntidadeParaTeste().persiste();
+
+		assertFalse("Comparação entre instrutores onde o primeiro não esta persistido deve ser falsa",
+				instrutor.equals(instrutor2));
+	}
+
+	/**
+	 * Teste comparador equals
+	 */
+	@Test
+	public void deveRetornarFalseComaparacaoEntreUmInstrutorNaoPersistidoEOutroPersistido() {
+		Instrutor instrutor = getEntidadeParaTeste().persiste();
+		Instrutor instrutor2 = getEntidadeParaTeste();
+
+		assertFalse("Comparação entre instrutores onde o primeiro esta persistido e o segundo não  deve ser falsa",
+				instrutor.equals(instrutor2));
+	}
+	
+	/**
+	 * Teste comparador equals
+	 */
+	@Test
+	public void deveRetornarTrueComaparacaoEntreDoisInstrutoresNaoPersistidos() {
+		Instrutor instrutor = getEntidadeParaTeste().setNome("João");
+		Instrutor instrutor2 = getEntidadeParaTeste().setNome("José");
+
+		assertTrue("Comparação entre instrutores não persistidos deve ser verdadeira",
+				instrutor.equals(instrutor2));
+	}
+	
+	/**
+	 * Teste comparador equals
+	 */
+	@Test
+	public void deveRetornarFalsaComaparacaoEntreDoisInstrutoresDiferentesPersistidos() {
+		Instrutor instrutor = getEntidadeParaTeste().setNome("João").persiste();
+		Instrutor instrutor2 = getEntidadeParaTeste().setNome("José").persiste();
+
+		assertFalse("Comparação entre instrutores diferentes persistidos deve ser falsa",
+				instrutor.equals(instrutor2));
+	}
+	
+	
 	@AfterClass
 	public static void deveLimparBase() {
 

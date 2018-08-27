@@ -6,7 +6,6 @@ public class StringUtil {
 
 	private StringUtil() {
 
-		throw new IllegalStateException("Classe Utilitária");
 	}
 
 	public static String concat(String... valoresTextuais) {
